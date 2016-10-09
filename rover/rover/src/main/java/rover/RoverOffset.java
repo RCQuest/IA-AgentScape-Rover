@@ -1,28 +1,29 @@
 package rover;
 
-/**
- * Created by rachelcabot on 09/10/2016.
- */
 public class RoverOffset {
-    private int xOffset;
-    private int yOffset;
+    private double xOffset;
+    private double yOffset;
+    private double mapSizeX;
+    private double mapSizeY;
 
-    public RoverOffset(int xOffset, int yOffset) {
+    public RoverOffset(double xOffset, double yOffset, double mapSizeX, double mapSizeY) {
 
         this.xOffset = xOffset;
         this.yOffset = yOffset;
+        this.mapSizeX = mapSizeX;
+        this.mapSizeY = mapSizeY;
     }
 
-    public int getxOffset() {
+    public double getxOffset() {
         return xOffset;
     }
 
-    public int getyOffset() {
+    public double getyOffset() {
         return yOffset;
     }
 
     public void addOffset(RoverMovement movement){
-        xOffset+=movement.xOffset;
-        yOffset+=movement.yOffset;
+        xOffset=(movement.xOffset+xOffset) % mapSizeX;
+        yOffset=(movement.yOffset+yOffset) % mapSizeY;
     }
 }

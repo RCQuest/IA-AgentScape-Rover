@@ -42,7 +42,7 @@ public class SimpleRover extends Rover {
 
         try {
             //move somewhere initially
-            offsetFromBase = new RoverOffset(0,0);
+            offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
             state = RoverState.SEARCHING;
             move(searchMovement);
         } catch (Exception e) {
@@ -111,8 +111,6 @@ public class SimpleRover extends Rover {
                     }
                 }
 
-                // now move again
-                Random rand = new Random();
                 try {
                     getLog().info("Moving...");
                     switch (state) {
