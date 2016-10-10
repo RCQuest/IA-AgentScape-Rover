@@ -26,4 +26,16 @@ public class RoverOffset {
         xOffset=(movement.xOffset+xOffset) % mapSizeX;
         yOffset=(movement.yOffset+yOffset) % mapSizeY;
     }
+
+    public RoverOffset getDifference(RoverOffset roverOffset) {
+        return new RoverOffset(
+                (roverOffset.getxOffset()-xOffset)% mapSizeX,
+                (roverOffset.getyOffset()-yOffset)% mapSizeY,
+                mapSizeX,
+                mapSizeY);
+    }
+
+    public double magnitude() {
+        return Math.hypot(xOffset,yOffset);
+    }
 }

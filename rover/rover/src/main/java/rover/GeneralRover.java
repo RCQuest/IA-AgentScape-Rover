@@ -1,12 +1,8 @@
 package rover;
 
-import java.util.Random;
+public class GeneralRover extends Rover {
 
-
-
-public class SimpleRover extends Rover {
-
-    private static final double BASE_SPEED = 4;
+    private static final int BASE_SPEED = 4;
 
     private enum RoverState{
         SEARCHING,
@@ -15,10 +11,11 @@ public class SimpleRover extends Rover {
     }
 
     private RoverState state;
-    private final RoverMovement searchMovement = new RoverMovement(4,8,4);
+    private final int SCAN_RADIUS = 4;
     private RoverOffset offsetFromBase;
+    private CoordinateMap scanMap;
 
-    public SimpleRover() {
+    public GeneralRover() {
         super();
 
         //use your username for team name
@@ -28,7 +25,7 @@ public class SimpleRover extends Rover {
             //set attributes for this rover
             //speed, scan range, max load
             //has to add up to <= 9
-            setAttributes(4, 4, 1);
+            setAttributes(BASE_SPEED, SCAN_RADIUS, 1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,16 +39,26 @@ public class SimpleRover extends Rover {
 
         try {
             //move somewhere initially
+            scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
             offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
             state = RoverState.SEARCHING;
-            move(searchMovement);
+            searchMovement();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    void move(RoverMovement movement) throws Exception {
+    private void searchMovement() throws Exception{
+        RoverOffset searchOffset = scanMap.popNextClosestNode(offsetFromBase);
+        if(searchOffset!=null){
+            move(new RoverMovement(searchOffset,BASE_SPEED));
+        } else {
+            move(new RoverMovement(1,1,1));
+        }
+    }
+
+    private void move(RoverMovement movement) throws Exception {
         offsetFromBase.addOffset(movement);
         move(movement.xOffset,movement.yOffset,movement.speed);
     }
@@ -84,7 +91,7 @@ public class SimpleRover extends Rover {
                     switch (state) {
                         case SEARCHING:
                             getLog().info("Scanning...");
-                            scan(4);
+                            scan(SCAN_RADIUS);
                             break;
                         case RETRIEVING:
                             state=RoverState.RETURNING;
@@ -115,7 +122,7 @@ public class SimpleRover extends Rover {
                     getLog().info("Moving...");
                     switch (state) {
                         case SEARCHING:
-                            move(searchMovement);
+                            searchMovement();
                             break;
                         case RETRIEVING:
                             ScanItem item = pr.getScanItems()[0];
@@ -143,7 +150,7 @@ public class SimpleRover extends Rover {
                 getLog().info("Deposit complete.");
                 try {
                     state=RoverState.SEARCHING;
-                    move(searchMovement);
+                    searchMovement();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
