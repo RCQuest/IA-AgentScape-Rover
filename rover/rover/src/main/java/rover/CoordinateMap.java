@@ -16,11 +16,13 @@ public class CoordinateMap {
         int ySections = (int)Math.ceil(mapHeight/mapScanRadius);
         for(int y = 0; y < ySections; y++){
             for(int x = 0; x < xSections; x++) {
-                coordinates.add(new RoverOffset(
+                RoverOffset newOffset = new RoverOffset(
                         x*mapScanRadius+((y%2)*mapScanRadius/2),
                         y*mapScanRadius,
                         mapWidth,
-                        mapHeight));
+                        mapHeight);
+                coordinates.add(newOffset);
+                System.out.println(newOffset.getxOffset()+ ", "+newOffset.getyOffset());
             }
         }
     }

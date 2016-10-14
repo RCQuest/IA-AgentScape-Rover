@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a3b0a6b-8005-471b-975b-5941409b0754" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/ARoverState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" />
     </list>
     <ignored path="rover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,7 +95,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoverOffset.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RoverOffset.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="522">
@@ -111,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoordinateMap.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CoordinateMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+            <state relative-caret-position="324">
+              <caret line="24" column="88" selection-start-line="24" selection-start-column="88" selection-end-line="24" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -802,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476112410968</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed coordinate algorithm, and added new state system in parallel to exsting.">
+      <created>1476447865708</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1476447865708</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -849,7 +850,8 @@
     <MESSAGE value="Simple buggy rover created." />
     <MESSAGE value="Bug fixes attempted." />
     <MESSAGE value="Added coordinate map system." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added coordinate map system." />
+    <MESSAGE value="Fixed coordinate algorithm, and added new state system in parallel to exsting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed coordinate algorithm, and added new state system in parallel to exsting." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1186,18 +1188,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="24" column="88" selection-start-line="24" selection-start-column="88" selection-end-line="24" selection-end-column="88" />
           <folding />
         </state>
       </provider>
