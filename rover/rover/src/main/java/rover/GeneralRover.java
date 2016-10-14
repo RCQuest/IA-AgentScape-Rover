@@ -1,16 +1,22 @@
 package rover;
 
+import rover.state.ARoverState;
+import rover.state.SearchingState;
+import rover.state.RetrievingResourceState;
+import rover.state.ReturnToBaseState;
+
 public class GeneralRover extends Rover {
 
     private static final int BASE_SPEED = 4;
 
-    private enum RoverState{
+    private enum OldRoverState {
         SEARCHING,
         RETRIEVING,
         RETURNING
     }
 
-    private RoverState state;
+    private OldRoverState bumState;
+    private ARoverState state;
     private final int SCAN_RADIUS = 4;
     private RoverOffset offsetFromBase;
     private CoordinateMap scanMap;
@@ -41,7 +47,8 @@ public class GeneralRover extends Rover {
             //move somewhere initially
             scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
             offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
-            state = RoverState.SEARCHING;
+            bumState = OldRoverState.SEARCHING;
+            state = new SearchingState();
             searchMovement();
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,17 +95,19 @@ public class GeneralRover extends Rover {
 
                 //now scan
                 try {
-                    switch (state) {
+                    switch (bumState) {
                         case SEARCHING:
                             getLog().info("Scanning...");
                             scan(SCAN_RADIUS);
                             break;
                         case RETRIEVING:
-                            state=RoverState.RETURNING;
+                            bumState = OldRoverState.RETURNING;
+                            state = new ReturnToBaseState();
                             collect();
                             break;
                         case RETURNING:
-                            state=RoverState.SEARCHING;
+                            bumState = OldRoverState.SEARCHING;
+                            state = new SearchingState();
                             deposit();
                             break;
                     }
@@ -114,13 +123,14 @@ public class GeneralRover extends Rover {
                 for(ScanItem item : pr.getScanItems()) {
                     if(item.getItemType() == ScanItem.RESOURCE) {
                         getLog().info("Resource found at: " + item.getxOffset() + ", " + item.getyOffset());
-                        state=RoverState.RETRIEVING;
+                        bumState = OldRoverState.RETRIEVING;
+                        state = new RetrievingResourceState();
                     }
                 }
 
                 try {
                     getLog().info("Moving...");
-                    switch (state) {
+                    switch (bumState) {
                         case SEARCHING:
                             searchMovement();
                             break;
@@ -139,7 +149,8 @@ public class GeneralRover extends Rover {
             case PollResult.COLLECT:
                 getLog().info("Collect complete.");
                 try {
-                    state=RoverState.RETURNING;
+                    bumState = OldRoverState.RETURNING;
+                    state = new ReturnToBaseState();
                     move(new RoverMovement(offsetFromBase,BASE_SPEED));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -149,7 +160,8 @@ public class GeneralRover extends Rover {
             case PollResult.DEPOSIT:
                 getLog().info("Deposit complete.");
                 try {
-                    state=RoverState.SEARCHING;
+                    bumState = OldRoverState.SEARCHING;
+                    state = new SearchingState();
                     searchMovement();
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -8,11 +8,18 @@ public class RoverOffset {
 
     public RoverOffset(double xOffset, double yOffset, double mapSizeX, double mapSizeY) {
 
-        this.xOffset = xOffset;
-        this.yOffset = yOffset;
+        this.xOffset = xOffset%mapSizeX;
+        this.yOffset = yOffset%mapSizeY;
         this.mapSizeX = mapSizeX;
         this.mapSizeY = mapSizeY;
     }
+
+//    public void optimise(){
+//        if(Math.abs(xOffset)>Math.abs(xOffset-mapSizeX))
+//            xOffset = xOffset-mapSizeX;
+//        if(Math.abs(yOffset)>Math.abs(yOffset-mapSizeY))
+//            yOffset = yOffset-mapSizeY;
+//    }
 
     public double getxOffset() {
         return xOffset;
