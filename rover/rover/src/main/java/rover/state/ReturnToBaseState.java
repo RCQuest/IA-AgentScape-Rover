@@ -1,26 +1,38 @@
 package rover.state;
 
+import rover.GeneralRover;
+import rover.ScanItem;
+import rover.capabilities.IReturner;
+
 /**
  * Created by rachelcabot on 14/10/2016.
  */
 public class ReturnToBaseState extends ARoverState {
+
+    private GeneralRover rover;
+
+    public ReturnToBaseState(GeneralRover rover){
+
+        this.rover = rover;
+    }
     @Override
-    public ARoverState executeMove() {
+    public ARoverState justMoved() throws Exception {
+        rover.deposit();
+        return new SearchingState(rover);
+    }
+
+    @Override
+    public ARoverState justScanned(ScanItem[] items) throws Exception {
         return null;
     }
 
     @Override
-    public ARoverState executeScan() {
+    public ARoverState justPickedUp() {
         return null;
     }
 
     @Override
-    public ARoverState executePickup() {
-        return null;
-    }
-
-    @Override
-    public ARoverState executeDeposit() {
-        return null;
+    public ARoverState justDeposited() {
+        return new SearchingState(rover);
     }
 }

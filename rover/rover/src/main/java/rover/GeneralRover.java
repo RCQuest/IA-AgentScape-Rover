@@ -8,16 +8,8 @@ import rover.state.ReturnToBaseState;
 public class GeneralRover extends Rover {
 
     private static final int BASE_SPEED = 4;
-
-    private enum OldRoverState {
-        SEARCHING,
-        RETRIEVING,
-        RETURNING
-    }
-
-    private OldRoverState bumState;
     private ARoverState state;
-    private final int SCAN_RADIUS = 4;
+    private static final int SCAN_RADIUS = 4;
     private RoverOffset offsetFromBase;
     private CoordinateMap scanMap;
 
@@ -47,8 +39,7 @@ public class GeneralRover extends Rover {
             //move somewhere initially
             scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
             offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
-            bumState = OldRoverState.SEARCHING;
-            state = new SearchingState();
+            state = new SearchingState(this);
             searchMovement();
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,7 +47,19 @@ public class GeneralRover extends Rover {
 
     }
 
-    private void searchMovement() throws Exception{
+    public double getScanRadius() {
+        return SCAN_RADIUS;
+    }
+
+    public int getSpeed() {
+        return BASE_SPEED;
+    }
+
+    public void moveToItem(ScanItem item) throws Exception {
+        this.move(new RoverMovement(item.getxOffset(),item.getyOffset(),getSpeed()));
+    }
+
+    public void searchMovement() throws Exception{
         RoverOffset searchOffset = scanMap.popNextClosestNode(offsetFromBase);
         if(searchOffset!=null){
             move(new RoverMovement(searchOffset,BASE_SPEED));
@@ -68,6 +71,10 @@ public class GeneralRover extends Rover {
     private void move(RoverMovement movement) throws Exception {
         offsetFromBase.addOffset(movement);
         move(movement.xOffset,movement.yOffset,movement.speed);
+    }
+
+    public void moveBackToBase() throws Exception {
+        move(new RoverMovement(offsetFromBase,BASE_SPEED));
     }
 
     @Override
@@ -88,85 +95,32 @@ public class GeneralRover extends Rover {
             return;
         }
 
-        switch(pr.getResultType()) {
-            case PollResult.MOVE:
-                //move finished
-                getLog().info("Move complete.");
+        ARoverState nextState=null;
+        try {
+            switch(pr.getResultType()) {
+                case PollResult.MOVE:
+                    getLog().info("Move complete.");
+                    nextState = state.justMoved();
+                    break;
+                case PollResult.SCAN:
+                    getLog().info("Scan complete");
+                    nextState = state.justScanned(pr.getScanItems());
+                    break;
 
-                //now scan
-                try {
-                    switch (bumState) {
-                        case SEARCHING:
-                            getLog().info("Scanning...");
-                            scan(SCAN_RADIUS);
-                            break;
-                        case RETRIEVING:
-                            bumState = OldRoverState.RETURNING;
-                            state = new ReturnToBaseState();
-                            collect();
-                            break;
-                        case RETURNING:
-                            bumState = OldRoverState.SEARCHING;
-                            state = new SearchingState();
-                            deposit();
-                            break;
-                    }
+                case PollResult.COLLECT:
+                    getLog().info("Collect complete.");
+                    nextState = state.justPickedUp();
+                    break;
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-            case PollResult.SCAN:
-                getLog().info("Scan complete");
-
-                for(ScanItem item : pr.getScanItems()) {
-                    if(item.getItemType() == ScanItem.RESOURCE) {
-                        getLog().info("Resource found at: " + item.getxOffset() + ", " + item.getyOffset());
-                        bumState = OldRoverState.RETRIEVING;
-                        state = new RetrievingResourceState();
-                    }
-                }
-
-                try {
-                    getLog().info("Moving...");
-                    switch (bumState) {
-                        case SEARCHING:
-                            searchMovement();
-                            break;
-                        case RETRIEVING:
-                            ScanItem item = pr.getScanItems()[0];
-                            move(new RoverMovement(item.getxOffset(),item.getyOffset(),BASE_SPEED));
-                            break;
-                        case RETURNING:
-                            break;
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case PollResult.COLLECT:
-                getLog().info("Collect complete.");
-                try {
-                    bumState = OldRoverState.RETURNING;
-                    state = new ReturnToBaseState();
-                    move(new RoverMovement(offsetFromBase,BASE_SPEED));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                break;
-            case PollResult.DEPOSIT:
-                getLog().info("Deposit complete.");
-                try {
-                    bumState = OldRoverState.SEARCHING;
-                    state = new SearchingState();
-                    searchMovement();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
+                case PollResult.DEPOSIT:
+                    getLog().info("Deposit complete.");
+                    nextState = state.justDeposited();
+                    break;
+            }
+            if(nextState!=null)
+                state = nextState;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
