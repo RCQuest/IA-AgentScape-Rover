@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5111b6c9-7c92-45bf-a1dd-4b5bcbe9cab3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
     </list>
     <ignored path="rover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,12 +60,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollectTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rover.service/src/main/java/rover/tasks/CollectTask.java">
+      <file leaf-file-name="RetrievingResourceState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +111,8 @@
       <file leaf-file-name="ReturnToBaseState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+            <state relative-caret-position="144">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,7 +120,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchingState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchingState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
@@ -140,7 +142,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ARoverState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ARoverState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/ARoverState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
@@ -179,10 +181,10 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/capabilities/IReturner.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/capabilities/ICartographer.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/ARoverState.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
       </list>
     </option>
   </component>
@@ -645,7 +647,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476455329465</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Removed dead import.">
+      <created>1476548218043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1476548218043</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -682,11 +691,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactored the state machine." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored the state machine." />
+    <MESSAGE value="Removed dead import." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed dead import." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/Rover.java">
@@ -727,42 +741,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding>
-            <element signature="e#841#842#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover.service/src/main/java/rover/tasks/CollectTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,11 +815,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/ARoverState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

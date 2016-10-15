@@ -4,7 +4,6 @@ import rover.GeneralRover;
 import rover.Rover;
 import rover.RoverMovement;
 import rover.ScanItem;
-import rover.capabilities.IRetriever;
 
 /**
  * Created by rachelcabot on 14/10/2016.
