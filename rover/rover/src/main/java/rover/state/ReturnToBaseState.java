@@ -2,7 +2,6 @@ package rover.state;
 
 import rover.GeneralRover;
 import rover.ScanItem;
-import rover.capabilities.IReturner;
 
 /**
  * Created by rachelcabot on 14/10/2016.
