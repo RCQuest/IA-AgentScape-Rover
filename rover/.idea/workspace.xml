@@ -75,9 +75,12 @@
       <file leaf-file-name="RoverOffset.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="396">
+              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+              <folding>
+                <element signature="e#721#722#0" expanded="true" />
+                <element signature="e#769#770#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -672,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476551167613</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Optimising the offsets.">
+      <created>1476552430828</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1476552430828</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -712,7 +722,8 @@
     <MESSAGE value="Removed dead import." />
     <MESSAGE value="Added standard logging and fixed bug." />
     <MESSAGE value="Added search movement after deposit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added search movement after deposit." />
+    <MESSAGE value="Optimising the offsets." />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimising the offsets." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -863,9 +874,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="396">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

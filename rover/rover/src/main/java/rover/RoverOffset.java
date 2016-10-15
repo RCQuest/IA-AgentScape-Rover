@@ -17,9 +17,13 @@ public class RoverOffset {
 
     public void optimise(){
         if(Math.abs(xOffset)>mapSizeX/2)
-            xOffset = -xOffset;
+            xOffset = reverseCoordinate(xOffset,mapSizeX);
         if(Math.abs(yOffset)>mapSizeY/2)
-            yOffset = -yOffset;
+            yOffset = reverseCoordinate(yOffset,mapSizeY);
+    }
+
+    private double reverseCoordinate(double c, double wrap){
+        return (c > 0) ? c-wrap : c+wrap;
     }
 
     public double getxOffset() {
