@@ -100,20 +100,24 @@ public class GeneralRover extends Rover {
             switch(pr.getResultType()) {
                 case PollResult.MOVE:
                     getLog().info("Move complete.");
+                    System.out.println("Move complete.");
                     nextState = state.justMoved();
                     break;
                 case PollResult.SCAN:
                     getLog().info("Scan complete");
+                    System.out.println("Scan complete.");
                     nextState = state.justScanned(pr.getScanItems());
                     break;
 
                 case PollResult.COLLECT:
                     getLog().info("Collect complete.");
+                    System.out.println("Collect complete.");
                     nextState = state.justPickedUp();
                     break;
 
                 case PollResult.DEPOSIT:
                     getLog().info("Deposit complete.");
+                    System.out.println("Deposit complete.");
                     nextState = state.justDeposited();
                     break;
             }

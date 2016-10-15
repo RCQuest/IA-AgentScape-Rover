@@ -18,7 +18,7 @@ public class RetrievingResourceState extends ARoverState {
     @Override
     public ARoverState justMoved() throws Exception {
         rover.collect();
-        return new ReturnToBaseState(rover);
+        return null;
     }
 
     @Override
@@ -28,6 +28,7 @@ public class RetrievingResourceState extends ARoverState {
 
     @Override
     public ARoverState justPickedUp() throws Exception {
+        System.out.println("Returning...");
         rover.moveBackToBase();
         return new ReturnToBaseState(rover);
     }

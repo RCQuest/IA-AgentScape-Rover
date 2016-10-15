@@ -11,7 +11,6 @@ public class ReturnToBaseState extends ARoverState {
     private GeneralRover rover;
 
     public ReturnToBaseState(GeneralRover rover){
-
         this.rover = rover;
     }
     @Override
