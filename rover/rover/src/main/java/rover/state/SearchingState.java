@@ -36,7 +36,8 @@ public class SearchingState extends ARoverState {
     }
 
     @Override
-    public ARoverState justDeposited() {
+    public ARoverState justDeposited() throws Exception {
+        rover.searchMovement();
         return null;
     }
 }
