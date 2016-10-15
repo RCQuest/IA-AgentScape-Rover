@@ -12,14 +12,15 @@ public class RoverOffset {
         this.yOffset = yOffset%mapSizeY;
         this.mapSizeX = mapSizeX;
         this.mapSizeY = mapSizeY;
+        optimise();
     }
 
-//    public void optimise(){
-//        if(Math.abs(xOffset)>Math.abs(xOffset-mapSizeX))
-//            xOffset = xOffset-mapSizeX;
-//        if(Math.abs(yOffset)>Math.abs(yOffset-mapSizeY))
-//            yOffset = yOffset-mapSizeY;
-//    }
+    public void optimise(){
+        if(Math.abs(xOffset)>mapSizeX/2)
+            xOffset = -xOffset;
+        if(Math.abs(yOffset)>mapSizeY/2)
+            yOffset = -yOffset;
+    }
 
     public double getxOffset() {
         return xOffset;
@@ -32,6 +33,7 @@ public class RoverOffset {
     public void addOffset(RoverMovement movement){
         xOffset=(movement.xOffset+xOffset) % mapSizeX;
         yOffset=(movement.yOffset+yOffset) % mapSizeY;
+        optimise();
     }
 
     public RoverOffset getDifference(RoverOffset roverOffset) {
