@@ -19,12 +19,11 @@ public class CoordinateMap {
                         mapWidth,
                         mapHeight);
                 coordinates.add(newOffset);
-                System.out.println(newOffset.getxOffset()+ ", "+newOffset.getyOffset());
             }
         }
     }
 
-    public RoverOffset popNextClosestNode(RoverOffset roverOffset){
+    public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
         RoverOffset closest;
         RoverOffset toRemove;
 
@@ -32,9 +31,9 @@ public class CoordinateMap {
             return null;
 
         toRemove = coordinates.get(0);
-        closest = (coordinates.get(0).getDifference(roverOffset));
+        closest = (coordinates.get(0).getDifference(roverLocation));
         for (RoverOffset coordinate : coordinates) {
-            RoverOffset diff = coordinate.getDifference(roverOffset);
+            RoverOffset diff = coordinate.getDifference(roverLocation);
             if(diff.magnitude()<closest.magnitude()){
                 toRemove = coordinate;
                 closest = diff;

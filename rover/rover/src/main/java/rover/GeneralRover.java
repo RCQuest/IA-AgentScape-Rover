@@ -82,9 +82,8 @@ public class GeneralRover extends Rover {
     }
 
     public void searchMovement() throws Exception{ //please fix me omg
-        RoverOffset searchOffset = scanMap.popNextClosestNode(offsetFromBase);
+        RoverOffset searchOffset = scanMap.popOffsetToNextClosestNode(offsetFromBase);
         if(searchOffset!=null){
-            searchOffset.getDifference(offsetFromBase);
             move(new RoverMovement(searchOffset.getxOffset(),searchOffset.getyOffset(),BASE_SPEED));
         } else {
             move(new RoverMovement(1,1,1));

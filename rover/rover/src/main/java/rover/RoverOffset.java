@@ -57,4 +57,8 @@ public class RoverOffset {
         yOffset=(offset.yOffset+yOffset) % mapSizeY;
         optimise();
     }
+
+    public String toString(){
+        return "("+xOffset+","+yOffset+")";
+    }
 }
