@@ -42,8 +42,8 @@ public class RoverOffset {
 
     public RoverOffset getDifference(RoverOffset roverOffset) {
         return new RoverOffset(
-                (roverOffset.getxOffset()-xOffset)% mapSizeX,
-                (roverOffset.getyOffset()-yOffset)% mapSizeY,
+                (xOffset-roverOffset.getxOffset())% mapSizeX,
+                (yOffset-roverOffset.getyOffset())% mapSizeY,
                 mapSizeX,
                 mapSizeY);
     }
