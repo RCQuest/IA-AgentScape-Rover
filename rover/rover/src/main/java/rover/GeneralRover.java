@@ -83,15 +83,15 @@ public class GeneralRover extends Rover {
 
     public void searchMovement() throws Exception{
         RoverOffset searchOffset = scanMap.popNextClosestNode(offsetFromBase);
+        searchOffset.getDifference(offsetFromBase);
         if(searchOffset!=null){
-            move(new RoverMovement(searchOffset,BASE_SPEED));
+            move(new RoverMovement(searchOffset.getxOffset(),searchOffset.getyOffset(),BASE_SPEED));
         } else {
             move(new RoverMovement(1,1,1));
         }
     }
 
     private void move(RoverMovement movement) throws Exception {
-        movement = movement.relativeTo(offsetFromBase);
         move(movement.xOffset,movement.yOffset,movement.speed);
         offsetFromBase.addOffset(movement);
     }
@@ -106,7 +106,7 @@ public class GeneralRover extends Rover {
 
     public void moveBackToBase() throws Exception {
         System.out.println("Moving back to base.");
-        move(new RoverMovement(offsetFromBase,BASE_SPEED));
+        move(new RoverMovement(-offsetFromBase.getxOffset(),-offsetFromBase.getyOffset(),BASE_SPEED));
     }
 
     @Override
@@ -172,8 +172,8 @@ public class GeneralRover extends Rover {
     public void moveToFocusedResource() throws Exception {
         System.out.println("Moving to focused resource.");
         move(new RoverMovement(
-                resourceLocationFocus.getxOffset(),
-                resourceLocationFocus.getyOffset(),
+                resourceLocationFocus.getxOffset()-offsetFromBase.getxOffset(),
+                resourceLocationFocus.getyOffset()-offsetFromBase.getxOffset(),
                 getSpeed()));
     }
 

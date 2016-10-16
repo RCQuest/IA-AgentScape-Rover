@@ -14,12 +14,6 @@ public class RoverMovement {
         this.speed = speed;
     }
 
-    public RoverMovement(RoverOffset offset, double speed) {
-        this.speed=speed;
-        this.xOffset=-offset.getxOffset();
-        this.yOffset=-offset.getyOffset();
-    }
-
     public RoverMovement relativeTo(RoverOffset offset) {
         return new RoverMovement(
                 xOffset-offset.getxOffset(),
