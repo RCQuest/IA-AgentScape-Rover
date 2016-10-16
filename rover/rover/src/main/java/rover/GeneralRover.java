@@ -110,6 +110,7 @@ public class GeneralRover extends Rover {
     }
 
     public void moveBackToBase() throws Exception {
+        System.out.println("Moving back to base.");
         move(new RoverMovement(offsetFromBase,BASE_SPEED));
     }
 
@@ -174,6 +175,7 @@ public class GeneralRover extends Rover {
     }
 
     public void moveToFocusedResource() throws Exception {
+        System.out.println("Moving to focused resource.");
         move(new RoverMovement(resourceLocationFocus,getSpeed()));
     }
 

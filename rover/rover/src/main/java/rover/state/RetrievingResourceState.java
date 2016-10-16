@@ -25,6 +25,11 @@ public class RetrievingResourceState extends ARoverState {
         }
         if(focusedResourceIsGone)
             rover.removeCurrentResourceLocation();
+        if(rover.hasResourceBacklog()){
+            rover.focusNextResource();
+            rover.moveToFocusedResource();
+            return null;
+        }
         rover.moveBackToBase();
         return new ReturnToBaseState(rover);
     }
@@ -41,12 +46,13 @@ public class RetrievingResourceState extends ARoverState {
 
     private ARoverState tryCollect() throws Exception {
         if(rover.loadIsFull()){
-            rover.scan(1);
-            return null;
+            rover.moveBackToBase();
+            return new ReturnToBaseState(rover);
         }
         try {
             rover.collect();
         } catch (Exception e) {
+            System.out.println("Collection went wrong.");
             rover.scan(1);
             return null;
         }
