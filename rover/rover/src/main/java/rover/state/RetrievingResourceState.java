@@ -30,8 +30,8 @@ public class RetrievingResourceState extends ARoverState {
             rover.moveToFocusedResource();
             return null;
         }
-        rover.moveBackToBase();
-        return new ReturnToBaseState(rover);
+        rover.searchMovement();
+        return new SearchingState(rover);
     }
 
     @Override

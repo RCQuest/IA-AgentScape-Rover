@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CoordinateMap {
     public ArrayList<RoverOffset> coordinates;
-    private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3)/2;
+    private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3);
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius){
         coordinates = new ArrayList<>();
