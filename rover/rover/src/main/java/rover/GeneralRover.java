@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class GeneralRover extends Rover {
 
-    private static final int BASE_SPEED = 4;
+    private static final int BASE_SPEED = 2;
     private static final int SCAN_RADIUS = 4;
-    private static final int CARRY_SIZE = 1;
+    private static final int CARRY_SIZE = 3;
 
     private ARoverState state;
     private RoverOffset offsetFromBase;
