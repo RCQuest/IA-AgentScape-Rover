@@ -171,7 +171,10 @@ public class GeneralRover extends Rover {
 
     public void moveToFocusedResource() throws Exception {
         System.out.println("Moving to focused resource.");
-        move(new RoverMovement(resourceLocationFocus,getSpeed()));
+        move(new RoverMovement(
+                resourceLocationFocus.getxOffset(),
+                resourceLocationFocus.getyOffset(),
+                getSpeed()));
     }
 
     public boolean hasResourceBacklog() {
