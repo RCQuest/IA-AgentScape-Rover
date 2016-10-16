@@ -2,16 +2,20 @@ package rover;
 
 import rover.state.ARoverState;
 import rover.state.SearchingState;
-import rover.state.RetrievingResourceState;
-import rover.state.ReturnToBaseState;
+
+import java.util.ArrayList;
 
 public class GeneralRover extends Rover {
 
     private static final int BASE_SPEED = 4;
-    private ARoverState state;
     private static final int SCAN_RADIUS = 4;
+    private static final int CARRY_SIZE = 1;
+
+    private ARoverState state;
     private RoverOffset offsetFromBase;
     private CoordinateMap scanMap;
+    private ArrayList<RoverOffset> resourceMap;
+    private RoverOffset resourceLocationFocus;
 
     public GeneralRover() {
         super();
@@ -23,7 +27,7 @@ public class GeneralRover extends Rover {
             //set attributes for this rover
             //speed, scan range, max load
             //has to add up to <= 9
-            setAttributes(BASE_SPEED, SCAN_RADIUS, 1);
+            setAttributes(BASE_SPEED, SCAN_RADIUS, CARRY_SIZE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,11 +44,34 @@ public class GeneralRover extends Rover {
             scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
             offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
             state = new SearchingState(this);
+            resourceMap = new ArrayList<>();
             searchMovement();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public RoverOffset noteResourceLocation(ScanItem item){
+        RoverOffset offset = new RoverOffset(
+                item.getxOffset(),
+                item.getyOffset(),
+                getWorldWidth(),
+                getWorldHeight());
+        resourceMap.add(offset);
+        return offset;
+    }
+
+    public void removeCurrentResourceLocation(){
+        if(resourceLocationFocus!=null)
+            resourceMap.remove(resourceLocationFocus);
+        resourceLocationFocus = null;
+    }
+
+    public void updateResourceOffsets(RoverMovement movement){
+        for (RoverOffset resource : resourceMap) {
+            resource.addOffset(movement);
+        }
     }
 
     public double getScanRadius() {
@@ -70,7 +97,16 @@ public class GeneralRover extends Rover {
 
     private void move(RoverMovement movement) throws Exception {
         offsetFromBase.addOffset(movement);
+        updateResourceOffsets(movement);
         move(movement.xOffset,movement.yOffset,movement.speed);
+    }
+
+    public boolean loadIsFull(){
+        return getCurrentLoad()>=CARRY_SIZE;
+    }
+
+    public boolean loadIsEmpty(){
+        return getCurrentLoad()==0;
     }
 
     public void moveBackToBase() throws Exception {
@@ -129,4 +165,23 @@ public class GeneralRover extends Rover {
 
     }
 
+    public void setResourceFocus(RoverOffset resourceFocus) {
+        this.resourceLocationFocus = resourceFocus;
+    }
+
+    public boolean isFocusedOnResource() {
+        return resourceLocationFocus!=null;
+    }
+
+    public void moveToFocusedResource() throws Exception {
+        move(new RoverMovement(resourceLocationFocus,getSpeed()));
+    }
+
+    public boolean hasResourceBacklog() {
+        return !resourceMap.isEmpty();
+    }
+
+    public void focusNextResource() {
+        resourceLocationFocus=resourceMap.get(0);
+    }
 }

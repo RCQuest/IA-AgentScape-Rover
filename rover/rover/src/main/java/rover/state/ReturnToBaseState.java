@@ -15,8 +15,7 @@ public class ReturnToBaseState extends ARoverState {
     }
     @Override
     public ARoverState justMoved() throws Exception {
-        rover.deposit();
-        return new SearchingState(rover);
+        return tryDeposit();
     }
 
     @Override
@@ -30,7 +29,26 @@ public class ReturnToBaseState extends ARoverState {
     }
 
     @Override
-    public ARoverState justDeposited() {
+    public ARoverState justDeposited() throws Exception {
+        return tryDeposit();
+    }
+
+    private ARoverState tryDeposit() throws Exception{
+        if(!rover.loadIsEmpty()) {
+            rover.deposit();
+            return null;
+        }
+        if(rover.isFocusedOnResource()){
+            rover.moveToFocusedResource();
+            return new RetrievingResourceState(rover);
+        }
+        if(rover.hasResourceBacklog()){
+            rover.focusNextResource();
+            rover.moveToFocusedResource();
+            return new RetrievingResourceState(rover);
+        }
+        rover.searchMovement();
         return new SearchingState(rover);
     }
+
 }

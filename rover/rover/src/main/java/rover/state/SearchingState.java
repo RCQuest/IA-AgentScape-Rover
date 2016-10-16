@@ -1,6 +1,7 @@
 package rover.state;
 
 import rover.GeneralRover;
+import rover.RoverOffset;
 import rover.ScanItem;
 
 /**
@@ -22,7 +23,9 @@ public class SearchingState extends ARoverState {
     public ARoverState justScanned(ScanItem[] items) throws Exception {
         for(ScanItem item : items) {
             if(item.getItemType() == ScanItem.RESOURCE) {
+                RoverOffset offset = rover.noteResourceLocation(item);
                 rover.moveToItem(item);
+                rover.setResourceFocus(offset);
                 return new RetrievingResourceState(rover);
             }
         }

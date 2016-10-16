@@ -2,9 +2,6 @@ package rover;
 
 import java.util.ArrayList;
 
-/**
- * Created by rachelcabot on 10/10/2016.
- */
 public class CoordinateMap {
     public ArrayList<RoverOffset> coordinates;
     private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3)/2;
