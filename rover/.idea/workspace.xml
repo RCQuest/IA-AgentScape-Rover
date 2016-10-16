@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5111b6c9-7c92-45bf-a1dd-4b5bcbe9cab3" name="Default" comment="Modified scanning after retrieving behaviour and added logging.">
+    <list default="true" id="5111b6c9-7c92-45bf-a1dd-4b5bcbe9cab3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" />
     </list>
     <ignored path="rover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,21 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Rover.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/Rover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="329" column="32" selection-start-line="329" selection-start-column="32" selection-end-line="329" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RetrievingResourceState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RetrievingResourceState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="311">
+              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#219#220#0" expanded="true" />
@@ -56,8 +47,8 @@
       <file leaf-file-name="RoverOffset.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state relative-caret-position="36">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding>
                 <element signature="e#721#722#0" expanded="true" />
                 <element signature="e#769#770#0" expanded="true" />
@@ -66,25 +57,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralRover.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneralRover.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="-697">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
-                <element signature="e#2941#2942#0" expanded="true" />
-                <element signature="e#2992#2993#0" expanded="true" />
-                <element signature="e#3027#3028#0" expanded="true" />
-                <element signature="e#3069#3070#0" expanded="true" />
-                <element signature="e#4972#4973#0" expanded="true" />
-                <element signature="e#5030#5031#0" expanded="true" />
-                <element signature="e#5074#5075#0" expanded="true" />
-                <element signature="e#5124#5125#0" expanded="true" />
-                <element signature="e#5359#5360#0" expanded="true" />
-                <element signature="e#5404#5405#0" expanded="true" />
-                <element signature="e#5443#5444#0" expanded="true" />
-                <element signature="e#5499#5500#0" expanded="true" />
+                <element signature="e#2825#2826#0" expanded="true" />
+                <element signature="e#2876#2877#0" expanded="true" />
+                <element signature="e#2911#2912#0" expanded="true" />
+                <element signature="e#2953#2954#0" expanded="true" />
+                <element signature="e#4856#4857#0" expanded="true" />
+                <element signature="e#4914#4915#0" expanded="true" />
+                <element signature="e#4958#4959#0" expanded="true" />
+                <element signature="e#5008#5009#0" expanded="true" />
+                <element signature="e#5243#5244#0" expanded="true" />
+                <element signature="e#5288#5289#0" expanded="true" />
+                <element signature="e#5327#5328#0" expanded="true" />
+                <element signature="e#5383#5384#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoverMovement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -120,8 +121,8 @@
       <file leaf-file-name="CoordinateMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="-139">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -156,12 +157,13 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/capabilities/IReturner.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/capabilities/ICartographer.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/ARoverState.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/ReturnToBaseState.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java" />
       </list>
     </option>
   </component>
@@ -673,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476622676408</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Modified scanning after retrieving behaviour and added logging.">
+      <created>1476623503004</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1476623503004</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -715,7 +724,8 @@
     <MESSAGE value="Added search movement after deposit." />
     <MESSAGE value="Optimising the offsets." />
     <MESSAGE value="Added resource backlog system, and multiple trips." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added resource backlog system, and multiple trips." />
+    <MESSAGE value="Modified scanning after retrieving behaviour and added logging." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified scanning after retrieving behaviour and added logging." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -743,14 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -803,22 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/Rover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="329" column="32" selection-start-line="329" selection-start-column="32" selection-end-line="329" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/SearchingState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -827,17 +813,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#276#277#0" expanded="true" />
             <element signature="e#310#311#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding>
-            <element signature="e#721#722#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -854,35 +829,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java">
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/CoordinateMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2992#2993#0" expanded="true" />
-            <element signature="e#3027#3028#0" expanded="true" />
-            <element signature="e#3069#3070#0" expanded="true" />
-            <element signature="e#4972#4973#0" expanded="true" />
-            <element signature="e#5030#5031#0" expanded="true" />
-            <element signature="e#5074#5075#0" expanded="true" />
-            <element signature="e#5124#5125#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
-            <element signature="e#5404#5405#0" expanded="true" />
-            <element signature="e#5443#5444#0" expanded="true" />
-            <element signature="e#5499#5500#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-139">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/Rover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/state/RetrievingResourceState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="311">
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#219#220#0" expanded="true" />
             <element signature="e#253#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverMovement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/RoverOffset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#721#722#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/GeneralRover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#2825#2826#0" expanded="true" />
+            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2911#2912#0" expanded="true" />
+            <element signature="e#2953#2954#0" expanded="true" />
+            <element signature="e#4856#4857#0" expanded="true" />
+            <element signature="e#4914#4915#0" expanded="true" />
+            <element signature="e#4958#4959#0" expanded="true" />
+            <element signature="e#5008#5009#0" expanded="true" />
+            <element signature="e#5243#5244#0" expanded="true" />
+            <element signature="e#5288#5289#0" expanded="true" />
+            <element signature="e#5327#5328#0" expanded="true" />
+            <element signature="e#5383#5384#0" expanded="true" />
           </folding>
         </state>
       </provider>

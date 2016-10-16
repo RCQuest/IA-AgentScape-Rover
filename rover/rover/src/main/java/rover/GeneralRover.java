@@ -58,6 +58,7 @@ public class GeneralRover extends Rover {
                 item.getyOffset(),
                 getWorldWidth(),
                 getWorldHeight());
+        offset.addOffset(offsetFromBase);
         resourceMap.add(offset);
         return offset;
     }
@@ -66,12 +67,6 @@ public class GeneralRover extends Rover {
         if(resourceLocationFocus!=null)
             resourceMap.remove(resourceLocationFocus);
         resourceLocationFocus = null;
-    }
-
-    public void updateResourceOffsets(RoverMovement movement){
-        for (RoverOffset resource : resourceMap) {
-            resource.addOffset(movement);
-        }
     }
 
     public double getScanRadius() {
@@ -96,9 +91,9 @@ public class GeneralRover extends Rover {
     }
 
     private void move(RoverMovement movement) throws Exception {
-        offsetFromBase.addOffset(movement);
-        updateResourceOffsets(movement);
+        movement = movement.relativeTo(offsetFromBase);
         move(movement.xOffset,movement.yOffset,movement.speed);
+        offsetFromBase.addOffset(movement);
     }
 
     public boolean loadIsFull(){

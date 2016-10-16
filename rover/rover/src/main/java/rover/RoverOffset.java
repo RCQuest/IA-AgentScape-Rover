@@ -51,4 +51,10 @@ public class RoverOffset {
     public double magnitude() {
         return Math.hypot(xOffset,yOffset);
     }
+
+    public void addOffset(RoverOffset offset) {
+        xOffset=(offset.xOffset+xOffset) % mapSizeX;
+        yOffset=(offset.yOffset+yOffset) % mapSizeY;
+        optimise();
+    }
 }

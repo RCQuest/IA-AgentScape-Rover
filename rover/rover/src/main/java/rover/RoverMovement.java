@@ -19,4 +19,11 @@ public class RoverMovement {
         this.xOffset=-offset.getxOffset();
         this.yOffset=-offset.getyOffset();
     }
+
+    public RoverMovement relativeTo(RoverOffset offset) {
+        return new RoverMovement(
+                xOffset-offset.getxOffset(),
+                yOffset-offset.getyOffset(),
+                speed);
+    }
 }
