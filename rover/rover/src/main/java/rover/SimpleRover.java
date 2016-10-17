@@ -5,6 +5,6 @@ package rover;
  */
 public class SimpleRover extends AGeneralRover {
     public SimpleRover(){
-        super();
+        super(3,3,3);
     }
 }

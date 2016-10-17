@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public abstract class AGeneralRover extends Rover {
 
-    private static final int BASE_SPEED = 2;
-    private static final int SCAN_RADIUS = 4;
-    private static final int CARRY_SIZE = 3;
+    private final int BASE_SPEED;
+    private final int SCAN_RADIUS;
+    private final int CARRY_SIZE;
 
     private ARoverState state;
     private RoverOffset offsetFromBase;
@@ -20,11 +20,14 @@ public abstract class AGeneralRover extends Rover {
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
 
-    public AGeneralRover() {
+    public AGeneralRover(int speed,int radius,int capacity) {
         super();
 
         //use your username for team name
         setTeam("rc566");
+        BASE_SPEED=speed;
+        SCAN_RADIUS=radius;
+        CARRY_SIZE=capacity;
 
         try {
             //set attributes for this rover
