@@ -1,11 +1,14 @@
 package rover;
 
+import rover.shared.CoordinateMap;
+import rover.shared.RoverMovement;
+import rover.shared.RoverOffset;
 import rover.state.ARoverState;
-import rover.state.SearchingState;
+import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
 
-public class GeneralRover extends Rover {
+public abstract class AGeneralRover extends Rover {
 
     private static final int BASE_SPEED = 2;
     private static final int SCAN_RADIUS = 4;
@@ -17,7 +20,7 @@ public class GeneralRover extends Rover {
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
 
-    public GeneralRover() {
+    public AGeneralRover() {
         super();
 
         //use your username for team name

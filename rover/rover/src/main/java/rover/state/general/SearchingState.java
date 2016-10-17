@@ -1,16 +1,17 @@
-package rover.state;
+package rover.state.general;
 
-import rover.GeneralRover;
-import rover.RoverOffset;
+import rover.AGeneralRover;
+import rover.shared.RoverOffset;
 import rover.ScanItem;
+import rover.state.ARoverState;
 
 /**
  * Created by rachelcabot on 13/10/2016.
  */
 public class SearchingState extends ARoverState {
-    private GeneralRover rover;
+    private AGeneralRover rover;
 
-    public SearchingState(GeneralRover rover){
+    public SearchingState(AGeneralRover rover){
         this.rover = rover;
     }
     @Override

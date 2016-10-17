@@ -1,16 +1,17 @@
-package rover.state;
+package rover.state.general;
 
-import rover.GeneralRover;
+import rover.AGeneralRover;
 import rover.ScanItem;
+import rover.state.ARoverState;
 
 /**
  * Created by rachelcabot on 14/10/2016.
  */
 public class ReturnToBaseState extends ARoverState {
 
-    private GeneralRover rover;
+    private AGeneralRover rover;
 
-    public ReturnToBaseState(GeneralRover rover){
+    public ReturnToBaseState(AGeneralRover rover){
         this.rover = rover;
     }
     @Override
