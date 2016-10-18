@@ -1,6 +1,7 @@
 package rover;
 
 import rover.shared.practical.CoordinateMap;
+import rover.shared.practical.IPerceiver;
 import rover.shared.practical.RoverMovement;
 import rover.shared.practical.RoverOffset;
 import rover.state.ARoverState;
@@ -8,7 +9,7 @@ import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
 
-public abstract class APracticalRover extends Rover {
+public abstract class APracticalRover extends Rover implements IPerceiver {
 
     private final int BASE_SPEED;
     private final int SCAN_RADIUS;
