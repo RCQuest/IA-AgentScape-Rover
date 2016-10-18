@@ -1,13 +1,13 @@
 package rover.state.general;
 
-import rover.AGeneralRover;
+import rover.APracticalRover;
 import rover.ScanItem;
 import rover.state.ARoverState;
 
 public class RetrievingResourceState extends ARoverState {
-    private AGeneralRover rover;
+    private APracticalRover rover;
 
-    public RetrievingResourceState(AGeneralRover rover){
+    public RetrievingResourceState(APracticalRover rover){
         this.rover = rover;
     }
     @Override

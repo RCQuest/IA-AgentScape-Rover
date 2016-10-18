@@ -1,16 +1,15 @@
 package rover.shared.actions;
 
 import rover.APracticalRover;
-import rover.shared.practical.ARoverAction;
 
 /**
- * Created by rachelcabot on 18/10/2016.
+ * Created by rachelcabot on 19/10/2016.
  */
-public class PickupAction extends ARoverAction {
+public class ScanAction extends rover.shared.practical.ARoverAction {
     @Override
     public boolean execute(APracticalRover rover) {
         try {
-            rover.collect();
+            rover.scan(rover.getScanRadius());
             return true;
         } catch (Exception e) {
             e.printStackTrace();

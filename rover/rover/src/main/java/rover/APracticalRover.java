@@ -1,15 +1,14 @@
 package rover;
 
-import rover.shared.CoordinateMap;
-import rover.shared.RoverMovement;
-import rover.shared.RoverOffset;
-import rover.shared.reasoning.plan.ResourceLocations;
+import rover.shared.practical.CoordinateMap;
+import rover.shared.practical.RoverMovement;
+import rover.shared.practical.RoverOffset;
 import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
 
-public abstract class AGeneralRover extends Rover {
+public abstract class APracticalRover extends Rover {
 
     private final int BASE_SPEED;
     private final int SCAN_RADIUS;
@@ -21,7 +20,7 @@ public abstract class AGeneralRover extends Rover {
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
 
-    public AGeneralRover(int speed,int radius,int capacity) {
+    public APracticalRover(int speed, int radius, int capacity) {
         super();
 
         //use your username for team name
@@ -193,10 +192,14 @@ public abstract class AGeneralRover extends Rover {
 
     public boolean moveToClosestResource(ArrayList<RoverOffset> resourceLocations) {
         RoverOffset r = resourceLocations.get(0);
+        return moveTo(r);
+    }
+
+    public boolean moveTo(RoverOffset node) {
         try {
             move(new RoverMovement(
-                    r.getxOffset()-offsetFromBase.getxOffset(),
-                    r.getyOffset()-offsetFromBase.getxOffset(),
+                    node.getxOffset()-offsetFromBase.getxOffset(),
+                    node.getyOffset()-offsetFromBase.getxOffset(),
                     getSpeed()));
             return true;
         } catch (Exception e) {

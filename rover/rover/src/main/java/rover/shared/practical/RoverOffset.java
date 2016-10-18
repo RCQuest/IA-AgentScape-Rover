@@ -1,4 +1,4 @@
-package rover.shared;
+package rover.shared.practical;
 
 public class RoverOffset {
     private double xOffset;

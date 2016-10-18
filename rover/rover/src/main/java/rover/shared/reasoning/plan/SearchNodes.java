@@ -8,10 +8,14 @@ import rover.shared.reasoning.ontology.OntologyConcept;
 import java.util.ArrayList;
 
 /**
- * Created by rachelcabot on 18/10/2016.
+ * Created by rachelcabot on 19/10/2016.
  */
-public class ResourceLocations extends ABelief {
-    private ArrayList<RoverOffset> offsetsFromBase;
+public class SearchNodes extends ABelief {
+    private ArrayList<RoverOffset> nodes;
+
+    public SearchNodes(ArrayList<RoverOffset> nodes){
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean agreesWith(APercept p) {
@@ -20,10 +24,14 @@ public class ResourceLocations extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        return OntologyConcept.there_are_found_unobtained_resources;
+        return null;
     }
 
-    public ArrayList<RoverOffset> getLocations() {
-        return offsetsFromBase;
+    public ArrayList<RoverOffset> getNodes() {
+        return nodes;
+    }
+
+    public RoverOffset getClosestNode() {
+        return null;
     }
 }

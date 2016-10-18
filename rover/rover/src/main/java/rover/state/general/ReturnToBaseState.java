@@ -1,6 +1,6 @@
 package rover.state.general;
 
-import rover.AGeneralRover;
+import rover.APracticalRover;
 import rover.ScanItem;
 import rover.state.ARoverState;
 
@@ -9,9 +9,9 @@ import rover.state.ARoverState;
  */
 public class ReturnToBaseState extends ARoverState {
 
-    private AGeneralRover rover;
+    private APracticalRover rover;
 
-    public ReturnToBaseState(AGeneralRover rover){
+    public ReturnToBaseState(APracticalRover rover){
         this.rover = rover;
     }
     @Override

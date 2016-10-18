@@ -1,6 +1,6 @@
 package rover;
 
-import rover.shared.*;
+import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by rachelcabot on 17/10/2016.
  */
-public abstract class AReasoningRover extends AGeneralRover {
+public abstract class AReasoningRover extends APracticalRover {
     protected APlanFactory planFactory;
     protected ADesireFactory desireFactory;
     protected AIntentionFilter intentionFilter;

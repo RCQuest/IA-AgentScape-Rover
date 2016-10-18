@@ -22,6 +22,6 @@ public class RetrieveResourcePlan extends APlan {
 
     @Override
     public boolean isSound(ArrayList<AIntention> i, ArrayList<ABelief> b) {
-        return false;
+        return true;
     }
 }

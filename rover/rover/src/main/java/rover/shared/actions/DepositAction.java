@@ -6,11 +6,11 @@ import rover.shared.practical.ARoverAction;
 /**
  * Created by rachelcabot on 18/10/2016.
  */
-public class PickupAction extends ARoverAction {
+public class DepositAction extends ARoverAction {
     @Override
     public boolean execute(APracticalRover rover) {
         try {
-            rover.collect();
+            rover.deposit();
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package rover.shared;
+package rover.shared.practical;
 
 /**
  * Created by rachelcabot on 09/10/2016.

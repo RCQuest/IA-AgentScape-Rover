@@ -1,4 +1,4 @@
-package rover.shared;
+package rover.shared.practical;
 
 import java.util.ArrayList;
 

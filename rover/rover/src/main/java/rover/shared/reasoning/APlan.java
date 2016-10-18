@@ -1,6 +1,6 @@
 package rover.shared.reasoning;
 
-import rover.shared.ARoverAction;
+import rover.shared.practical.ARoverAction;
 
 import java.util.ArrayList;
 import java.util.Queue;

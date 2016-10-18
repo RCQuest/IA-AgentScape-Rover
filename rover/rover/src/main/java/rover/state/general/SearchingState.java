@@ -1,7 +1,7 @@
 package rover.state.general;
 
-import rover.AGeneralRover;
-import rover.shared.RoverOffset;
+import rover.APracticalRover;
+import rover.shared.practical.RoverOffset;
 import rover.ScanItem;
 import rover.state.ARoverState;
 
@@ -9,9 +9,9 @@ import rover.state.ARoverState;
  * Created by rachelcabot on 13/10/2016.
  */
 public class SearchingState extends ARoverState {
-    private AGeneralRover rover;
+    private APracticalRover rover;
 
-    public SearchingState(AGeneralRover rover){
+    public SearchingState(APracticalRover rover){
         this.rover = rover;
     }
     @Override
