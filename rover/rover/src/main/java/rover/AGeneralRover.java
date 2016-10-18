@@ -3,6 +3,7 @@ package rover;
 import rover.shared.CoordinateMap;
 import rover.shared.RoverMovement;
 import rover.shared.RoverOffset;
+import rover.shared.reasoning.plan.ResourceLocations;
 import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
@@ -188,5 +189,19 @@ public abstract class AGeneralRover extends Rover {
 
     public void focusNextResource() {
         resourceLocationFocus=resourceMap.get(0);
+    }
+
+    public boolean moveToClosestResource(ArrayList<RoverOffset> resourceLocations) {
+        RoverOffset r = resourceLocations.get(0);
+        try {
+            move(new RoverMovement(
+                    r.getxOffset()-offsetFromBase.getxOffset(),
+                    r.getyOffset()-offsetFromBase.getxOffset(),
+                    getSpeed()));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

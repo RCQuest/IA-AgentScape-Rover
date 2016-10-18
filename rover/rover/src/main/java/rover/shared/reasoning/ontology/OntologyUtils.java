@@ -16,6 +16,14 @@ public class OntologyUtils {
         return false;
     }
 
+    public static boolean c(ArrayList<? extends IOntologicalConcept> oc, OntologyConcept identifier){
+        for (IOntologicalConcept concept : oc) {
+            if(identifier==concept.getOntologicalOrdinal())
+                return true;
+        }
+        return false;
+    }
+
     public static ABelief getBelief(ArrayList<ABelief> b, OntologyConcept concept){
         for (ABelief belief : b) {
             if(concept==belief.getOntologicalOrdinal())

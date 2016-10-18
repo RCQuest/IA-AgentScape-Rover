@@ -70,7 +70,7 @@ public abstract class AReasoningRover extends AGeneralRover {
     }
 
     void execute(ARoverAction roverAction) {
-        lastActionWasSuccessful=roverAction.execute();
+        lastActionWasSuccessful=roverAction.execute(this);
     }
 
     boolean impossible(ArrayList<AIntention> i, ArrayList<ABelief> b) {

@@ -9,7 +9,7 @@ import java.util.Queue;
  * Created by rachelcabot on 17/10/2016.
  */
 public abstract class APlan {
-    private Queue<ARoverAction> actions;
+    protected Queue<ARoverAction> actions;
 
     public ARoverAction popStep() {
         return actions.poll();
