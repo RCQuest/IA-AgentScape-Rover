@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class SimpleDesireFactory extends rover.shared.reasoning.ADesireFactory {
     @Override
     public ArrayList<Desire> generateDesires(ArrayList<ABelief> b, ArrayList<AIntention> i) {
-        return null;
+        ArrayList<Desire> desires = new ArrayList<>();
+        return desires;
     }
 }

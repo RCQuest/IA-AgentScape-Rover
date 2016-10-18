@@ -12,6 +12,6 @@ import java.util.ArrayList;
 public class SimpleIntentionFilter extends rover.shared.reasoning.AIntentionFilter {
     @Override
     public ArrayList<AIntention> filter(ArrayList<ABelief> b, ArrayList<Desire> d, ArrayList<AIntention> i) {
-        return null;
+        return i;
     }
 }

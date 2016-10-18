@@ -3,7 +3,7 @@ package rover;
 import rover.reasoning.simple.SimpleDesireFactory;
 import rover.reasoning.simple.SimpleIntentionFilter;
 import rover.reasoning.simple.SimplePlanFactory;
-import rover.shared.reasoning.SimplePerceptFactory;
+import rover.reasoning.simple.SimplePerceptFactory;
 
 /**
  * Created by rachelcabot on 18/10/2016.
