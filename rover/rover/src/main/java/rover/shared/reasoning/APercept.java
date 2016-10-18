@@ -1,4 +1,4 @@
-package rover.shared;
+package rover.shared.reasoning;
 
 import rover.PollResult;
 

@@ -1,4 +1,4 @@
-package rover.shared;
+package rover.shared.reasoning;
 
 /**
  * Created by rachelcabot on 17/10/2016.

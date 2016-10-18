@@ -1,6 +1,7 @@
 package rover.shared;
 
 import rover.PollResult;
+import rover.shared.reasoning.APercept;
 import rover.state.ARoverState;
 
 /**

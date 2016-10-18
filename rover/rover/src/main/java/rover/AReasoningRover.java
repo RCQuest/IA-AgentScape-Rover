@@ -1,6 +1,7 @@
 package rover;
 
 import rover.shared.*;
+import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
 
@@ -10,11 +11,11 @@ import java.util.ArrayList;
 public abstract class AReasoningRover extends AGeneralRover {
     protected APlanFactory planFactory;
     protected ADesireFactory desireFactory;
-    protected boolean lastActionWasSuccessful;
     protected AIntentionFilter intentionFilter;
     protected APerceptFactory perceptFactory;
 
     private ArrayList<ABelief> b;
+    private boolean lastActionWasSuccessful;
     private ArrayList<Desire> d;
     private ArrayList<AIntention> i;
     private APlan pl;
@@ -114,5 +115,9 @@ public abstract class AReasoningRover extends AGeneralRover {
         }
         evaluatedBeliefs.addAll(p.toBeliefs());
         return evaluatedBeliefs;
+    }
+
+    public boolean wasLastActionSuccessful() {
+        return lastActionWasSuccessful;
     }
 }
