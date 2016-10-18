@@ -1,8 +1,6 @@
 package rover.shared;
 
 import rover.PollResult;
-import rover.shared.Percept;
-import rover.shared.RoverAction;
 import rover.state.ARoverState;
 
 /**
@@ -11,7 +9,7 @@ import rover.state.ARoverState;
 public class Rule {
     private ARoverState internalState;
     private PollResult previousAction;
-    private Percept observation;
-    private RoverAction action;
+    private APercept observation;
+    private ARoverAction action;
 
 }
