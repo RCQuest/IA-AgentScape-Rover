@@ -1,19 +1,18 @@
-package rover.shared.reasoning.plan;
+package rover.shared.reasoning.beliefs;
 
+import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.ontology.OntologyConcept;
 
-import java.util.ArrayList;
-
 /**
  * Created by rachelcabot on 19/10/2016.
  */
 public class SearchNodes extends ABelief {
-    private ArrayList<RoverOffset> nodes;
+    private CoordinateMap nodes;
 
-    public SearchNodes(ArrayList<RoverOffset> nodes){
+    public SearchNodes(CoordinateMap nodes){
         this.nodes = nodes;
     }
 
@@ -24,14 +23,10 @@ public class SearchNodes extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        return null;
+        return OntologyConcept.there_are_found_unobtained_resources;
     }
 
-    public ArrayList<RoverOffset> getNodes() {
+    public CoordinateMap getSearchNodes() {
         return nodes;
-    }
-
-    public RoverOffset getClosestNode() {
-        return null;
     }
 }

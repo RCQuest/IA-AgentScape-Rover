@@ -1,4 +1,4 @@
-package rover.shared.reasoning.plan;
+package rover.shared.reasoning.beliefs;
 
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;

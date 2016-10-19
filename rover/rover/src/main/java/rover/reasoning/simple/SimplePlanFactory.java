@@ -3,12 +3,12 @@ package rover.reasoning.simple;
 import rover.reasoning.plans.DespositAtBasePlan;
 import rover.reasoning.plans.RetrieveResourcePlan;
 import rover.reasoning.plans.SearchPlan;
-import rover.shared.reasoning.plan.RoverCapacity;
+import rover.shared.reasoning.beliefs.RoverCapacity;
 import rover.shared.reasoning.*;
 import rover.shared.reasoning.ontology.OntologyConcept;
 import rover.shared.reasoning.ontology.OntologyUtils;
-import rover.shared.reasoning.plan.ResourceLocations;
-import rover.shared.reasoning.plan.SearchNodes;
+import rover.shared.reasoning.beliefs.ResourceLocations;
+import rover.shared.reasoning.beliefs.SearchNodes;
 
 import java.util.ArrayList;
 

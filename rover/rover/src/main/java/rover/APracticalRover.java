@@ -23,13 +23,11 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
     public APracticalRover(int speed, int radius, int capacity) {
         super();
-
         //use your username for team name
         setTeam("rc566");
         BASE_SPEED=speed;
         SCAN_RADIUS=radius;
         CARRY_SIZE=capacity;
-
         try {
             //set attributes for this rover
             //speed, scan range, max load
@@ -88,7 +86,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         this.move(new RoverMovement(item.getxOffset(),item.getyOffset(),getSpeed()));
     }
 
-    public void searchMovement() throws Exception{ //please fix me omg
+    public void searchMovement() throws Exception{
         RoverOffset searchOffset = scanMap.popOffsetToNextClosestNode(offsetFromBase);
         if(searchOffset!=null){
             move(new RoverMovement(searchOffset.getxOffset(),searchOffset.getyOffset(),BASE_SPEED));
@@ -179,7 +177,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         System.out.println("Moving to focused resource.");
         move(new RoverMovement(
                 resourceLocationFocus.getxOffset()-offsetFromBase.getxOffset(),
-                resourceLocationFocus.getyOffset()-offsetFromBase.getxOffset(),
+                resourceLocationFocus.getyOffset()-offsetFromBase.getyOffset(),
                 getSpeed()));
     }
 
@@ -200,12 +198,20 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         try {
             move(new RoverMovement(
                     node.getxOffset()-offsetFromBase.getxOffset(),
-                    node.getyOffset()-offsetFromBase.getxOffset(),
+                    node.getyOffset()-offsetFromBase.getyOffset(),
                     getSpeed()));
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public int getCapacity(){
+        return CARRY_SIZE;
+    }
+
+    public RoverOffset getOffsetFromBase() {
+        return offsetFromBase;
     }
 }

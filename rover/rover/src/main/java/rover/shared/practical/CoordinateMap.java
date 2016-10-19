@@ -42,4 +42,28 @@ public class CoordinateMap {
         coordinates.remove(toRemove);
         return closest;
     }
+
+    public int remaining() {
+        return coordinates.size();
+    }
+
+    public RoverOffset popCoordinateOfNextClosestNode(RoverOffset roverLocation) {
+        RoverOffset closest;
+        RoverOffset toRemove;
+
+        if(coordinates.isEmpty())
+            return null;
+
+        toRemove = coordinates.get(0);
+        closest = (coordinates.get(0).getDifference(roverLocation));
+        for (RoverOffset coordinate : coordinates) {
+            RoverOffset diff = coordinate.getDifference(roverLocation);
+            if(diff.magnitude()<closest.magnitude()){
+                toRemove = coordinate;
+                closest = diff;
+            }
+        }
+        coordinates.remove(toRemove);
+        return toRemove;
+    }
 }

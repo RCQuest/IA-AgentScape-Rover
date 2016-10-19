@@ -5,7 +5,7 @@ import rover.shared.actions.PickupAction;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.AIntention;
 import rover.shared.reasoning.APlan;
-import rover.shared.reasoning.plan.ResourceLocations;
+import rover.shared.reasoning.beliefs.ResourceLocations;
 
 import java.util.ArrayList;
 

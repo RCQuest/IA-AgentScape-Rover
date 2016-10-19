@@ -2,11 +2,10 @@ package rover.reasoning.plans;
 
 import rover.shared.actions.MoveTowardsAction;
 import rover.shared.actions.ScanAction;
-import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.AIntention;
 import rover.shared.reasoning.APlan;
-import rover.shared.reasoning.plan.SearchNodes;
+import rover.shared.reasoning.beliefs.SearchNodes;
 
 import java.util.ArrayList;
 
@@ -16,9 +15,8 @@ import java.util.ArrayList;
 public class SearchPlan extends APlan {
     public SearchPlan(SearchNodes belief) {
         super();
-        belief.getClosestNode();
-        actions.add(new MoveTowardsAction(belief.getClosestNode()));
-        actions.add(new ScanAction());
+        actions.add(new MoveTowardsAction(belief.getSearchNodes()));
+        actions.add(new ScanAction(/*callback to remove the node form the scanlist*/));
     }
 
     @Override

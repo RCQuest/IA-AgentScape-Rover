@@ -1,7 +1,10 @@
 package rover.reasoning.simple;
 
 import rover.PollResult;
+import rover.ScanItem;
+import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.IPerceiver;
+import rover.shared.practical.WorldPercept;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.APerceptFactory;
 
@@ -11,6 +14,16 @@ import rover.shared.reasoning.APerceptFactory;
 public class SimplePerceptFactory extends APerceptFactory {
     @Override
     public APercept create(PollResult pr, IPerceiver rover) {
-        return null;
+        ScanItem[] scanItems = pr.getScanItems();
+        int capacity = rover.getCapacity();
+        int load = rover.getCurrentLoad();
+        CoordinateMap searchNodes = rover.getSearchNodes();
+
+        WorldPercept percept = new WorldPercept();
+        percept.setItemsICanSee(scanItems);
+        percept.setRoverCapacity(capacity);
+        percept.setRoverLoad(load);
+        percept.setSearchNodesRemaining(searchNodes);
+        return percept;
     }
 }
