@@ -17,12 +17,15 @@ public abstract class AReasoningRover extends APracticalRover {
     private ArrayList<ABelief> b;
     private boolean lastActionWasSuccessful;
     private ArrayList<Desire> d;
-    private ArrayList<AIntention> i;
+    protected ArrayList<AIntention> i;
     private APlan pl;
 
 
     public AReasoningRover(int s, int r, int c){
         super(s,r,c);
+        b = new ArrayList<>();
+        d = new ArrayList<>();
+        i = new ArrayList<>();
     }
 
     @Override

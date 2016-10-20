@@ -17,12 +17,6 @@ import java.util.ArrayList;
 public class SimpleIntentionFilter extends rover.shared.reasoning.AIntentionFilter {
     @Override
     public ArrayList<AIntention> filter(ArrayList<ABelief> b, ArrayList<Desire> d, ArrayList<AIntention> i) {
-        if(i==null){
-            i = new ArrayList<>();
-            i.add(new SearchIntention());
-            i.add(new ObtainIntention());
-            i.add(new RetrieveIntention());
-        }
         if(!OntologyUtils.c(i, OntologyConcept.search)){
             if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
                 i.add(new SearchIntention());
