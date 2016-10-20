@@ -16,7 +16,7 @@ public class DespositAtBasePlan extends APlan {
 
     public DespositAtBasePlan(RoverCapacity capacity){
         actions.add(new MoveBackToBaseAction());
-        for (int i = 0; i < capacity.getCurrentCapacity(); i++) {
+        for (int i = 0; i < capacity.getCurrentLoad(); i++) {
             actions.add(new DepositAction());
         }
     }

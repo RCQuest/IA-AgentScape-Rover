@@ -1,12 +1,26 @@
 package rover.shared.reasoning;
 
 import rover.PollResult;
+import rover.ScanItem;
+import rover.shared.practical.RoverOffset;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Created by rachelcabot on 17/10/2016.
  */
 public abstract class APercept {
-    public abstract Collection<? extends ABelief> toBeliefs();
+
+    public abstract Collection<? extends ABelief> getAnyNewBeliefs(ArrayList<ABelief> evaluatedBeliefs);
+
+    public abstract ScanItem[] getScanItems();
+
+    public abstract RoverOffset getMyPosition();
+
+    public abstract int getWorldWidth();
+
+    public abstract int getWorldHeight();
+
+    public abstract int getCurrentLoad();
 }

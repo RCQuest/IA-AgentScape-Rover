@@ -9,28 +9,33 @@ import rover.shared.reasoning.ontology.OntologyConcept;
  */
 public class RoverCapacity extends ABelief {
     private int maxCapacity;
-    private int currentCapacity;
+    private int currentLoad;
 
     public RoverCapacity(int maxCapacity, int currentCapacity){
 
         this.maxCapacity = maxCapacity;
-        this.currentCapacity = currentCapacity;
-    }
-
-    @Override
-    public boolean agreesWith(APercept p) {
-        return false;
+        this.currentLoad = currentCapacity;
     }
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        if(maxCapacity<= currentCapacity)
+        if(maxCapacity<= currentLoad)
             return OntologyConcept.at_capacity;
         else
             return OntologyConcept.not_at_capacity;
     }
 
-    public int getCurrentCapacity() {
-        return currentCapacity;
+    public int getCurrentLoad() {
+        return currentLoad;
+    }
+
+    @Override
+    public boolean isNullifiedBy(APercept p) {
+        return false;
+    }
+
+    @Override
+    public void coalesceWith(APercept p) {
+        currentLoad = p.getCurrentLoad();
     }
 }

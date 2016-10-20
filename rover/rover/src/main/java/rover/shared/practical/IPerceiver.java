@@ -12,4 +12,9 @@ public interface IPerceiver {
 
     int getCapacity();
 
+    int getWorldHeight();
+
+    int getWorldWidth();
+
+    RoverOffset getPosition();
 }

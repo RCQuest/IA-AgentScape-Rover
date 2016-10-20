@@ -7,21 +7,19 @@ import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.ontology.OntologyConcept;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by rachelcabot on 18/10/2016.
  */
 public class ResourceLocations extends ABelief {
     private ArrayList<RoverOffset> offsetsFromBase;
-    private ScanItem[] itemsIHaveJustSeenFromMyPosition;
+    private ArrayList<ScanItem> itemsIHaveJustSeenFromMyPosition;
 
-    public ResourceLocations(ScanItem[] itemsICanSee) {
-        itemsIHaveJustSeenFromMyPosition = itemsICanSee;
-    }
-
-    @Override
-    public boolean agreesWith(APercept p) {
-        return false;
+    public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth) {
+        itemsIHaveJustSeenFromMyPosition = new ArrayList<ScanItem>();
+        Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
+        situateItems(myPosition,worldWidth,worldHeight);
     }
 
     @Override
@@ -33,13 +31,13 @@ public class ResourceLocations extends ABelief {
         return offsetsFromBase;
     }
 
-    public void situateItems(RoverOffset offsetFromBase, double worldHeight, double worldWidth){
+    public void situateItems(RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         for (ScanItem item : itemsIHaveJustSeenFromMyPosition) {
-            offsetsFromBase.add(situateItem(item, offsetFromBase, worldHeight, worldWidth));
+            offsetsFromBase.add(situateItem(item, offsetFromBase, worldWidth, worldHeight));
         }
     }
 
-    private RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldHeight, double worldWidth){
+    private RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         RoverOffset offset = new RoverOffset(
                 item.getxOffset(),
                 item.getyOffset(),
@@ -49,12 +47,20 @@ public class ResourceLocations extends ABelief {
         return offset;
     }
 
-    public void coalesce(ResourceLocations otherResourceLocations){
-        otherResourceLocations.addOffsetsFromBase(offsetsFromBase);
-        this.addOffsetsFromBase(otherResourceLocations.getLocations());
-    }
-
     public void addOffsetsFromBase(ArrayList<RoverOffset> offsetsFromBase) {
         this.offsetsFromBase.addAll(offsetsFromBase);
+    }
+
+    @Override
+    public boolean isNullifiedBy(APercept p) {
+        return false;
+    }
+
+    @Override
+    public void coalesceWith(APercept p) {
+        if(p.getScanItems().length>0){
+            Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
+            situateItems(p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
+        }
     }
 }

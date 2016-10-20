@@ -10,7 +10,7 @@ public class MoveBackToBaseAction extends ARoverAction {
     @Override
     public boolean execute(APracticalRover rover) {
         try {
-            rover.deposit();
+            rover.moveBackToBase();
             return true;
         } catch (Exception e) {
             e.printStackTrace();

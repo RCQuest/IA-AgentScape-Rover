@@ -27,7 +27,7 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void begin(){
-        APercept p = perceptFactory.create(null);
+        APercept p = perceptFactory.create(null,this);
         b = brf(b,p);
         d = options(b,i);
         i = filter(b,d,i);
@@ -38,7 +38,7 @@ public abstract class AReasoningRover extends APracticalRover {
     void poll(PollResult pr){
         if(!(empty(pl)||succeeded(i,b)||impossible(i,b))){
             execute(pl.popStep());
-            APercept p = perceptFactory.create(pr);
+            APercept p = perceptFactory.create(pr,this);
             b = brf(b,p);
             if(reconsider(i,b)){
                 d = options(b,i);
@@ -48,7 +48,7 @@ public abstract class AReasoningRover extends APracticalRover {
                 pl = plan(b,i);
             }
         } else {
-            APercept p = perceptFactory.create(pr);
+            APercept p = perceptFactory.create(pr,this);
             b = brf(b,p);
             d = options(b,i);
             i = filter(b,d,i);
@@ -108,12 +108,15 @@ public abstract class AReasoningRover extends APracticalRover {
 
     ArrayList<ABelief> brf(ArrayList<ABelief> b, APercept p) {
         // turn your percept into beliefs, and reevaluate the beliefs you have
+        // TODO:handle coalescence of ideas here!!
         ArrayList<ABelief> evaluatedBeliefs = new ArrayList<>();
         for(ABelief belief : b){
-            if(belief.agreesWith(p))
+            if(!belief.isNullifiedBy(p)) {
+                belief.coalesceWith(p);
                 evaluatedBeliefs.add(belief);
+            }
         }
-        evaluatedBeliefs.addAll(p.toBeliefs());
+        evaluatedBeliefs.addAll(p.getAnyNewBeliefs(evaluatedBeliefs));
         return evaluatedBeliefs;
     }
 

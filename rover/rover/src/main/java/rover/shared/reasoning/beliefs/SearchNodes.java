@@ -17,16 +17,21 @@ public class SearchNodes extends ABelief {
     }
 
     @Override
-    public boolean agreesWith(APercept p) {
-        return false;
-    }
-
-    @Override
     public OntologyConcept getOntologicalOrdinal() {
         return OntologyConcept.there_are_found_unobtained_resources;
     }
 
     public CoordinateMap getSearchNodes() {
         return nodes;
+    }
+
+    @Override
+    public boolean isNullifiedBy(APercept p) {
+        return nodes.remaining()<=0;
+    }
+
+    @Override
+    public void coalesceWith(APercept p) {
+        return;
     }
 }

@@ -214,4 +214,12 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     public RoverOffset getOffsetFromBase() {
         return offsetFromBase;
     }
+
+    public CoordinateMap getSearchNodes(){
+        return scanMap;
+    }
+
+    public RoverOffset getPosition(){
+        return offsetFromBase;
+    }
 }

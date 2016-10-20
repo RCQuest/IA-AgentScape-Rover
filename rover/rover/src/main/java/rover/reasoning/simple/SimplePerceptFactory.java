@@ -24,6 +24,9 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setRoverCapacity(capacity);
         percept.setRoverLoad(load);
         percept.setSearchNodesRemaining(searchNodes);
+        percept.setWorldHeight(rover.getWorldHeight());
+        percept.setWorldWidth(rover.getWorldWidth());
+        percept.setMyPosition(rover.getPosition());
         return percept;
     }
 }
