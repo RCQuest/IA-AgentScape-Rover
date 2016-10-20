@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5111b6c9-7c92-45bf-a1dd-4b5bcbe9cab3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/SimpleReasoningRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/SimpleReasoningRover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java" />
     </list>
     <ignored path="rover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AReasoningRover.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AReasoningRover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="491">
+              <caret line="121" column="42" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -74,14 +72,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="APerceptFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APerceptFactory.java">
+      <file leaf-file-name="APracticalRover.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="216">
+              <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,35 +112,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RetrieveIntention.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/RetrieveIntention.java">
+      <file leaf-file-name="APercept.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#453#454#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#626#627#0" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#758#759#0" expanded="true" />
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ObtainIntention.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/ObtainIntention.java">
+      <file leaf-file-name="WorldPercept.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="241">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1059#1060#0" expanded="true" />
-                <element signature="e#1114#1115#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,7 +198,6 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/RoverOffset.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/IPerceiver.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java" />
@@ -228,6 +211,7 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/SimpleReasoningRover.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java" />
       </list>
     </option>
   </component>
@@ -615,7 +599,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="percept&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java&#10;simple&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleInte&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java&#10;plan&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleplan&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleper&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java&#10;simplepl&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;APrac&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/APracticalRover.java&#10;Practi&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/APracticalRover.java&#10;Reasoning&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/AReasoningRover.java&#10;ResourceL&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/shared/reasoning/plan/ResourceLocations.java&#10;rea&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/AReasoningRover.java&#10;scan&#9;PSI&#9;JAVA://rover.tasks.ScanTask" />
+    <property name="SearchEverywhereHistoryKey" value="worldper&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/shared/practical/WorldPercept.java&#10;percept&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java&#10;simple&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleInte&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java&#10;plan&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleplan&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;simpleper&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java&#10;simplepl&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java&#10;APrac&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/APracticalRover.java&#10;Practi&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/APracticalRover.java&#10;Reasoning&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/AReasoningRover.java&#10;ResourceL&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/shared/reasoning/plan/ResourceLocations.java&#10;rea&#9;FILE&#9;file:///Users/rachelcabot/git/IA-AgentScape-Rover/rover/rover/src/main/java/rover/AReasoningRover.java&#10;scan&#9;PSI&#9;JAVA://rover.tasks.ScanTask" />
     <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
@@ -1094,7 +1078,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477003115219</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Doy.">
+      <created>1477003815132</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1477003815132</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1139,7 +1130,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed dead import." />
     <MESSAGE value="Added standard logging and fixed bug." />
     <MESSAGE value="Added search movement after deposit." />
     <MESSAGE value="Optimising the offsets." />
@@ -1164,7 +1154,8 @@
     <MESSAGE value="Created some intentions." />
     <MESSAGE value="Simple intention filtering." />
     <MESSAGE value="Regigged algorithm and added fake poll result to percept factory." />
-    <option name="LAST_COMMIT_MESSAGE" value="Regigged algorithm and added fake poll result to percept factory." />
+    <MESSAGE value="Doy." />
+    <option name="LAST_COMMIT_MESSAGE" value="Doy." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1322,14 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/SimpleRover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1351,16 +1334,6 @@
         <state relative-caret-position="360">
           <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="72" column="40" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1565,14 +1538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="128" column="14" selection-start-line="128" selection-start-column="14" selection-end-line="128" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover.shared/src/main/java/rover/PollResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="707">
@@ -1627,8 +1592,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state relative-caret-position="491">
+          <caret line="121" column="42" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/APracticalRover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
           <folding />
         </state>
       </provider>
