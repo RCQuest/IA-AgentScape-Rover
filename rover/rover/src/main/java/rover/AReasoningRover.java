@@ -108,7 +108,6 @@ public abstract class AReasoningRover extends APracticalRover {
 
     ArrayList<ABelief> brf(ArrayList<ABelief> b, APercept p) {
         // turn your percept into beliefs, and reevaluate the beliefs you have
-        // TODO:handle coalescence of ideas here!!
         ArrayList<ABelief> evaluatedBeliefs = new ArrayList<>();
         for(ABelief belief : b){
             if(!belief.isNullifiedBy(p)) {
