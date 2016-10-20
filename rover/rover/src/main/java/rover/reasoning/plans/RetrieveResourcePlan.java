@@ -16,7 +16,8 @@ public class RetrieveResourcePlan extends APlan {
 
     public RetrieveResourcePlan(ResourceLocations resourceLocationBelief) {
         super();
-        actions.add(new MoveTowardsAction(resourceLocationBelief));
+        if(!resourceLocationBelief.onTopOfResourceLocation())
+            actions.add(new MoveTowardsAction(resourceLocationBelief));
         actions.add(new PickupAction());
     }
 

@@ -17,4 +17,6 @@ public interface IPerceiver {
     int getWorldWidth();
 
     RoverOffset getPosition();
+
+    boolean previousActionWasSuccessful();
 }

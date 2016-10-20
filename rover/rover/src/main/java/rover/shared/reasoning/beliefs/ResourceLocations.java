@@ -13,13 +13,16 @@ import java.util.Collections;
  * Created by rachelcabot on 18/10/2016.
  */
 public class ResourceLocations extends ABelief {
+    private final RoverOffset myPosition;
     private ArrayList<RoverOffset> offsetsFromBase;
     private ArrayList<ScanItem> itemsIHaveJustSeenFromMyPosition;
 
     public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth) {
-        itemsIHaveJustSeenFromMyPosition = new ArrayList<ScanItem>();
+        itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
+        offsetsFromBase = new ArrayList<>();
         situateItems(myPosition,worldWidth,worldHeight);
+        this.myPosition = myPosition;
     }
 
     @Override
@@ -31,7 +34,7 @@ public class ResourceLocations extends ABelief {
         return offsetsFromBase;
     }
 
-    public void situateItems(RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+    private void situateItems(RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         for (ScanItem item : itemsIHaveJustSeenFromMyPosition) {
             offsetsFromBase.add(situateItem(item, offsetFromBase, worldWidth, worldHeight));
         }
@@ -47,10 +50,6 @@ public class ResourceLocations extends ABelief {
         return offset;
     }
 
-    public void addOffsetsFromBase(ArrayList<RoverOffset> offsetsFromBase) {
-        this.offsetsFromBase.addAll(offsetsFromBase);
-    }
-
     @Override
     public boolean isNullifiedBy(APercept p) {
         return false;
@@ -62,5 +61,26 @@ public class ResourceLocations extends ABelief {
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             situateItems(p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
+        removeFromLocations(p.getItemsCollected());
+    }
+
+    private void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){
+        ArrayList<RoverOffset> toPreserve = new ArrayList<>();
+        for (RoverOffset itemToRemove:itemsToRemove) {
+            for (RoverOffset existingItem:offsetsFromBase) {
+                if(!existingItem.isSameAs(itemToRemove))
+                    toPreserve.add(existingItem);
+            }
+        }
+        offsetsFromBase = toPreserve;
+    }
+
+    public boolean onTopOfResourceLocation() {
+        for (RoverOffset r:offsetsFromBase) {
+            if(myPosition.getxOffset()==r.getxOffset()
+            && myPosition.getyOffset()==r.getyOffset())
+                return true;
+        }
+        return false;
     }
 }

@@ -24,6 +24,7 @@ public class WorldPercept extends APercept {
     private CoordinateMap searchNodesRemaining;
     private int worldHeight;
     private int worldWidth;
+    private boolean previousActionWasSuccessful;
 
     @Override
     public Collection<? extends ABelief> getAnyNewBeliefs(ArrayList<ABelief> b) {
@@ -68,6 +69,15 @@ public class WorldPercept extends APercept {
         return roverLoad;
     }
 
+    @Override
+    public ArrayList<RoverOffset> getItemsCollected() {
+        ArrayList<RoverOffset> items = new ArrayList<>();
+        if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
+            items.add(myPosition);
+        }
+        return items;
+    }
+
     public void setRoverCapacity(int roverCapacity) {
         this.roverCapacity = roverCapacity;
     }
@@ -94,5 +104,9 @@ public class WorldPercept extends APercept {
 
     public void setMyPosition(RoverOffset myPosition) {
         this.myPosition = myPosition;
+    }
+
+    public void setPreviousActionWasSuccessful(boolean previousActionWasSuccessful) {
+        this.previousActionWasSuccessful = previousActionWasSuccessful;
     }
 }

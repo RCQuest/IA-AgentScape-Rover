@@ -120,7 +120,8 @@ public abstract class AReasoningRover extends APracticalRover {
         return evaluatedBeliefs;
     }
 
-    public boolean wasLastActionSuccessful() {
+    @Override
+    public boolean previousActionWasSuccessful() {
         return lastActionWasSuccessful;
     }
 }

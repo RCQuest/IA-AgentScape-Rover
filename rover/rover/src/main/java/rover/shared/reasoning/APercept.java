@@ -23,4 +23,7 @@ public abstract class APercept {
     public abstract int getWorldHeight();
 
     public abstract int getCurrentLoad();
+
+    public abstract ArrayList<RoverOffset> getItemsCollected();
+
 }

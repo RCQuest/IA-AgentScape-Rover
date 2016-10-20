@@ -207,6 +207,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         }
     }
 
+    public boolean previousActionWasSuccessful(){ return true; }
+
     public int getCapacity(){
         return CARRY_SIZE;
     }

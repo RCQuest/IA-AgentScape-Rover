@@ -27,6 +27,7 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setWorldHeight(rover.getWorldHeight());
         percept.setWorldWidth(rover.getWorldWidth());
         percept.setMyPosition(rover.getPosition());
+        percept.setPreviousActionWasSuccessful(rover.previousActionWasSuccessful());
         return percept;
     }
 }
