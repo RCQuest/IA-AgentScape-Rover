@@ -32,6 +32,5 @@ public class SearchNodes extends ABelief {
 
     @Override
     public void coalesceWith(APercept p) {
-        return;
     }
 }

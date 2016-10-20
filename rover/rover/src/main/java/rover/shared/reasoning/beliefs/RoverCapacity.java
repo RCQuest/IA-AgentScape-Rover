@@ -21,8 +21,12 @@ public class RoverCapacity extends ABelief {
     public OntologyConcept getOntologicalOrdinal() {
         if(maxCapacity<= currentLoad)
             return OntologyConcept.at_capacity;
-        else
-            return OntologyConcept.not_at_capacity;
+        else{
+            if(currentLoad==0)
+                return OntologyConcept.not_carrying_anything;
+            else
+                return OntologyConcept.not_at_capacity;
+        }
     }
 
     public int getCurrentLoad() {

@@ -27,7 +27,10 @@ public class ResourceLocations extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        return OntologyConcept.there_are_found_unobtained_resources;
+        if(offsetsFromBase.size()>0)
+            return OntologyConcept.there_are_found_unobtained_resources;
+        else
+            return OntologyConcept.there_are_no_found_unobtained_resources;
     }
 
     public ArrayList<RoverOffset> getLocations() {
