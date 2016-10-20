@@ -32,12 +32,12 @@ public abstract class AReasoningRover extends APracticalRover {
         d = options(b,i);
         i = filter(b,d,i);
         pl = plan(b,i);
+        execute(pl.popStep());
     }
 
     @Override
     void poll(PollResult pr){
         if(!(empty(pl)||succeeded(i,b)||impossible(i,b))){
-            execute(pl.popStep());
             APercept p = perceptFactory.create(pr,this);
             b = brf(b,p);
             if(reconsider(i,b)){
@@ -54,6 +54,7 @@ public abstract class AReasoningRover extends APracticalRover {
             i = filter(b,d,i);
             pl = plan(b,i);
         }
+        execute(pl.popStep());
     }
 
     boolean sound(APlan pl, ArrayList<AIntention> i, ArrayList<ABelief> b) {

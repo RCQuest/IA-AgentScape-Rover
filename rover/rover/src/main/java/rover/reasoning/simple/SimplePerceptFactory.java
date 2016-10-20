@@ -14,6 +14,10 @@ import rover.shared.reasoning.APerceptFactory;
 public class SimplePerceptFactory extends APerceptFactory {
     @Override
     public APercept create(PollResult pr, IPerceiver rover) {
+        if(pr==null){
+            pr = new PollResult(PollResult.COMPLETE,PollResult.WORLD_STARTED);
+            pr.setScanItems(new ScanItem[]{});
+        }
         ScanItem[] scanItems = pr.getScanItems();
         int capacity = rover.getCapacity();
         int load = rover.getCurrentLoad();
