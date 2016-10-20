@@ -77,8 +77,7 @@ public class ResourceLocations extends ABelief {
 
     public boolean onTopOfResourceLocation() {
         for (RoverOffset r:offsetsFromBase) {
-            if(myPosition.getxOffset()==r.getxOffset()
-            && myPosition.getyOffset()==r.getyOffset())
+            if(myPosition.isSameAs(r))
                 return true;
         }
         return false;
