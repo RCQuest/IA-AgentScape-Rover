@@ -18,7 +18,10 @@ public class SearchNodes extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        return OntologyConcept.there_are_found_unobtained_resources;
+        if(nodes.remaining()>0){
+            return OntologyConcept.there_are_unscanned_nodes;
+        }
+        return OntologyConcept.all_nodes_are_scanned;
     }
 
     public CoordinateMap getSearchNodes() {
