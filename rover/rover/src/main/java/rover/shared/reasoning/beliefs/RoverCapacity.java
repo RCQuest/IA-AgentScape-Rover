@@ -34,11 +34,6 @@ public class RoverCapacity extends ABelief {
     }
 
     @Override
-    public boolean isNullifiedBy(APercept p) {
-        return false;
-    }
-
-    @Override
     public void coalesceWith(APercept p) {
         currentLoad = p.getCurrentLoad();
     }

@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5111b6c9-7c92-45bf-a1dd-4b5bcbe9cab3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/ABelief.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/ABelief.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java" afterPath="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java" />
     </list>
     <ignored path="rover.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,18 +67,16 @@
       <file leaf-file-name="ResourceLocations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+            <state relative-caret-position="-594">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2025#2026#0" expanded="true" />
-                <element signature="e#2053#2054#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AReasoningRover.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AReasoningRover.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1674">
@@ -115,7 +112,7 @@
       <file leaf-file-name="RoverCapacity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
+            <state relative-caret-position="-126">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -124,10 +121,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchNodes.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchNodes.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
+            <state relative-caret-position="12">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -205,7 +202,6 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/SearchIntention.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/ObtainIntention.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/RetrieveIntenion.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/intention/RetrieveIntention.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/AIntentionFilter.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java" />
@@ -218,12 +214,13 @@
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APlan.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimplePlanFactory.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java" />
-        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/ABelief.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/AReasoningRover.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/practical/WorldPercept.java" />
         <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/APercept.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java" />
+        <option value="$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java" />
       </list>
     </option>
   </component>
@@ -1208,7 +1205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477056749103</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Simplified brf a bit.">
+      <created>1477057790238</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1477057790238</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1262,7 +1266,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added some framework classes and a derivation of general rover." />
     <MESSAGE value="Created abstract reasoning rover using practical reasoning algorithm." />
     <MESSAGE value="Abstract reasoning framework in place!" />
     <MESSAGE value="Started creating simple reasoning factories." />
@@ -1287,7 +1290,8 @@
     <MESSAGE value="doh" />
     <MESSAGE value="that's perfectly reasonable" />
     <MESSAGE value="Proper resolution now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Proper resolution now." />
+    <MESSAGE value="Simplified brf a bit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified brf a bit." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1684,16 +1688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimplePerceptFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1702,33 +1696,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/reasoning/simple/SimpleIntentionFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#2053#2054#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1765,6 +1737,36 @@
           <folding>
             <element signature="e#3483#3484#0" expanded="true" />
             <element signature="e#3534#3535#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/ResourceLocations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/RoverCapacity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rover/src/main/java/rover/shared/reasoning/beliefs/SearchNodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

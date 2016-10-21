@@ -54,11 +54,6 @@ public class ResourceLocations extends ABelief {
     }
 
     @Override
-    public boolean isNullifiedBy(APercept p) {
-        return false;
-    }
-
-    @Override
     public void coalesceWith(APercept p) {
         if(p.getScanItems().length>0){
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
