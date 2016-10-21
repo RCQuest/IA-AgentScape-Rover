@@ -63,7 +63,6 @@ public class RoverOffset {
     }
 
     public boolean isSameAs(RoverOffset offset) {
-        //TODO: refactor all comparison cases with this
         return doubleEqual(offset.getxOffset(),xOffset) && doubleEqual(offset.getyOffset(),yOffset);
     }
 

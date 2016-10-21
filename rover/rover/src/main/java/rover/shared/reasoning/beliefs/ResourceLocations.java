@@ -58,9 +58,11 @@ public class ResourceLocations extends ABelief {
         if(p.getScanItems().length>0){
             System.out.println("there are new resources!!");
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
+            System.out.println("just seen these items: "+itemsIHaveJustSeenFromMyPosition);
             situateItems(p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
         removeFromLocations(p.getItemsCollected());
+        System.out.println("offsets from base: "+offsetsFromBase);
     }
 
     private void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){
