@@ -28,10 +28,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         BASE_SPEED=speed;
         SCAN_RADIUS=radius;
         CARRY_SIZE=capacity;
-        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
-        offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
-        state = new SearchingState(this);
-        resourceMap = new ArrayList<>();
+
         try {
             //set attributes for this rover
             //speed, scan range, max load
@@ -47,6 +44,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     void begin() {
         //called when the world is started
         getLog().info("BEGIN!");
+        setUpPracticalAttributes();
 
         try {
             //move somewhere initially
@@ -224,5 +222,12 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
     public RoverOffset getPosition(){
         return offsetFromBase;
+    }
+
+    protected void setUpPracticalAttributes() {
+        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
+        offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
+        state = new SearchingState(this);
+        resourceMap = new ArrayList<>();
     }
 }
