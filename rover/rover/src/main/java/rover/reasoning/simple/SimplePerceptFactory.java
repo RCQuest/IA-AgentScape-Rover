@@ -19,6 +19,9 @@ public class SimplePerceptFactory extends APerceptFactory {
             pr.setScanItems(new ScanItem[]{});
         }
         ScanItem[] scanItems = pr.getScanItems();
+        if(scanItems==null){
+            scanItems= new ScanItem[]{};
+        }
         int capacity = rover.getCapacity();
         int load = rover.getCurrentLoad();
         CoordinateMap searchNodes = rover.getSearchNodes();
