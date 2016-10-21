@@ -30,9 +30,7 @@ public class MoveTowardsAction extends ARoverAction {
     @Override
     public boolean execute(APracticalRover rover) {
         if(searchNodes!=null)
-            return rover.moveTo(
-                searchNodes.popCoordinateOfNextClosestNode(
-                    rover.getOffsetFromBase()));
+            return rover.searchMovement();
 
         if(node!=null)
             return rover.moveTo(node);
