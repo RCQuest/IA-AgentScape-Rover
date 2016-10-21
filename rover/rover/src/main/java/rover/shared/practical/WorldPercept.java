@@ -28,7 +28,7 @@ public class WorldPercept extends APercept {
 
     @Override
     public ScanItem[] getScanItems() {
-        return new ScanItem[0];
+        return itemsICanSee;
     }
 
     @Override
