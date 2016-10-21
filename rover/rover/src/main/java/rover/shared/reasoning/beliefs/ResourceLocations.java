@@ -27,7 +27,6 @@ public class ResourceLocations extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
-        System.out.println(offsetsFromBase);
         if(offsetsFromBase.size()>0)
             return OntologyConcept.there_are_found_unobtained_resources;
         else

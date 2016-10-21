@@ -30,19 +30,19 @@ public class WorldPercept extends APercept {
     public Collection<? extends ABelief> getAnyNewBeliefs(ArrayList<ABelief> b) {
         //TODO:edit me to not just return all beliefs
         ArrayList<ABelief> derivedBeliefs = new ArrayList<>();
-        System.out.println("adding new beliefs");
-        
+
         if(itemsICanSee.length>0
-            && !OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
+            && !(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
+                ||OntologyUtils.c(b, OntologyConcept.there_are_no_found_unobtained_resources))
             derivedBeliefs.add(new ResourceLocations(itemsICanSee,myPosition, worldHeight, worldWidth));
 
-        if(!(OntologyUtils.c(b, OntologyConcept.at_capacity)||OntologyUtils.c(b, OntologyConcept.not_at_capacity)))
+        if(!(OntologyUtils.c(b, OntologyConcept.at_capacity)
+                ||OntologyUtils.c(b, OntologyConcept.not_at_capacity)))
             derivedBeliefs.add(new RoverCapacity(roverCapacity,roverLoad));
 
-        if(searchNodesRemaining.remaining()>0&&!OntologyUtils.c(b, OntologyConcept.there_are_unscanned_nodes)){
-            System.out.println("adding unscanned nodes belief");
+        if(searchNodesRemaining.remaining()>0&&!(OntologyUtils.c(b, OntologyConcept.there_are_unscanned_nodes)
+                ||OntologyUtils.c(b, OntologyConcept.all_nodes_are_scanned)))
             derivedBeliefs.add(new SearchNodes(searchNodesRemaining));
-        }
 
         return derivedBeliefs;
     }

@@ -30,7 +30,7 @@ public class SearchNodes extends ABelief {
 
     @Override
     public boolean isNullifiedBy(APercept p) {
-        return nodes.remaining()<=0;
+        return false;
     }
 
     @Override
