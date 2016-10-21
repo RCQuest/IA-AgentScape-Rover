@@ -5,6 +5,7 @@ import rover.shared.reasoning.*;
 import rover.shared.reasoning.beliefs.ResourceLocations;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by rachelcabot on 17/10/2016.
@@ -47,6 +48,7 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void poll(PollResult pr){
+        System.out.println(Arrays.toString(pr.getScanItems()));
         if(!(empty(pl)||succeeded(i,b)||impossible(i,b))){
             APercept p = perceptFactory.create(pr,this);
             b = brf(b,p);

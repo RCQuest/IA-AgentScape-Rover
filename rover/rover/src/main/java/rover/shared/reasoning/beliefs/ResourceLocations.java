@@ -56,6 +56,7 @@ public class ResourceLocations extends ABelief {
     @Override
     public void coalesceWith(APercept p) {
         if(p.getScanItems().length>0){
+            System.out.println("there are new resources!!");
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             situateItems(p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
