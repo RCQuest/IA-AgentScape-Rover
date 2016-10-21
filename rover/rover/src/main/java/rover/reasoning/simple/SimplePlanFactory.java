@@ -1,6 +1,7 @@
 package rover.reasoning.simple;
 
 import rover.reasoning.plans.DespositAtBasePlan;
+import rover.reasoning.plans.DoNothingPlan;
 import rover.reasoning.plans.RetrieveResourcePlan;
 import rover.reasoning.plans.SearchPlan;
 import rover.shared.reasoning.beliefs.RoverCapacity;
@@ -36,7 +37,7 @@ public class SimplePlanFactory extends APlanFactory {
             return new SearchPlan(
                     (SearchNodes)OntologyUtils.getBelief(b,OntologyConcept.there_are_unscanned_nodes));
 
-        return null;
+        return new DoNothingPlan();
 
     }
 
