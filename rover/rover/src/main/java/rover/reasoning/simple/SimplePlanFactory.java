@@ -20,6 +20,9 @@ public class SimplePlanFactory extends APlanFactory {
 
     @Override
     public APlan createPlan(ArrayList<ABelief> b, ArrayList<AIntention> i) {
+        System.out.println("Creating a plan from these ontological concepts:");
+        OntologyUtils.logAll(b);
+        OntologyUtils.logAll(i);
         if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources)&&
             OntologyUtils.c(i,OntologyConcept.obtain_resources)&&
             OntologyUtils.c(b, OntologyConcept.not_at_capacity))

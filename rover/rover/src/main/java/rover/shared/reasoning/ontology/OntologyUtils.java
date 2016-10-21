@@ -31,4 +31,10 @@ public class OntologyUtils {
         }
         return null;
     }
+
+    public static void logAll(ArrayList<? extends IOntologicalConcept> oc) {
+        for (IOntologicalConcept c:oc) {
+            System.out.println(c.getOntologicalOrdinal().toString());
+        }
+    }
 }
