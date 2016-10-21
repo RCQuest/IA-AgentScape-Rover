@@ -31,7 +31,7 @@ public class SimplePlanFactory extends APlanFactory {
             return new DespositAtBasePlan(
                     (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.at_capacity));
 
-        if(!OntologyUtils.c(b,OntologyConcept.there_are_found_unobtained_resources)&&
+        if(OntologyUtils.c(b,OntologyConcept.there_are_no_found_unobtained_resources)&&
             OntologyUtils.c(b,OntologyConcept.there_are_unscanned_nodes)&&
             OntologyUtils.c(i,OntologyConcept.search))
             return new SearchPlan(
