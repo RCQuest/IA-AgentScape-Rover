@@ -12,8 +12,6 @@ import java.util.Collection;
  */
 public abstract class APercept {
 
-    public abstract Collection<? extends ABelief> getAnyNewBeliefs(ArrayList<ABelief> evaluatedBeliefs);
-
     public abstract ScanItem[] getScanItems();
 
     public abstract RoverOffset getMyPosition();
@@ -26,4 +24,5 @@ public abstract class APercept {
 
     public abstract ArrayList<RoverOffset> getItemsCollected();
 
+    public abstract ArrayList<ABelief> initialiseBeliefs();
 }

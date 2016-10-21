@@ -2,6 +2,7 @@ package rover;
 
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
+import rover.shared.reasoning.beliefs.ResourceLocations;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public abstract class AReasoningRover extends APracticalRover {
     void begin(){
         this.setUpPracticalAttributes();
         APercept p = perceptFactory.create(null,this);
-        b = brf(b,p);
+        b = setUpBeliefBase(p);
         d = options(b,i);
         i = filter(b,d,i);
         pl = plan(b,i);
@@ -117,16 +118,14 @@ public abstract class AReasoningRover extends APracticalRover {
     }
 
     ArrayList<ABelief> brf(ArrayList<ABelief> b, APercept p) {
-        // turn your percept into beliefs, and reevaluate the beliefs you have
-        ArrayList<ABelief> evaluatedBeliefs = new ArrayList<>();
         for(ABelief belief : b){
-            if(!belief.isNullifiedBy(p)) {
-                belief.coalesceWith(p);
-                evaluatedBeliefs.add(belief);
-            }
+            belief.coalesceWith(p);
         }
-        evaluatedBeliefs.addAll(p.getAnyNewBeliefs(evaluatedBeliefs));
-        return evaluatedBeliefs;
+        return b;
+    }
+
+    private ArrayList<ABelief> setUpBeliefBase(APercept initialP){
+        return initialP.initialiseBeliefs();
     }
 
     @Override

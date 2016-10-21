@@ -7,7 +7,5 @@ import rover.shared.reasoning.ontology.IOntologicalConcept;
  */
 public abstract class ABelief implements IOntologicalConcept {
 
-    public abstract boolean isNullifiedBy(APercept p);
-
     public abstract void coalesceWith(APercept p);
 }
