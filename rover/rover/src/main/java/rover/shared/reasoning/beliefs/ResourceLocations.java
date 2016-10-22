@@ -21,7 +21,7 @@ public class ResourceLocations extends ABelief {
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
         offsetsFromBase = new ArrayList<>();
-        situateItems(myPosition,worldWidth,worldHeight);
+        situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,myPosition,worldWidth,worldHeight);
         this.myPosition = myPosition;
     }
 
@@ -37,10 +37,11 @@ public class ResourceLocations extends ABelief {
         return offsetsFromBase;
     }
 
-    private void situateItems(RoverOffset offsetFromBase, double worldWidth, double worldHeight){
-        for (ScanItem item : itemsIHaveJustSeenFromMyPosition) {
-            offsetsFromBase.add(situateItem(item, offsetFromBase, worldWidth, worldHeight));
+    private void situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+        for (ScanItem item : unsituatedItems) {
+            situatedItems.add(situateItem(item, offsetFromBase, worldWidth, worldHeight));
         }
+        unsituatedItems.clear();
     }
 
     private RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
@@ -59,7 +60,7 @@ public class ResourceLocations extends ABelief {
             System.out.println("there are new resources!!");
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             System.out.println("just seen these items: "+itemsIHaveJustSeenFromMyPosition);
-            situateItems(p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
+            situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
         removeFromLocations(p.getItemsCollected());
         System.out.println("offsets from base: "+offsetsFromBase);
@@ -67,11 +68,13 @@ public class ResourceLocations extends ABelief {
 
     private void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){
         ArrayList<RoverOffset> toPreserve = new ArrayList<>();
-        for (RoverOffset itemToRemove:itemsToRemove) {
-            for (RoverOffset existingItem:offsetsFromBase) {
-                if(!existingItem.isSameAs(itemToRemove))
-                    toPreserve.add(existingItem);
+        for (RoverOffset existingItem:offsetsFromBase) {
+            boolean remove = false;
+            for (RoverOffset itemToRemove:itemsToRemove) {
+                if(existingItem.isSameAs(itemToRemove))
+                    remove = true;
             }
+            if(!remove) toPreserve.add(existingItem);
         }
         offsetsFromBase = toPreserve;
     }
