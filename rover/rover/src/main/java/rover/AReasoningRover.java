@@ -88,11 +88,12 @@ public abstract class AReasoningRover extends APracticalRover {
     }
 
     boolean impossible(ArrayList<AIntention> i, ArrayList<ABelief> b) {
-        for (AIntention intention:i) {
-            if(!intention.possible(b))
-                return false;
-        }
-        return true;
+//        for (AIntention intention:i) {
+//            if(!intention.possible(b))
+//                return true;
+//        }
+        //TODO: this needs to be revised for intentions.
+        return false;
     }
 
     boolean succeeded(ArrayList<AIntention> i, ArrayList<ABelief> b) {
