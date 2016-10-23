@@ -90,9 +90,11 @@ public abstract class AReasoningRover extends APracticalRover {
     }
 
     void execute(ARoverAction roverAction) {
-        if(roverAction==null)
-            lastActionWasSuccessful=false;
-        lastActionWasSuccessful=roverAction.execute(this);
+        if(roverAction==null) {
+            lastActionWasSuccessful = false;
+        } else {
+            lastActionWasSuccessful = roverAction.execute(this);
+        }
     }
 
     boolean impossible(ArrayList<AIntention> i, ArrayList<ABelief> b) {
