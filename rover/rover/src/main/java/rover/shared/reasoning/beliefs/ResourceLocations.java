@@ -74,14 +74,11 @@ public class ResourceLocations extends ABelief {
     @Override
     public void coalesceWith(APercept p) {
         if(p.getScanItems().length>0){
-            System.out.println("there are new resources!!");
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
-            System.out.println("just seen these items: "+itemsIHaveJustSeenFromMyPosition);
             situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
         removeFromLocations(p.getItemsCollected());
-        System.out.println("offsets from base: "+offsetsFromBase);
     }
 
     public void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){

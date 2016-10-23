@@ -24,7 +24,8 @@ public class SimplePlanFactory extends APlanFactory {
         OntologyUtils.logAll(b);
         OntologyUtils.logAll(i);
         if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources)&&
-            OntologyUtils.c(b, OntologyConcept.not_at_capacity))
+                (OntologyUtils.c(b, OntologyConcept.not_at_capacity)
+                ||OntologyUtils.c(b, OntologyConcept.not_carrying_anything)))
             return new RetrieveResourcePlan(
                     (ResourceLocations)OntologyUtils.getBelief(b,OntologyConcept.there_are_found_unobtained_resources));
 

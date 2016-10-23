@@ -12,6 +12,6 @@ import java.util.ArrayList;
 public class DoNothingPlan extends APlan {
     @Override
     public boolean isSound(ArrayList<AIntention> i, ArrayList<ABelief> b) {
-        return true;
+        return false;
     }
 }
