@@ -49,25 +49,31 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void poll(PollResult pr){
-        System.out.println(Arrays.toString(pr.getScanItems()));
-        if(!(empty(pl)||succeeded(i,b)||impossible(i,b))){
-            APercept p = perceptFactory.create(pr,this);
-            b = brf(b,p);
-            if(reconsider(i,b)){
-                d = options(b,i);
-                i = filter(b,d,i);
+        do {
+            if (!(empty(pl) || succeeded(i, b) || impossible(i, b))) {
+                APercept p = perceptFactory.create(pr, this);
+                b = brf(b, p);
+                if (reconsider(i, b)) {
+                    d = options(b, i);
+                    i = filter(b, d, i);
+                }
+                if (!sound(pl, i, b)) {
+                    pl = plan(b, i);
+                }
+            } else {
+                APercept p = perceptFactory.create(pr, this);
+                b = brf(b, p);
+                d = options(b, i);
+                i = filter(b, d, i);
+                pl = plan(b, i);
             }
-            if(!sound(pl,i,b)){
-                pl = plan(b,i);
+
+            execute(pl.popStep());
+            if(!lastActionWasSuccessful){
+                pr.setResultType(PollResult.FAILED);
+                pr.setResultStatus(PollResult.FAILED);
             }
-        } else {
-            APercept p = perceptFactory.create(pr,this);
-            b = brf(b,p);
-            d = options(b,i);
-            i = filter(b,d,i);
-            pl = plan(b,i);
-        }
-        execute(pl.popStep());
+        } while(!lastActionWasSuccessful);
     }
 
     boolean sound(APlan pl, ArrayList<AIntention> i, ArrayList<ABelief> b) {
@@ -84,6 +90,8 @@ public abstract class AReasoningRover extends APracticalRover {
     }
 
     void execute(ARoverAction roverAction) {
+        if(roverAction==null)
+            lastActionWasSuccessful=false;
         lastActionWasSuccessful=roverAction.execute(this);
     }
 

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class WorldPercept extends APercept {
 
     private ScanItem[] itemsICanSee;
-    private int previousAction;
     private RoverOffset myPosition;
     private int roverCapacity;
     private int roverLoad;
@@ -53,7 +52,7 @@ public class WorldPercept extends APercept {
     @Override
     public ArrayList<RoverOffset> getItemsCollected() {
         ArrayList<RoverOffset> items = new ArrayList<>();
-        if(previousAction== PollResult.COLLECT&&!previousActionWasSuccessful&&roverCapacity>roverLoad){
+        if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
             items.add(myPosition);
         }
         return items;
@@ -102,9 +101,5 @@ public class WorldPercept extends APercept {
 
     public void setPreviousActionWasSuccessful(boolean previousActionWasSuccessful) {
         this.previousActionWasSuccessful = previousActionWasSuccessful;
-    }
-
-    public void setPreviousAction(int previousAction) {
-        this.previousAction = previousAction;
     }
 }
