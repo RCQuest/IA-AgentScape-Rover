@@ -25,7 +25,7 @@ public class RoverCapacity extends ABelief {
             if(currentLoad==0)
                 return OntologyConcept.not_carrying_anything;
             else
-                return OntologyConcept.not_at_capacity;
+                return OntologyConcept.carrying_something;
         }
     }
 

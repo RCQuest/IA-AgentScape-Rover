@@ -23,8 +23,8 @@ public class SimplePlanFactory extends APlanFactory {
         System.out.println("Creating a plan from these ontological concepts:");
         OntologyUtils.logAll(b);
         OntologyUtils.logAll(i);
-        if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources)&&
-                (OntologyUtils.c(b, OntologyConcept.not_at_capacity)
+        if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources)
+                &&(OntologyUtils.c(b, OntologyConcept.carrying_something)
                 ||OntologyUtils.c(b, OntologyConcept.not_carrying_anything)))
             return new RetrieveResourcePlan(
                     (ResourceLocations)OntologyUtils.getBelief(b,OntologyConcept.there_are_found_unobtained_resources));
@@ -36,6 +36,11 @@ public class SimplePlanFactory extends APlanFactory {
         if(OntologyUtils.c(b,OntologyConcept.there_are_unscanned_nodes))
             return new SearchPlan(
                     (SearchNodes)OntologyUtils.getBelief(b,OntologyConcept.there_are_unscanned_nodes));
+
+        if(OntologyUtils.c(b,OntologyConcept.all_nodes_are_scanned)
+            &&OntologyUtils.c(b, OntologyConcept.carrying_something))
+            return new DespositAtBasePlan(
+                    (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.carrying_something));
 
         return new DoNothingPlan();
 

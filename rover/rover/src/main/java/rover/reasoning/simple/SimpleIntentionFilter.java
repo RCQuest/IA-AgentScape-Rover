@@ -22,7 +22,7 @@ public class SimpleIntentionFilter extends rover.shared.reasoning.AIntentionFilt
                 i.add(new SearchIntention());
         }
         if(!OntologyUtils.c(i, OntologyConcept.obtain_resources)){
-            if(OntologyUtils.c(b, OntologyConcept.not_at_capacity))
+            if(OntologyUtils.c(b, OntologyConcept.carrying_something))
                 i.add(new ObtainIntention());
         }
         if(!OntologyUtils.c(i, OntologyConcept.deposit_resources_at_base)){
