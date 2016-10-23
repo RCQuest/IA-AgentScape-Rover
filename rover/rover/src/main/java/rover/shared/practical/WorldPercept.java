@@ -1,16 +1,14 @@
 package rover.shared.practical;
 
+import rover.PollResult;
 import rover.ScanItem;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;
 import rover.shared.reasoning.beliefs.RoverCapacity;
 import rover.shared.reasoning.beliefs.SearchNodes;
-import rover.shared.reasoning.ontology.OntologyConcept;
-import rover.shared.reasoning.ontology.OntologyUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by rachelcabot on 19/10/2016.
@@ -18,12 +16,13 @@ import java.util.Collection;
 public class WorldPercept extends APercept {
 
     private ScanItem[] itemsICanSee;
+    private int previousAction;
     private RoverOffset myPosition;
     private int roverCapacity;
     private int roverLoad;
     private CoordinateMap searchNodesRemaining;
-    private int worldHeight;
-    private int worldWidth;
+    private double worldHeight;
+    private double worldWidth;
     private boolean previousActionWasSuccessful;
 
     @Override
@@ -37,12 +36,12 @@ public class WorldPercept extends APercept {
     }
 
     @Override
-    public int getWorldWidth() {
+    public double getWorldWidth() {
         return worldWidth;
     }
 
     @Override
-    public int getWorldHeight() {
+    public double getWorldHeight() {
         return worldHeight;
     }
 
@@ -54,7 +53,7 @@ public class WorldPercept extends APercept {
     @Override
     public ArrayList<RoverOffset> getItemsCollected() {
         ArrayList<RoverOffset> items = new ArrayList<>();
-        if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
+        if(previousAction== PollResult.COLLECT&&!previousActionWasSuccessful&&roverCapacity>roverLoad){
             items.add(myPosition);
         }
         return items;
@@ -89,11 +88,11 @@ public class WorldPercept extends APercept {
         this.roverLoad = roverLoad;
     }
 
-    public void setWorldHeight(int worldHeight) {
+    public void setWorldHeight(double worldHeight) {
         this.worldHeight = worldHeight;
     }
 
-    public void setWorldWidth(int worldWidth) {
+    public void setWorldWidth(double worldWidth) {
         this.worldWidth = worldWidth;
     }
 
@@ -103,5 +102,9 @@ public class WorldPercept extends APercept {
 
     public void setPreviousActionWasSuccessful(boolean previousActionWasSuccessful) {
         this.previousActionWasSuccessful = previousActionWasSuccessful;
+    }
+
+    public void setPreviousAction(int previousAction) {
+        this.previousAction = previousAction;
     }
 }

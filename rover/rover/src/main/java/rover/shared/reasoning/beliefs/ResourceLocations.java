@@ -20,9 +20,19 @@ public class ResourceLocations extends ABelief {
     public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth) {
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
+        itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
         offsetsFromBase = new ArrayList<>();
         situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,myPosition,worldWidth,worldHeight);
         this.myPosition = myPosition;
+    }
+
+    public ArrayList<ScanItem> filterResources(ArrayList<ScanItem> items){
+        ArrayList<ScanItem> filteredItems = new ArrayList<>();
+        for (ScanItem item:items) {
+            if(item.getItemType()==ScanItem.RESOURCE)
+                filteredItems.add(item);
+        }
+        return filteredItems;
     }
 
     @Override
@@ -37,14 +47,21 @@ public class ResourceLocations extends ABelief {
         return offsetsFromBase;
     }
 
-    private void situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+    public void situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         for (ScanItem item : unsituatedItems) {
-            situatedItems.add(situateItem(item, offsetFromBase, worldWidth, worldHeight));
+            RoverOffset situatedItem = situateItem(item, offsetFromBase, worldWidth, worldHeight);
+            boolean isSameAsExisting = false;
+            for (RoverOffset existingSituatedItem:situatedItems) {
+                if(existingSituatedItem.isSameAs(situatedItem))
+                    isSameAsExisting = true;
+            }
+            if(!isSameAsExisting)
+                situatedItems.add(situatedItem);
         }
         unsituatedItems.clear();
     }
 
-    private RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+    public RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         RoverOffset offset = new RoverOffset(
                 item.getxOffset(),
                 item.getyOffset(),
@@ -59,6 +76,7 @@ public class ResourceLocations extends ABelief {
         if(p.getScanItems().length>0){
             System.out.println("there are new resources!!");
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
+            itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
             System.out.println("just seen these items: "+itemsIHaveJustSeenFromMyPosition);
             situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
@@ -66,7 +84,7 @@ public class ResourceLocations extends ABelief {
         System.out.println("offsets from base: "+offsetsFromBase);
     }
 
-    private void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){
+    public void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){
         ArrayList<RoverOffset> toPreserve = new ArrayList<>();
         for (RoverOffset existingItem:offsetsFromBase) {
             boolean remove = false;

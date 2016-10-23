@@ -27,6 +27,7 @@ public class SimplePerceptFactory extends APerceptFactory {
         CoordinateMap searchNodes = rover.getSearchNodes();
 
         WorldPercept percept = new WorldPercept();
+        percept.setPreviousAction(pr.getResultType());
         percept.setItemsICanSee(scanItems);
         percept.setRoverCapacity(capacity);
         percept.setRoverLoad(load);

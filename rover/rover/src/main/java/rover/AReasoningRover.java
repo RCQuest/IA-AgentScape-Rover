@@ -28,6 +28,7 @@ public abstract class AReasoningRover extends APracticalRover {
         b = new ArrayList<>();
         d = new ArrayList<>();
         i = new ArrayList<>();
+        lastActionWasSuccessful = true;
     }
 
     @Override
