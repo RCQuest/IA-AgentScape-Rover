@@ -2,11 +2,14 @@ package rover.reasoning.simple;
 
 import rover.PollResult;
 import rover.ScanItem;
+import rover.messaging.AMessage;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.IPerceiver;
 import rover.shared.practical.WorldPercept;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.APerceptFactory;
+
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by rachelcabot on 18/10/2016.
@@ -35,6 +38,9 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setWorldWidth(rover.getWorldWidth());
         percept.setMyPosition(rover.getPosition());
         percept.setPreviousActionWasSuccessful(rover.previousActionWasSuccessful());
+
+        ConcurrentLinkedQueue newMessages = rover.getNewMessages();
+
         return percept;
     }
 }

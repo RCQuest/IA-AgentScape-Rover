@@ -1,5 +1,9 @@
 package rover.shared.practical;
 
+import rover.messaging.AMessage;
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 /**
  * Created by rachelcabot on 19/10/2016.
  */
@@ -19,4 +23,8 @@ public interface IPerceiver {
     RoverOffset getPosition();
 
     boolean previousActionWasSuccessful();
+
+    void addNewMessage(AMessage aMessage);
+
+    ConcurrentLinkedQueue getNewMessages();
 }
