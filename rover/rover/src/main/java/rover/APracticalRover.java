@@ -2,10 +2,7 @@ package rover;
 
 import rover.messaging.AMessage;
 import rover.messaging.MessageParser;
-import rover.shared.practical.CoordinateMap;
-import rover.shared.practical.IPerceiver;
-import rover.shared.practical.RoverMovement;
-import rover.shared.practical.RoverOffset;
+import rover.shared.practical.*;
 import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
@@ -244,6 +241,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     protected void setUpPracticalAttributes() {
+        RoverWorld.mapHeight = getWorldHeight();
+        RoverWorld.mapWidth = getWorldWidth();
         scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);

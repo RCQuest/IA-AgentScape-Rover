@@ -11,10 +11,15 @@ public class MessageParser {
 
     private static final HashMap<String,Class<? extends AMessage>> messageMap = new HashMap<String,Class<? extends AMessage>>(){{
         put("hello",HelloMessage.class);
+        put("searching",SearchingMessage.class);
+        put("searched",SearchedMessage.class);
+        put("collecting",CollectingMessage.class);
+        put("collected",CollectedMessage.class);
+        put("found",FoundMessage.class);
     }};
 
     public static ArrayList<AMessage> parse(ArrayList<String> newMessages) {
-        System.out.println("------------You've got mail "+newMessages.toString());
+        System.out.println("You've got mail "+newMessages.toString());
         ArrayList<AMessage> messageObjects = new ArrayList<>();
         for(String message : newMessages){
             String[] tokens = message.split(" ");

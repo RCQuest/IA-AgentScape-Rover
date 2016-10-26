@@ -23,6 +23,7 @@ public class WorldPercept extends APercept {
     private double worldHeight;
     private double worldWidth;
     private boolean previousActionWasSuccessful;
+    private ArrayList<RoverOffset> resourcesJustFoundByOtherRovers;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -101,5 +102,15 @@ public class WorldPercept extends APercept {
 
     public void setPreviousActionWasSuccessful(boolean previousActionWasSuccessful) {
         this.previousActionWasSuccessful = previousActionWasSuccessful;
+    }
+
+    public ArrayList<RoverOffset> getResourcesJustFoundByOtherRovers() {
+        return resourcesJustFoundByOtherRovers;
+    }
+
+    public void addResourcesJustFoundByOtherRovers(ArrayList<RoverOffset> resourcesJustFoundByOtherRovers) {
+        if(this.resourcesJustFoundByOtherRovers==null)
+            this.resourcesJustFoundByOtherRovers = new ArrayList<>();
+        this.resourcesJustFoundByOtherRovers.addAll(resourcesJustFoundByOtherRovers);
     }
 }

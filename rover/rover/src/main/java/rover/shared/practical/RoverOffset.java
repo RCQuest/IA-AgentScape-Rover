@@ -15,6 +15,16 @@ public class RoverOffset {
         optimise();
     }
 
+    public RoverOffset(double x, double y) {
+        mapSizeX = RoverWorld.mapWidth;
+        mapSizeY = RoverWorld.mapHeight;
+        this.xOffset = xOffset%mapSizeX;
+        this.yOffset = yOffset%mapSizeY;
+        this.mapSizeX = mapSizeX;
+        this.mapSizeY = mapSizeY;
+        optimise();
+    }
+
     public void optimise(){
         if(Math.abs(xOffset)>mapSizeX/2)
             xOffset = reverseCoordinate(xOffset,mapSizeX);
