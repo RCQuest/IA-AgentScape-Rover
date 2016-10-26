@@ -97,7 +97,6 @@ public class ResourceLocationsTest {
         p.setWorldWidth(TestWorld.width);
         p.setMyPosition(position);
         p.setPreviousActionWasSuccessful(previousActionSuccess);
-        p.setPreviousAction(PollResult.COLLECT);
         uut.coalesceWith(p);
     }
 
