@@ -1,6 +1,5 @@
 package rover;
 
-import org.iids.aos.messagecenter.Envelope;
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
 

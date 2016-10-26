@@ -13,7 +13,8 @@ public class MessageParser {
         put("hello",HelloMessage.class);
     }};
 
-    public static ArrayList<AMessage> parse(Set<String> newMessages) {
+    public static ArrayList<AMessage> parse(ArrayList<String> newMessages) {
+        System.out.println("------------You've got mail "+newMessages.toString());
         ArrayList<AMessage> messageObjects = new ArrayList<>();
         for(String message : newMessages){
             String[] tokens = message.split(" ");
