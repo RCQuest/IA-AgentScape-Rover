@@ -16,12 +16,10 @@ public class RoverOffset {
     }
 
     public RoverOffset(double x, double y) {
-        mapSizeX = RoverWorld.mapWidth;
-        mapSizeY = RoverWorld.mapHeight;
-        this.xOffset = xOffset%mapSizeX;
-        this.yOffset = yOffset%mapSizeY;
-        this.mapSizeX = mapSizeX;
-        this.mapSizeY = mapSizeY;
+        this.mapSizeX = RoverWorld.mapWidth;
+        this.mapSizeY = RoverWorld.mapHeight;
+        this.xOffset = x%mapSizeX;
+        this.yOffset = y%mapSizeY;
         optimise();
     }
 
