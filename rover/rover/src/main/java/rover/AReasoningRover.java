@@ -1,6 +1,8 @@
 package rover;
 
+import rover.messaging.MessageParser;
 import rover.shared.practical.ARoverAction;
+import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
@@ -43,6 +45,7 @@ public abstract class AReasoningRover extends APracticalRover {
         System.out.println(i);
 
         broadCastToTeam("hello");
+        broadCastToTeam(MessageParser.generateFoundMessage(new ArrayList<RoverOffset>(){{add(new RoverOffset(2,2));}}));
 
         execute(pl.popStep());
     }

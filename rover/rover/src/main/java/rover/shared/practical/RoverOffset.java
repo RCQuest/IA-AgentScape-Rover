@@ -79,4 +79,8 @@ public class RoverOffset {
     private boolean doubleEqual(double a,double b){
         return Math.abs(a-b) < 0.00001;
     }
+
+    public String toMessageString(String delimiter) {
+        return xOffset+delimiter+yOffset;
+    }
 }
