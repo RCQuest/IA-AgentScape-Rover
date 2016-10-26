@@ -1,7 +1,7 @@
 package rover;
 
 import rover.messaging.AMessage;
-import rover.messaging.MessagePassingInterface;
+import rover.messaging.MessageParser;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.IPerceiver;
 import rover.shared.practical.RoverMovement;
@@ -10,8 +10,7 @@ import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Set;
 
 public abstract class APracticalRover extends Rover implements IPerceiver {
 
@@ -24,7 +23,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private CoordinateMap scanMap;
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
-    private ConcurrentLinkedQueue<AMessage> newMessages;
 
     public APracticalRover(int speed, int radius, int capacity) {
         super();
@@ -33,8 +31,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         BASE_SPEED=speed;
         SCAN_RADIUS=radius;
         CARRY_SIZE=capacity;
-
-        newMessages = new ConcurrentLinkedQueue<>();
 
         try {
             //set attributes for this rover
@@ -223,18 +219,14 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     public boolean previousActionWasSuccessful(){ return true; }
 
     @Override
-    public void addNewMessage(AMessage aMessage) {
-        System.out.println("you've got mail! "+ aMessage.toString());
-        newMessages.add(aMessage);
+    public ArrayList<AMessage> getNewMessages() {
+        retrieveMessages();
+        Set<String> newMessages = this.messages;
+        this.messages.clear();
+        return MessageParser.parse(newMessages);
     }
 
     @Override
-    public ConcurrentLinkedQueue getNewMessages(){
-        return newMessages;
-    }
-
-    @Override
-
     public int getCapacity(){
         return CARRY_SIZE;
     }
@@ -257,4 +249,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
     }
+
+
 }

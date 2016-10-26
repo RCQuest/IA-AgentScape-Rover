@@ -1,19 +1,15 @@
 package rover;
 
-import rover.messaging.AMessage;
-import rover.messaging.IMessageListener;
-import rover.messaging.MessagePassingInterface;
+import org.iids.aos.messagecenter.Envelope;
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
-import rover.shared.reasoning.beliefs.ResourceLocations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by rachelcabot on 17/10/2016.
  */
-public abstract class AReasoningRover extends APracticalRover implements IMessageListener {
+public abstract class AReasoningRover extends APracticalRover {
     protected APlanFactory planFactory;
     protected ADesireFactory desireFactory;
     protected AIntentionFilter intentionFilter;
@@ -32,7 +28,6 @@ public abstract class AReasoningRover extends APracticalRover implements IMessag
         d = new ArrayList<>();
         i = new ArrayList<>();
         lastActionWasSuccessful = true;
-        MessagePassingInterface.addListener(this);
     }
 
     @Override
@@ -47,6 +42,8 @@ public abstract class AReasoningRover extends APracticalRover implements IMessag
         System.out.println(b);
         System.out.println(d);
         System.out.println(i);
+
+        broadCastToTeam("hello");
 
         execute(pl.popStep());
     }
@@ -151,8 +148,4 @@ public abstract class AReasoningRover extends APracticalRover implements IMessag
         return lastActionWasSuccessful;
     }
 
-    @Override
-    public void messageNotify(AMessage message) {
-        message.addToNextPercept(this);
-    }
 }

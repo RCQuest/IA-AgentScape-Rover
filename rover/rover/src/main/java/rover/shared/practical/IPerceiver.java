@@ -2,7 +2,7 @@ package rover.shared.practical;
 
 import rover.messaging.AMessage;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
 
 /**
  * Created by rachelcabot on 19/10/2016.
@@ -24,7 +24,5 @@ public interface IPerceiver {
 
     boolean previousActionWasSuccessful();
 
-    void addNewMessage(AMessage aMessage);
-
-    ConcurrentLinkedQueue getNewMessages();
+    ArrayList<AMessage> getNewMessages();
 }

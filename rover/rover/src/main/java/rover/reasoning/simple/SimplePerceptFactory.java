@@ -9,6 +9,8 @@ import rover.shared.practical.WorldPercept;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.APerceptFactory;
 
+import java.util.ArrayList;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -39,7 +41,10 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setMyPosition(rover.getPosition());
         percept.setPreviousActionWasSuccessful(rover.previousActionWasSuccessful());
 
-        ConcurrentLinkedQueue newMessages = rover.getNewMessages();
+        ArrayList<AMessage> newMessages = rover.getNewMessages();
+        for (AMessage message:newMessages) {
+            message.modifyPercept(percept);
+        }
 
         return percept;
     }
