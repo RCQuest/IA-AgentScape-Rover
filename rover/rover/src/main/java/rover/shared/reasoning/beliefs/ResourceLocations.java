@@ -89,7 +89,11 @@ public class ResourceLocations extends ABelief {
             MessagingSystem.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
         }
 
-        addSituatedItems(p.getResourcesJustFoundByOtherRovers());
+        ArrayList<RoverOffset> resourcesFoundByOtherRovers = p.getResourcesJustFoundByOtherRovers();
+
+        if(resourcesFoundByOtherRovers!=null){
+            addSituatedItems(resourcesFoundByOtherRovers);
+        }
 
         removeFromLocations(p.getItemsCollected());
     }

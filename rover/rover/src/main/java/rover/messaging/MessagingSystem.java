@@ -1,7 +1,6 @@
 package rover.messaging;
 
 import rover.APracticalRover;
-import rover.Rover;
 
 /**
  * Created by rachelcabot on 27/10/2016.
@@ -28,7 +27,7 @@ public class MessagingSystem {
     }
 
     public static void sendNewMessage(String message){
-        Rover r = getInstance().rover;
+        APracticalRover r = getInstance().rover;
         if(r!=null)
             r.broadCastToTeam(message);
     }
