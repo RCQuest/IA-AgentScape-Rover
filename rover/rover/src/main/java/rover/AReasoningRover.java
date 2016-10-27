@@ -1,8 +1,7 @@
 package rover;
 
-import rover.messaging.MessageParser;
+import rover.messaging.MessagingSystem;
 import rover.shared.practical.ARoverAction;
-import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
@@ -29,11 +28,17 @@ public abstract class AReasoningRover extends APracticalRover {
         d = new ArrayList<>();
         i = new ArrayList<>();
         lastActionWasSuccessful = true;
+        try {
+            MessagingSystem.getInstance().register(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     void begin(){
         this.setUpPracticalAttributes();
+        MessagingSystem.sendNewMessage("hello");
         APercept p = perceptFactory.create(null,this);
         b = setUpBeliefBase(p);
         d = options(b,i);

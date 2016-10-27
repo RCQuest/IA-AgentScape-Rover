@@ -3,6 +3,8 @@ package rover.reasoning.simple;
 import rover.PollResult;
 import rover.ScanItem;
 import rover.messaging.AMessage;
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingSystem;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.IPerceiver;
 import rover.shared.practical.WorldPercept;

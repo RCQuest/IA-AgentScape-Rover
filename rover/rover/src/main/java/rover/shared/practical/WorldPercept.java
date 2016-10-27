@@ -2,6 +2,8 @@ package rover.shared.practical;
 
 import rover.PollResult;
 import rover.ScanItem;
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingSystem;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;

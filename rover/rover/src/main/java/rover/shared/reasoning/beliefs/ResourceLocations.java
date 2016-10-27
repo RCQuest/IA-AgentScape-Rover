@@ -1,6 +1,8 @@
 package rover.shared.reasoning.beliefs;
 
 import rover.ScanItem;
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingSystem;
 import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
@@ -47,12 +49,15 @@ public class ResourceLocations extends ABelief {
         return offsetsFromBase;
     }
 
-    public void situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+    public ArrayList<RoverOffset> situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
+        ArrayList<RoverOffset> addedItems = new ArrayList<>();
         for (ScanItem item : unsituatedItems) {
             RoverOffset situatedItem = situateItem(item, offsetFromBase, worldWidth, worldHeight);
+            addedItems.add(situatedItem);
             addIfDoesNotAlreadyExist(situatedItem,situatedItems);
         }
         unsituatedItems.clear();
+        return addedItems;
     }
 
     private void addIfDoesNotAlreadyExist(RoverOffset item, ArrayList<RoverOffset> itemList){
@@ -80,7 +85,8 @@ public class ResourceLocations extends ABelief {
         if(p.getScanItems().length>0){
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
-            situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
+            ArrayList<RoverOffset> situatedItems = situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
+            MessagingSystem.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
         }
 
         addSituatedItems(p.getResourcesJustFoundByOtherRovers());
