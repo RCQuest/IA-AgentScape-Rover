@@ -50,15 +50,19 @@ public class ResourceLocations extends ABelief {
     public void situateItems(ArrayList<ScanItem> unsituatedItems, ArrayList<RoverOffset> situatedItems, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
         for (ScanItem item : unsituatedItems) {
             RoverOffset situatedItem = situateItem(item, offsetFromBase, worldWidth, worldHeight);
-            boolean isSameAsExisting = false;
-            for (RoverOffset existingSituatedItem:situatedItems) {
-                if(existingSituatedItem.isSameAs(situatedItem))
-                    isSameAsExisting = true;
-            }
-            if(!isSameAsExisting)
-                situatedItems.add(situatedItem);
+            addIfDoesNotAlreadyExist(situatedItem,situatedItems);
         }
         unsituatedItems.clear();
+    }
+
+    private void addIfDoesNotAlreadyExist(RoverOffset item, ArrayList<RoverOffset> itemList){
+        boolean isSameAsExisting = false;
+        for (RoverOffset existingSituatedItem:itemList) {
+            if(existingSituatedItem.isSameAs(item))
+                isSameAsExisting = true;
+        }
+        if(!isSameAsExisting)
+            itemList.add(item);
     }
 
     public RoverOffset situateItem(ScanItem item, RoverOffset offsetFromBase, double worldWidth, double worldHeight){
@@ -78,7 +82,16 @@ public class ResourceLocations extends ABelief {
             itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
             situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
         }
+
+        addSituatedItems(p.getResourcesJustFoundByOtherRovers());
+
         removeFromLocations(p.getItemsCollected());
+    }
+
+    private void addSituatedItems(ArrayList<RoverOffset> newResources) {
+        for (RoverOffset newResource : newResources) {
+            addIfDoesNotAlreadyExist(newResource,offsetsFromBase);
+        }
     }
 
     public void removeFromLocations(ArrayList<RoverOffset> itemsToRemove){

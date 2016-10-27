@@ -44,9 +44,6 @@ public abstract class AReasoningRover extends APracticalRover {
         System.out.println(d);
         System.out.println(i);
 
-        broadCastToTeam("hello");
-        broadCastToTeam(MessageParser.generateFoundMessage(new ArrayList<RoverOffset>(){{add(new RoverOffset(2,2));}}));
-
         execute(pl.popStep());
     }
 

@@ -23,4 +23,6 @@ public abstract class APercept {
     public abstract ArrayList<RoverOffset> getItemsCollected();
 
     public abstract ArrayList<ABelief> initialiseBeliefs();
+
+    public abstract ArrayList<RoverOffset> getResourcesJustFoundByOtherRovers();
 }
