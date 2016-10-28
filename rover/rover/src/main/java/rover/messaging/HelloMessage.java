@@ -7,9 +7,7 @@ import rover.shared.practical.WorldPercept;
  */
 public class HelloMessage extends AMessage {
     @Override
-    protected void extractMessageParameters(String[] originalMessageTokens) {
-
-    }
+    protected void extractMessageParameters(String[] originalMessageTokens) {}
 
     @Override
     public void modifyPercept(WorldPercept percept) {

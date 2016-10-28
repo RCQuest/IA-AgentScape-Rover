@@ -1,10 +1,12 @@
 package rover;
 
+import org.iids.aos.exception.AgentScapeException;
 import rover.messaging.MessagingService;
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by rachelcabot on 17/10/2016.
@@ -36,7 +38,7 @@ public abstract class AReasoningRover extends APracticalRover {
     }
 
     @Override
-    void begin(){
+    void begin() {
         this.setUpPracticalAttributes();
         MessagingService.sendNewMessage("hello");
         APercept p = perceptFactory.create(null,this);
@@ -45,7 +47,11 @@ public abstract class AReasoningRover extends APracticalRover {
         i = filter(b,d,i);
         pl = plan(b,i);
 
-
+        try {
+            Thread.sleep(1000L*((getID().hashCode()/Long.MAX_VALUE)));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("initial state");
         System.out.println(b);
