@@ -41,11 +41,21 @@ public class MessageParser {
         return generateMessage("found",foundItems);
     }
 
+    public static String generateCollectedMessage(RoverOffset myPosition) {
+        return generateMessage("collected",myPosition);
+    }
+
     private static String generateMessage(String command, ArrayList<RoverOffset> items){
         String message = command;
         for (RoverOffset item : items) {
             message+=DELIMITER+item.toMessageString(DELIMITER);
         }
+        return message;
+    }
+
+    private static String generateMessage(String command, RoverOffset item){
+        String message = command;
+        message+=DELIMITER+item.toMessageString(DELIMITER);
         return message;
     }
 }

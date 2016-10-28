@@ -26,6 +26,7 @@ public class WorldPercept extends APercept {
     private double worldWidth;
     private boolean previousActionWasSuccessful;
     private ArrayList<RoverOffset> resourcesJustFoundByOtherRovers;
+    private ArrayList<RoverOffset> resourcesJustCollectedByOtherRovers;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -57,6 +58,10 @@ public class WorldPercept extends APercept {
         ArrayList<RoverOffset> items = new ArrayList<>();
         if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
             items.add(myPosition);
+            MessagingSystem.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
+        }
+        if(resourcesJustCollectedByOtherRovers!=null){
+            items.addAll(resourcesJustCollectedByOtherRovers);
         }
         return items;
     }
@@ -114,5 +119,11 @@ public class WorldPercept extends APercept {
         if(this.resourcesJustFoundByOtherRovers==null)
             this.resourcesJustFoundByOtherRovers = new ArrayList<>();
         this.resourcesJustFoundByOtherRovers.addAll(resourcesJustFoundByOtherRovers);
+    }
+
+    public void addItemsCollected(RoverOffset collected) {
+        if(this.resourcesJustCollectedByOtherRovers==null)
+            this.resourcesJustCollectedByOtherRovers = new ArrayList<>();
+        this.resourcesJustCollectedByOtherRovers.add(collected);
     }
 }
