@@ -1,10 +1,14 @@
 package rover.shared.practical;
 
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingService;
+
 import java.util.ArrayList;
 
 public class CoordinateMap {
     public ArrayList<RoverOffset> coordinates;
     private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3);
+    private ArrayList<RoverOffset> nodesToExclude;
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius){
         coordinates = new ArrayList<>();
@@ -21,25 +25,29 @@ public class CoordinateMap {
                 coordinates.add(newOffset);
             }
         }
+        nodesToExclude = new ArrayList<>();
     }
 
     public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
         RoverOffset closest;
         RoverOffset toRemove;
+        ArrayList<RoverOffset> nonExcludedCoordinates = getNonExcludedNodes();
 
-        if(coordinates.isEmpty())
+        if(nonExcludedCoordinates.isEmpty())
             return null;
 
-        toRemove = coordinates.get(0);
-        closest = (coordinates.get(0).getDifference(roverLocation));
-        for (RoverOffset coordinate : coordinates) {
+        toRemove = nonExcludedCoordinates.get(0);
+        closest = (nonExcludedCoordinates.get(0).getDifference(roverLocation));
+        for (RoverOffset coordinate : nonExcludedCoordinates) {
             RoverOffset diff = coordinate.getDifference(roverLocation);
             if(diff.magnitude()<closest.magnitude()){
                 toRemove = coordinate;
                 closest = diff;
             }
         }
-        coordinates.remove(toRemove);
+
+        MessagingService.sendNewMessage(MessageParser.generateSearchingMessage(toRemove));
+        nonExcludedCoordinates.remove(toRemove);
         return closest;
     }
 
@@ -47,23 +55,18 @@ public class CoordinateMap {
         return coordinates.size();
     }
 
-    public RoverOffset popCoordinateOfNextClosestNode(RoverOffset roverLocation) {
-        RoverOffset closest;
-        RoverOffset toRemove;
+    public void addNodesToExclude(ArrayList<RoverOffset> nodesToExclude) {
+        this.nodesToExclude.addAll(nodesToExclude);
+    }
 
-        if(coordinates.isEmpty())
-            return null;
-
-        toRemove = coordinates.get(0);
-        closest = (coordinates.get(0).getDifference(roverLocation));
-        for (RoverOffset coordinate : coordinates) {
-            RoverOffset diff = coordinate.getDifference(roverLocation);
-            if(diff.magnitude()<closest.magnitude()){
-                toRemove = coordinate;
-                closest = diff;
+    private ArrayList<RoverOffset> getNonExcludedNodes(){
+        ArrayList<RoverOffset> nodes = new ArrayList<>(coordinates);
+        for (RoverOffset node : nodes) {
+            for (RoverOffset nodeToExclude : nodesToExclude) {
+                if(nodeToExclude.isSameAs(node))
+                    nodes.remove(nodeToExclude);
             }
         }
-        coordinates.remove(toRemove);
-        return toRemove;
+        return nodes;
     }
 }

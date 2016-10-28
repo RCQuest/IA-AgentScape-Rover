@@ -37,14 +37,6 @@ public class MessageParser {
         return messageObjects;
     }
 
-    public static String generateFoundMessage(ArrayList<RoverOffset> foundItems){
-        return generateMessage("found",foundItems);
-    }
-
-    public static String generateCollectedMessage(RoverOffset myPosition) {
-        return generateMessage("collected",myPosition);
-    }
-
     private static String generateMessage(String command, ArrayList<RoverOffset> items){
         String message = command;
         for (RoverOffset item : items) {
@@ -57,5 +49,17 @@ public class MessageParser {
         String message = command;
         message+=DELIMITER+item.toMessageString(DELIMITER);
         return message;
+    }
+
+    public static String generateFoundMessage(ArrayList<RoverOffset> foundItems){
+        return generateMessage("found",foundItems);
+    }
+
+    public static String generateCollectedMessage(RoverOffset myPosition) {
+        return generateMessage("collected",myPosition);
+    }
+
+    public static String generateSearchingMessage(RoverOffset toRemove) {
+        return generateMessage("searching",toRemove);
     }
 }

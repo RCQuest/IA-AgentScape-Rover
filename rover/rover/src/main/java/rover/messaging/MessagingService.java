@@ -5,17 +5,17 @@ import rover.APracticalRover;
 /**
  * Created by rachelcabot on 27/10/2016.
  */
-public class MessagingSystem {
-    public static MessagingSystem instance;
+public class MessagingService {
+    public static MessagingService instance;
     private APracticalRover rover;
 
-    private MessagingSystem(){
+    private MessagingService(){
 
     }
 
-    public static synchronized MessagingSystem getInstance(){
+    public static synchronized MessagingService getInstance(){
         if(instance==null)
-            instance = new MessagingSystem();
+            instance = new MessagingService();
         return instance;
     }
 

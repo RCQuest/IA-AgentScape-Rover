@@ -1,5 +1,4 @@
 import rover.ScanItem;
-import rover.messaging.MessagingSystem;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.RoverOffset;
 import rover.shared.practical.WorldPercept;

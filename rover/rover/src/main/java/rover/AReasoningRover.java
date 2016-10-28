@@ -1,6 +1,6 @@
 package rover;
 
-import rover.messaging.MessagingSystem;
+import rover.messaging.MessagingService;
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
 
@@ -29,7 +29,7 @@ public abstract class AReasoningRover extends APracticalRover {
         i = new ArrayList<>();
         lastActionWasSuccessful = true;
         try {
-            MessagingSystem.getInstance().register(this);
+            MessagingService.getInstance().register(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public abstract class AReasoningRover extends APracticalRover {
     @Override
     void begin(){
         this.setUpPracticalAttributes();
-        MessagingSystem.sendNewMessage("hello");
+        MessagingService.sendNewMessage("hello");
         APercept p = perceptFactory.create(null,this);
         b = setUpBeliefBase(p);
         d = options(b,i);

@@ -6,6 +6,8 @@ import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.ontology.OntologyConcept;
 
+import java.util.ArrayList;
+
 /**
  * Created by rachelcabot on 19/10/2016.
  */
@@ -30,5 +32,6 @@ public class SearchNodes extends ABelief {
 
     @Override
     public void coalesceWith(APercept p) {
+        nodes.addNodesToExclude(p.getNodesBeingSearchedByOtherRovers());
     }
 }

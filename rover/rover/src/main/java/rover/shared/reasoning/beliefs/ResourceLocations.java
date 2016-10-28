@@ -2,7 +2,7 @@ package rover.shared.reasoning.beliefs;
 
 import rover.ScanItem;
 import rover.messaging.MessageParser;
-import rover.messaging.MessagingSystem;
+import rover.messaging.MessagingService;
 import rover.shared.practical.RoverOffset;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
@@ -86,7 +86,7 @@ public class ResourceLocations extends ABelief {
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
             ArrayList<RoverOffset> situatedItems = situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
-            MessagingSystem.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
+            MessagingService.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
         }
 
         ArrayList<RoverOffset> resourcesFoundByOtherRovers = p.getResourcesJustFoundByOtherRovers();

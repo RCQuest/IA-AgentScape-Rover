@@ -1,9 +1,8 @@
 package rover.shared.practical;
 
-import rover.PollResult;
 import rover.ScanItem;
 import rover.messaging.MessageParser;
-import rover.messaging.MessagingSystem;
+import rover.messaging.MessagingService;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;
@@ -27,6 +26,7 @@ public class WorldPercept extends APercept {
     private boolean previousActionWasSuccessful;
     private ArrayList<RoverOffset> resourcesJustFoundByOtherRovers;
     private ArrayList<RoverOffset> resourcesJustCollectedByOtherRovers;
+    private ArrayList<RoverOffset> nodesBeingSearchedByOtherRovers;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -58,7 +58,7 @@ public class WorldPercept extends APercept {
         ArrayList<RoverOffset> items = new ArrayList<>();
         if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
             items.add(myPosition);
-            MessagingSystem.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
+            MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
         }
         if(resourcesJustCollectedByOtherRovers!=null){
             items.addAll(resourcesJustCollectedByOtherRovers);
@@ -115,6 +115,11 @@ public class WorldPercept extends APercept {
         return resourcesJustFoundByOtherRovers;
     }
 
+    @Override
+    public ArrayList<RoverOffset> getNodesBeingSearchedByOtherRovers() {
+        return nodesBeingSearchedByOtherRovers;
+    }
+
     public void addResourcesJustFoundByOtherRovers(ArrayList<RoverOffset> resourcesJustFoundByOtherRovers) {
         if(this.resourcesJustFoundByOtherRovers==null)
             this.resourcesJustFoundByOtherRovers = new ArrayList<>();
@@ -125,5 +130,11 @@ public class WorldPercept extends APercept {
         if(this.resourcesJustCollectedByOtherRovers==null)
             this.resourcesJustCollectedByOtherRovers = new ArrayList<>();
         this.resourcesJustCollectedByOtherRovers.add(collected);
+    }
+
+    public void addNodeBeingSearchedByOtherRover(RoverOffset item) {
+        if(this.nodesBeingSearchedByOtherRovers==null)
+            this.nodesBeingSearchedByOtherRovers = new ArrayList<>();
+        this.nodesBeingSearchedByOtherRovers.add(item);
     }
 }

@@ -25,4 +25,6 @@ public abstract class APercept {
     public abstract ArrayList<ABelief> initialiseBeliefs();
 
     public abstract ArrayList<RoverOffset> getResourcesJustFoundByOtherRovers();
+
+    public abstract ArrayList<RoverOffset> getNodesBeingSearchedByOtherRovers();
 }
