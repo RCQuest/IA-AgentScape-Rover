@@ -48,7 +48,7 @@ public abstract class AReasoningRover extends APracticalRover {
         pl = plan(b,i);
 
         try {
-            Thread.sleep(1000L*((getID().hashCode()/Long.MAX_VALUE)));
+            Thread.sleep(10000L*((getID().hashCode()/Long.MAX_VALUE)));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

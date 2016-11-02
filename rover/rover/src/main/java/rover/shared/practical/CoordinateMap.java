@@ -56,16 +56,20 @@ public class CoordinateMap {
     }
 
     public void addNodesToExclude(ArrayList<RoverOffset> nodesToExclude) {
+        if(nodesToExclude==null) return;
         this.nodesToExclude.addAll(nodesToExclude);
     }
 
-    private ArrayList<RoverOffset> getNonExcludedNodes(){
-        ArrayList<RoverOffset> nodes = new ArrayList<>(coordinates);
-        for (RoverOffset node : nodes) {
+    public ArrayList<RoverOffset> getNonExcludedNodes(){
+        ArrayList<RoverOffset> nodes = new ArrayList<>();
+        for (RoverOffset node : coordinates) {
+            boolean exclude = false;
             for (RoverOffset nodeToExclude : nodesToExclude) {
                 if(nodeToExclude.isSameAs(node))
-                    nodes.remove(nodeToExclude);
+                    exclude = true;
             }
+            if(!exclude)
+                nodes.add(node);
         }
         return nodes;
     }
