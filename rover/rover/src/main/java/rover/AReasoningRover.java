@@ -40,18 +40,11 @@ public abstract class AReasoningRover extends APracticalRover {
     @Override
     void begin() {
         this.setUpPracticalAttributes();
-        MessagingService.sendNewMessage("hello");
         APercept p = perceptFactory.create(null,this);
         b = setUpBeliefBase(p);
         d = options(b,i);
         i = filter(b,d,i);
         pl = plan(b,i);
-
-        try {
-            Thread.sleep(10000L*((getID().hashCode()/Long.MAX_VALUE)));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         System.out.println("initial state");
         System.out.println(b);

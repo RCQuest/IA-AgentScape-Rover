@@ -20,6 +20,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private CoordinateMap scanMap;
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
+    private int numberOfOtherAgents;
+    private int id;
 
     public APracticalRover(int speed, int radius, int capacity) {
         super();
@@ -241,12 +243,29 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     protected void setUpPracticalAttributes() {
+        MessagingService.sendNewMessage("hello");
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // assuming all hellos...
+        numberOfOtherAgents=getNewMessages().size();
+        id=convertStringId();
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
-        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS);
+        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id,numberOfOtherAgents);
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
+    }
+
+    private int convertStringId() {
+        String id = getID();
+        id = id.split("rc566-")[0];
+        return Integer.parseInt(id);
     }
 
 

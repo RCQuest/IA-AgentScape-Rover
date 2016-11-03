@@ -85,4 +85,54 @@ public class CoordinateMapTest {
         assertTrue(offsets.size()==8);
     }
 
+    @Test
+    public void segmentation_3() throws Exception{
+        int total = uut.getNonExcludedNodes().size();
+        assertTrue(total==9);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,0,3);
+        int s1 = uut.getNonExcludedNodes().size();
+//        assertEquals(3,s1);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,1,3);
+        int s2 = uut.getNonExcludedNodes().size();
+//        assertEquals(3,s2);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,2,3);
+        int s3 = uut.getNonExcludedNodes().size();
+//        assertEquals(3,s3);
+        assertTrue(total==s3+s2+s1);
+    }
+
+    @Test
+    public void segmentation_2() throws Exception{
+        int total = uut.getNonExcludedNodes().size();
+        assertTrue(total==9);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,0,2);
+        int s1 = uut.getNonExcludedNodes().size();
+        assertEquals(5,s1);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,1,2);
+        int s2 = uut.getNonExcludedNodes().size();
+        assertEquals(4,s2);
+        assertTrue(total==s2+s1);
+    }
+
+    @Test
+    public void segmentation_1() throws Exception{
+        int total = uut.getNonExcludedNodes().size();
+        assertTrue(total==9);
+        uut = new CoordinateMap(worldWidth,worldHeight,4,0,1);
+        int s1 = uut.getNonExcludedNodes().size();
+        assertTrue(total==s1);
+    }
+
+    @Test
+    public void segmentation_10() throws Exception{
+        int total = uut.getNonExcludedNodes().size();
+        assertTrue(total==9);
+        int s = 0;
+        for (int i = 0; i < total; i++) {
+            uut = new CoordinateMap(worldWidth,worldHeight,4,i,total);
+            s += uut.getNonExcludedNodes().size();
+        }
+        assertTrue(total==s);
+    }
+
 }

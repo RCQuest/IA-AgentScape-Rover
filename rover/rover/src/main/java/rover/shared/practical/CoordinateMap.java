@@ -28,6 +28,32 @@ public class CoordinateMap {
         nodesToExclude = new ArrayList<>();
     }
 
+    public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius, int id, int numberOfOtherAgents) {
+        coordinates = new ArrayList<>();
+        double segmentMinAngle=2*Math.PI*((float)id/numberOfOtherAgents);
+        double segmentMaxAngle=2*Math.PI*((float)(id+1)/numberOfOtherAgents);
+        mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
+        int xSections = (int)Math.ceil(mapWidth/mapScanRadius);
+        int ySections = (int)Math.ceil(mapHeight/mapScanRadius);
+        for(int y = 0; y < ySections; y++){
+            for(int x = 0; x < xSections; x++) {
+                RoverOffset newOffset = new RoverOffset(
+                        x*mapScanRadius+((y%2)*mapScanRadius/2),
+                        y*mapScanRadius,
+                        mapWidth,
+                        mapHeight);
+                double polarAngle = newOffset.getPolarAngle();
+                if(newOffset.isZero()
+                        &&id==0)
+                    coordinates.add(newOffset);
+                else if(polarAngle>=segmentMinAngle
+                        &&polarAngle<segmentMaxAngle)
+                    coordinates.add(newOffset);
+            }
+        }
+        nodesToExclude = new ArrayList<>();
+    }
+
     public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
         RoverOffset closest;
         RoverOffset toRemove;

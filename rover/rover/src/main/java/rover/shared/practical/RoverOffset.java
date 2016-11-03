@@ -81,4 +81,16 @@ public class RoverOffset {
     public String toMessageString(String delimiter) {
         return xOffset+delimiter+yOffset;
     }
+
+    public double getPolarAngle() {
+        double angle = Math.atan(yOffset/xOffset);
+        if(1/angle<0){
+            return Math.PI-angle;
+        }
+        return angle;
+    }
+
+    public boolean isZero(){
+        return isSameAs(new RoverOffset(0,0,1,1));
+    }
 }
