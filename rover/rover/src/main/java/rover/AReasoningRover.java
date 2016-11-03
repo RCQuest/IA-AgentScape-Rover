@@ -46,11 +46,6 @@ public abstract class AReasoningRover extends APracticalRover {
         i = filter(b,d,i);
         pl = plan(b,i);
 
-        System.out.println("initial state");
-        System.out.println(b);
-        System.out.println(d);
-        System.out.println(i);
-
         execute(pl.popStep());
     }
 

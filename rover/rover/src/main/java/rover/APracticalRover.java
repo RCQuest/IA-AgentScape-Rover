@@ -92,7 +92,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
             RoverOffset searchOffset = scanMap.popOffsetToNextClosestNode(offsetFromBase);
             if (searchOffset != null) {
                 move(new RoverMovement(searchOffset.getxOffset(), searchOffset.getyOffset(), BASE_SPEED));
-                System.out.println("magnitude to next closest: "+searchOffset.magnitude());
             } else {
                 move(new RoverMovement(1, 1, 1));
             }
@@ -117,7 +116,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     public void moveBackToBase() throws Exception {
-        System.out.println("Moving back to base.");
         move(new RoverMovement(-offsetFromBase.getxOffset(),-offsetFromBase.getyOffset(),BASE_SPEED));
     }
 
@@ -144,24 +142,20 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
             switch(pr.getResultType()) {
                 case PollResult.MOVE:
                     getLog().info("Move complete.");
-                    System.out.println("Move complete.");
                     nextState = state.justMoved();
                     break;
                 case PollResult.SCAN:
                     getLog().info("Scan complete");
-                    System.out.println("Scan complete.");
                     nextState = state.justScanned(pr.getScanItems());
                     break;
 
                 case PollResult.COLLECT:
                     getLog().info("Collect complete.");
-                    System.out.println("Collect complete.");
                     nextState = state.justPickedUp();
                     break;
 
                 case PollResult.DEPOSIT:
                     getLog().info("Deposit complete.");
-                    System.out.println("Deposit complete.");
                     nextState = state.justDeposited();
                     break;
             }
@@ -182,7 +176,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     public void moveToFocusedResource() throws Exception {
-        System.out.println("Moving to focused resource.");
         move(new RoverMovement(
                 resourceLocationFocus.getxOffset()-offsetFromBase.getxOffset(),
                 resourceLocationFocus.getyOffset()-offsetFromBase.getyOffset(),
@@ -257,6 +250,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
         scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfAgents);
+        System.out.println("ROVER "+id+"assigned scanning: "+scanMap.getNonExcludedNodes());
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
