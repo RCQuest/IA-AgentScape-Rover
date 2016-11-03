@@ -237,7 +237,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     protected void setUpPracticalAttributes() {
-        MessagingService.sendNewMessage("hello");
+        id=convertStringId();
+        MessagingService.sendNewMessage("hello "+id);
 
         try {
             Thread.sleep(5000);
@@ -247,7 +248,6 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
         // assuming all hellos...
         totalNumberOfAgents =getNewMessages().size()+1;
-        id=convertStringId();
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
         scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfAgents);
