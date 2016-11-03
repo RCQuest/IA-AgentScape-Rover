@@ -20,7 +20,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private CoordinateMap scanMap;
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
-    private int numberOfOtherAgents;
+    private int totalNumberOfAgents;
     private int id;
 
     public APracticalRover(int speed, int radius, int capacity) {
@@ -252,11 +252,11 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         }
 
         // assuming all hellos...
-        numberOfOtherAgents=getNewMessages().size();
+        totalNumberOfAgents =getNewMessages().size()+1;
         id=convertStringId();
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
-        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id,numberOfOtherAgents);
+        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfAgents);
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
