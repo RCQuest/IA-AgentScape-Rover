@@ -9,6 +9,6 @@ public class SearchingMessage extends ASingleParameterMessage {
 
     @Override
     public void modifyPercept(WorldPercept percept) {
-//        percept.addNodeBeingSearchedByOtherRover(item);
+        percept.addNodeBeingSearchedByOtherRover(item);
     }
 }

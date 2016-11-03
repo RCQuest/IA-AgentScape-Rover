@@ -86,7 +86,7 @@ public class ResourceLocations extends ABelief {
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
             itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
             ArrayList<RoverOffset> situatedItems = situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
-            MessagingService.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
+            if(situatedItems.size()>0) MessagingService.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
         }
 
         ArrayList<RoverOffset> resourcesFoundByOtherRovers = p.getResourcesJustFoundByOtherRovers();
