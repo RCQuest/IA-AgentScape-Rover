@@ -264,7 +264,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
     private int convertStringId() {
         String id = getID();
-        id = id.split("rc566-")[0];
+        System.out.println(id);
+//        id = id.split("rc566-")[0];
         return Integer.parseInt(id);
     }
 
