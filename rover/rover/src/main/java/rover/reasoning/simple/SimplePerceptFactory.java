@@ -38,6 +38,7 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setWorldWidth(rover.getWorldWidth());
         percept.setMyPosition(rover.getPosition());
         percept.setPreviousActionWasSuccessful(rover.previousActionWasSuccessful());
+        percept.setPreviousAction(pr.getResultType());
 
         ArrayList<AMessage> newMessages = rover.getNewMessages();
         for (AMessage message:newMessages) {

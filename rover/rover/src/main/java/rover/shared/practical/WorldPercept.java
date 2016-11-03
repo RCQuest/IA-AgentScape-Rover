@@ -1,8 +1,10 @@
 package rover.shared.practical;
 
+import rover.PollResult;
 import rover.ScanItem;
 import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
+import rover.shared.actions.ScanAction;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;
@@ -21,6 +23,7 @@ public class WorldPercept extends APercept {
     private int roverCapacity;
     private int roverLoad;
     private CoordinateMap searchNodesRemaining;
+    private int previousAction;
     private double worldHeight;
     private double worldWidth;
     private boolean previousActionWasSuccessful;
@@ -56,7 +59,7 @@ public class WorldPercept extends APercept {
     @Override
     public ArrayList<RoverOffset> getItemsCollected() {
         ArrayList<RoverOffset> items = new ArrayList<>();
-        if(!previousActionWasSuccessful&&roverCapacity>roverLoad){
+        if(!previousActionWasSuccessful&&roverCapacity>roverLoad&&previousAction==PollResult.COLLECT){
             items.add(myPosition);
             MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
         }
@@ -136,5 +139,9 @@ public class WorldPercept extends APercept {
         if(this.nodesBeingSearchedByOtherRovers==null)
             this.nodesBeingSearchedByOtherRovers = new ArrayList<>();
         this.nodesBeingSearchedByOtherRovers.add(item);
+    }
+
+    public void setPreviousAction(int previousAction) {
+        this.previousAction = previousAction;
     }
 }
