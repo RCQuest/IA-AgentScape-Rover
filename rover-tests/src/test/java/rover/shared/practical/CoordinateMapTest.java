@@ -135,4 +135,11 @@ public class CoordinateMapTest {
         assertTrue(total==s);
     }
 
+    @Test
+    public void popNode() throws Exception{
+        assertEquals(9,uut.getNonExcludedNodes().size());
+        uut.popOffsetToNextClosestNode(new RoverOffset(0,0,1,1));
+        assertEquals(8,uut.getNonExcludedNodes().size());
+    }
+
 }

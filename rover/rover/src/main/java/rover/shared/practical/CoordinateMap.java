@@ -73,7 +73,7 @@ public class CoordinateMap {
         }
 
         MessagingService.sendNewMessage(MessageParser.generateSearchingMessage(toRemove));
-        nonExcludedCoordinates.remove(toRemove);
+        coordinates.remove(toRemove);
         return closest;
     }
 
