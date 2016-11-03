@@ -251,7 +251,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
         scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfAgents);
-        System.out.println("ROVER "+id+"assigned scanning: "+scanMap.getNonExcludedNodes());
+        System.out.println("ROVER "+id+" assigned scanning: "+scanMap.getNonExcludedNodes().size());
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
