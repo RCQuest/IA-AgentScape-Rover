@@ -13,8 +13,8 @@ import java.util.ArrayList;
 /**
  * Created by rachelcabot on 18/10/2016.
  */
-public class SimpleReasoningRover extends AReasoningRover {
-    public SimpleReasoningRover(){
+public class GeneralRover extends AReasoningRover {
+    public GeneralRover(){
         super(3,3,3);
         this.i.add(new SearchIntention());
         this.i.add(new ObtainIntention());
