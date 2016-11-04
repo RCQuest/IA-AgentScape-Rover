@@ -29,6 +29,6 @@ public class ScanMapFactory {
                 return scanId;
             scanId++;
         }
-        return -1;
+        return 0;
     }
 }
