@@ -15,4 +15,5 @@ public abstract class AMessage {
     protected abstract void extractMessageParameters(String[] originalMessageTokens);
 
     public abstract void modifyPercept(WorldPercept percept);
+
 }

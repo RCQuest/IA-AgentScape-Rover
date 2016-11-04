@@ -1,6 +1,7 @@
 package rover;
 
 import rover.messaging.AMessage;
+import rover.messaging.HelloMessage;
 import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
 import rover.shared.practical.*;
@@ -8,6 +9,8 @@ import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public abstract class APracticalRover extends Rover implements IPerceiver {
 
@@ -20,7 +23,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private CoordinateMap scanMap;
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
-    private int totalNumberOfAgents;
+    private int totalNumberOfScanningAgents;
     private int id;
 
     public APracticalRover(int speed, int radius, int capacity) {
@@ -237,21 +240,31 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
     protected void setUpPracticalAttributes() {
+        boolean isScanner=true;
+        if(SCAN_RADIUS<1)
+            isScanner=false;
+
         id=convertStringId();
-        MessagingService.sendNewMessage("hello "+id);
+
+        // only scanning rovers say hello
+        if(isScanner)
+            MessagingService.sendNewMessage("hello "+id);
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // assuming all hellos...
-        totalNumberOfAgents =getNewMessages().size()+1;
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
-        scanMap = new CoordinateMap(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfAgents);
-        System.out.println("ROVER "+id+" assigned scanning: "+scanMap.getNonExcludedNodes().size());
+
+        ArrayList<AMessage> helloMessages = getNewMessages();
+        totalNumberOfScanningAgents = helloMessages.size()+1;
+
+        ScanMapFactory smf = new ScanMapFactory();
+        scanMap = smf.create(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfScanningAgents,helloMessages);
+
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
