@@ -16,11 +16,11 @@ public class DespositAtBasePlan extends APlan {
 
     public DespositAtBasePlan(RoverCapacity capacity){
         actions.add(new MoveBackToBaseAction());
-        System.out.println("formulating deposit plan...");
+
         for (int i = 0; i < capacity.getCurrentLoad(); i++) {
             actions.add(new DepositAction());
         }
-        System.out.println(actions.toString());
+
     }
     @Override
     public boolean isSound(ArrayList<AIntention> i, ArrayList<ABelief> b) {

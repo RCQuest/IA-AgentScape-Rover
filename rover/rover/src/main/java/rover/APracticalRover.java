@@ -127,7 +127,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         // called when the world is stopped
         // the agent is killed after this
         getLog().info("END!");
-        System.out.println("I'm finished now!!");
+
     }
 
     @Override
@@ -217,7 +217,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     @Override
     public ArrayList<AMessage> getNewMessages() {
         retrieveMessages();
-        System.out.println("Raw messages: "+this.messages);
+
         ArrayList<String> newMessages = new ArrayList<>(this.messages);
         this.messages.clear();
         return MessageParser.parse(newMessages);
@@ -265,7 +265,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
         ScanMapFactory smf = new ScanMapFactory();
         scanMap = smf.create(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfScanningAgents,helloMessages);
-        System.out.println("Rover "+id+" assigned: "+scanMap.getNonExcludedNodes());
+
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
@@ -274,7 +274,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private int convertStringId() {
         String id = getID();
         id = id.split("-")[1];
-        System.out.println(id);
+
         return Integer.parseInt(id);
     }
 

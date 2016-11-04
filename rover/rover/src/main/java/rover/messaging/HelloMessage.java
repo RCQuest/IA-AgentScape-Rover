@@ -24,6 +24,6 @@ public class HelloMessage extends AMessage {
 
     @Override
     public void modifyPercept(WorldPercept percept) {
-        System.out.println("I see you!");
+
     }
 }

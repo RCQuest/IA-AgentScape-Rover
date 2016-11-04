@@ -93,7 +93,7 @@ public abstract class Rover extends Agent {
         } catch (CommunicationException ce) {
             getLog().debug("too many requests from: "+clientKey);
         } catch (Exception e1) {
-            System.out.println("stuck in connection a new rover");
+
             e1.printStackTrace();
         }
         if (pr != null) {

@@ -53,7 +53,7 @@ public class RetrievingResourceState extends ARoverState {
         try {
             rover.collect();
         } catch (Exception e) {
-            System.out.println("Collection went wrong.");
+
             rover.scan(1);
             return null;
         }

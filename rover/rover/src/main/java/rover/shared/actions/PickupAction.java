@@ -15,7 +15,7 @@ public class PickupAction extends ARoverAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("okay so that failed...");
+
         return false;
     }
 }

@@ -57,7 +57,7 @@ public class CoordinateMapTest {
         }};
         uut.addNodesToExclude(exclusion);
         RoverOffset offset = uut.popOffsetToNextClosestNode(realNode);
-        System.out.println(offset);
+
 
         assertTrue(offset.isSameAs(anotherRealNode));
     }
@@ -67,7 +67,7 @@ public class CoordinateMapTest {
         exclusion = new ArrayList<RoverOffset>();
         uut.addNodesToExclude(exclusion);
         RoverOffset offset = uut.popOffsetToNextClosestNode(realNode);
-        System.out.println(offset);
+
 
         assertTrue(offset.isSameAs(realNode));
     }
@@ -80,7 +80,7 @@ public class CoordinateMapTest {
         }};
         uut.addNodesToExclude(exclusion);
         ArrayList<RoverOffset> offsets = uut.getNonExcludedNodes();
-        System.out.println(offsets);
+
 
         assertTrue(offsets.size()==8);
     }
