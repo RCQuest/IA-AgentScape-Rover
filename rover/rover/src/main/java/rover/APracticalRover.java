@@ -127,6 +127,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         // called when the world is stopped
         // the agent is killed after this
         getLog().info("END!");
+        System.out.println("I'm finished now!!");
     }
 
     @Override
