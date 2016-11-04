@@ -17,18 +17,18 @@ import java.util.ArrayList;
 public class SimpleIntentionFilter extends rover.shared.reasoning.AIntentionFilter {
     @Override
     public ArrayList<AIntention> filter(ArrayList<ABelief> b, ArrayList<Desire> d, ArrayList<AIntention> i) {
-        if(!OntologyUtils.c(i, OntologyConcept.search)){
-            if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
-                i.add(new SearchIntention());
-        }
-        if(!OntologyUtils.c(i, OntologyConcept.obtain_resources)){
-            if(OntologyUtils.c(b, OntologyConcept.carrying_something))
-                i.add(new ObtainIntention());
-        }
-        if(!OntologyUtils.c(i, OntologyConcept.deposit_resources_at_base)){
-            if(OntologyUtils.c(b, OntologyConcept.at_capacity))
-                i.add(new RetrieveIntention());
-        }
+//        if(!OntologyUtils.c(i, OntologyConcept.search)){
+//            if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
+//                i.add(new SearchIntention());
+//        }
+//        if(!OntologyUtils.c(i, OntologyConcept.obtain_resources)){
+//            if(OntologyUtils.c(b, OntologyConcept.carrying_something))
+//                i.add(new ObtainIntention());
+//        }
+//        if(!OntologyUtils.c(i, OntologyConcept.deposit_resources_at_base)){
+//            if(OntologyUtils.c(b, OntologyConcept.at_capacity))
+//                i.add(new RetrieveIntention());
+//        }
         return i;
     }
 }
