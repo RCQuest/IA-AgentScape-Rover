@@ -44,6 +44,7 @@ public class SimplePlanFactory extends APlanFactory {
             return new DespositAtBasePlan(
                     (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.carrying_something));
 
+        System.out.println("I dunno what to do!!");
         return new DoNothingPlan();
 
     }

@@ -92,6 +92,7 @@ public class ResourceLocations extends ABelief {
         ArrayList<RoverOffset> resourcesFoundByOtherRovers = p.getResourcesJustFoundByOtherRovers();
 
         if(resourcesFoundByOtherRovers!=null){
+            System.out.println("OTHER ROVERS FOUND RESOURCES!! YAY!!");
             addSituatedItems(resourcesFoundByOtherRovers);
         }
 
