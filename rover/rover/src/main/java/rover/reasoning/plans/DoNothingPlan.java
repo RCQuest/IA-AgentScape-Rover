@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class DoNothingPlan extends APlan {
 
     public DoNothingPlan(){
+        super();
+        System.out.println("Planning on doing nothing...");
         actions.add(new MoveBackToBaseAction());
     }
 

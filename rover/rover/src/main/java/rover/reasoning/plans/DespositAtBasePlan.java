@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class DespositAtBasePlan extends APlan {
 
     public DespositAtBasePlan(RoverCapacity capacity){
+        super();
+        System.out.println("planning to deposit...");
         actions.add(new MoveBackToBaseAction());
 
         for (int i = 0; i < capacity.getCurrentLoad(); i++) {
