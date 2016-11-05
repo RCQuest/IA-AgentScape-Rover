@@ -58,7 +58,7 @@ public class CoordinateMap {
         sortNodes();
     }
 
-    private void sortNodes() {
+    void sortNodes() {
         Collections.sort(coordinates, new Comparator<RoverOffset>() {
             @Override
             public int compare(RoverOffset o1, RoverOffset o2) {

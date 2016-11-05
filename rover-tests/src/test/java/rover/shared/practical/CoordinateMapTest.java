@@ -142,4 +142,10 @@ public class CoordinateMapTest {
         assertEquals(8,uut.getNonExcludedNodes().size());
     }
 
+    @Test
+    public void sortNodes() throws Exception{
+        uut.sortNodes();
+        System.out.println(uut.getNonExcludedNodes());
+    }
+
 }
