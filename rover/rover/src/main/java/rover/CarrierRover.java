@@ -1,5 +1,6 @@
 package rover;
 
+import rover.reasoning.carrier.CarrrierPlanFactory;
 import rover.reasoning.simple.SimpleDesireFactory;
 import rover.reasoning.simple.SimpleIntentionFilter;
 import rover.reasoning.simple.SimplePerceptFactory;
@@ -15,7 +16,7 @@ public class CarrierRover extends AReasoningRover {
         super(1, 0, 8);
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());
-        planFactory = new SimplePlanFactory();
+        planFactory = new CarrrierPlanFactory();
         desireFactory = new SimpleDesireFactory();
         intentionFilter = new SimpleIntentionFilter();
         perceptFactory = new SimplePerceptFactory();
