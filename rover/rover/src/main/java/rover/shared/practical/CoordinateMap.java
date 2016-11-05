@@ -67,6 +67,7 @@ public class CoordinateMap {
         });
     }
 
+    @Deprecated
     public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
         RoverOffset closest;
         RoverOffset toRemove;
