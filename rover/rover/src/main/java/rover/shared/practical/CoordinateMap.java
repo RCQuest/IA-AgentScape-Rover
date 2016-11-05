@@ -57,7 +57,7 @@ public class CoordinateMap {
     public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
         RoverOffset closest;
         RoverOffset toRemove;
-        ArrayList<RoverOffset> nonExcludedCoordinates = getNonExcludedNodes();
+        ArrayList<RoverOffset> nonExcludedCoordinates = coordinates;
 
         if(nonExcludedCoordinates.isEmpty())
             return null;
@@ -72,7 +72,7 @@ public class CoordinateMap {
             }
         }
 
-        MessagingService.sendNewMessage(MessageParser.generateSearchingMessage(toRemove));
+//        MessagingService.sendNewMessage(MessageParser.generateSearchingMessage(toRemove));
         coordinates.remove(toRemove);
         return closest;
     }

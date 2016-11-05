@@ -32,6 +32,6 @@ public class SearchNodes extends ABelief {
 
     @Override
     public void coalesceWith(APercept p) {
-        nodes.addNodesToExclude(p.getNodesBeingSearchedByOtherRovers());
+//        nodes.addNodesToExclude(p.getNodesBeingSearchedByOtherRovers());
     }
 }
