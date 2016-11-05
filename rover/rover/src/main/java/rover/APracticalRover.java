@@ -1,7 +1,6 @@
 package rover;
 
 import rover.messaging.AMessage;
-import rover.messaging.HelloMessage;
 import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
 import rover.shared.practical.*;
@@ -9,8 +8,6 @@ import rover.state.ARoverState;
 import rover.state.general.SearchingState;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public abstract class APracticalRover extends Rover implements IPerceiver {
 

@@ -4,6 +4,8 @@ import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CoordinateMap {
     public ArrayList<RoverOffset> coordinates;
@@ -26,6 +28,7 @@ public class CoordinateMap {
             }
         }
         nodesToExclude = new ArrayList<>();
+        sortNodes();
     }
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius, int id, int numberOfOtherAgents) {
@@ -52,6 +55,16 @@ public class CoordinateMap {
             }
         }
         nodesToExclude = new ArrayList<>();
+        sortNodes();
+    }
+
+    private void sortNodes() {
+        Collections.sort(coordinates, new Comparator<RoverOffset>() {
+            @Override
+            public int compare(RoverOffset o1, RoverOffset o2) {
+                return (int) (o1.magnitude()-o2.magnitude());
+            }
+        });
     }
 
     public RoverOffset popOffsetToNextClosestNode(RoverOffset roverLocation){
@@ -75,6 +88,12 @@ public class CoordinateMap {
 //        MessagingService.sendNewMessage(MessageParser.generateSearchingMessage(toRemove));
         coordinates.remove(toRemove);
         return closest;
+    }
+
+    public RoverOffset popOffsetToNextClosestNodeToBase(RoverOffset roverLocation){
+        RoverOffset nextClosest = coordinates.get(0).getDifference(roverLocation);
+        coordinates.remove(0);
+        return nextClosest;
     }
 
     public int remaining() {
