@@ -27,7 +27,7 @@ public class ScoutPlanFactory extends APlanFactory {
             return new SearchPlan(
                     (SearchNodes)OntologyUtils.getBelief(b,OntologyConcept.there_are_unscanned_nodes));
 
-        System.out.println("I'm a scout and my job is done!");
+
         return new DoNothingPlan();
 
     }

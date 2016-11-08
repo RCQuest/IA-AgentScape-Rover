@@ -125,7 +125,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         // called when the world is stopped
         // the agent is killed after this
         getLog().info("END!");
-
+        System.out.println("END!");
     }
 
     @Override
@@ -264,7 +264,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         helloMessages.add(ownHello);
         totalNumberOfScanningAgents = helloMessages.size();
 
-        System.out.println("There are this many other rovers: "+totalNumberOfScanningAgents);
+
         if(isScanner) {
             ScanMapFactory smf = new ScanMapFactory();
             scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages);

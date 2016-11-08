@@ -35,7 +35,7 @@ public class CarrrierPlanFactory extends APlanFactory {
             return new DespositAtBasePlan(
                     (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.at_capacity));
 
-        System.out.println("I didn't know what to do with these beliefs and intentions: ");
+
         OntologyUtils.logAll(b);
         OntologyUtils.logAll(i);
         return new DoNothingPlan();

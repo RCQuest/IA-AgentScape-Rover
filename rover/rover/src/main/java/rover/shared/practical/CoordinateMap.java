@@ -56,7 +56,7 @@ public class CoordinateMap {
         }
         nodesToExclude = new ArrayList<>();
         sortNodes();
-        System.out.println("My nodes are: "+coordinates);
+
     }
 
     void sortNodes() {
