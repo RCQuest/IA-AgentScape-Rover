@@ -27,4 +27,9 @@ public class HelloMessage extends AMessage {
     public void modifyPercept(WorldPercept percept) {
 
     }
+
+    @Override
+    public String toString(){
+        return String.valueOf(id);
+    }
 }

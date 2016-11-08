@@ -30,6 +30,7 @@ public class ScanMapFactory {
             }
         });
         int scanId = 0;
+        System.out.println("Looking at list of hellos: "+helloMessages);
         for (AMessage helloMessage : helloMessages) {
             if(((HelloMessage)helloMessage).getId()==id)
                 return scanId;
