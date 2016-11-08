@@ -90,7 +90,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
     public boolean searchMovement() {
         try {
-            RoverOffset searchOffset = scanMap.popOffsetToNextClosestNodeToBase(offsetFromBase);
+            RoverOffset searchOffset = scanMap.popOffsetToNextClosestNode(offsetFromBase);
             if (searchOffset != null) {
                 move(new RoverMovement(searchOffset.getxOffset(), searchOffset.getyOffset(), BASE_SPEED));
             } else {
