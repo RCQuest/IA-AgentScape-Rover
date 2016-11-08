@@ -1,6 +1,7 @@
 package rover;
 
 import rover.messaging.AMessage;
+import rover.messaging.HelloMessage;
 import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
 import rover.shared.practical.*;
@@ -258,13 +259,16 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         RoverWorld.mapWidth = getWorldWidth();
 
         ArrayList<AMessage> helloMessages = getNewMessages();
-        totalNumberOfScanningAgents = helloMessages.size()+1;
+        HelloMessage ownHello = new HelloMessage();
+        ownHello.setId(id);
+        helloMessages.add(ownHello);
+        totalNumberOfScanningAgents = helloMessages.size();
 
         System.out.println("There are this many other rovers: "+totalNumberOfScanningAgents);
-
-        ScanMapFactory smf = new ScanMapFactory();
-        scanMap = smf.create(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfScanningAgents,helloMessages);
-
+        if(isScanner) {
+            ScanMapFactory smf = new ScanMapFactory();
+            scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages);
+        }
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();
