@@ -20,6 +20,9 @@ public class SearchNodes extends ABelief {
 
     @Override
     public OntologyConcept getOntologicalOrdinal() {
+        if(nodes==null){
+            return OntologyConcept.all_nodes_are_scanned;
+        }
         if(nodes.remaining()>0){
             return OntologyConcept.there_are_unscanned_nodes;
         }
