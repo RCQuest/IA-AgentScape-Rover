@@ -5,9 +5,11 @@ package rover.shared.practical;
  */
 public class Resource {
     private RoverOffset offset;
+    private int left;
 
     public Resource(RoverOffset offset) {
         this.offset = offset;
+        this.left = ScenarioOptimisations.getResourceVolume();
     }
 
     public RoverOffset getOffset() {

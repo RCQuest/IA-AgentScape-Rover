@@ -46,12 +46,10 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     @Override
     void begin() {
         //called when the world is started
-        getLog().info("BEGIN!");
         setUpPracticalAttributes();
 
         try {
             //move somewhere initially
-
             searchMovement();
         } catch (Exception e) {
             e.printStackTrace();
@@ -257,6 +255,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
         RoverWorld.mapHeight = getWorldHeight();
         RoverWorld.mapWidth = getWorldWidth();
+
+        ScenarioOptimisations.setScenario(getScenario());
 
         ArrayList<AMessage> helloMessages = getNewMessages();
         HelloMessage ownHello = new HelloMessage();
