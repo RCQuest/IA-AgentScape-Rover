@@ -12,7 +12,7 @@ import rover.shared.reasoning.intention.SearchIntention;
  */
 public class CartogRover extends AReasoningRover {
     public CartogRover() {
-        super(1, 8, 0);
+        super(4, 5, 0);
         this.i.add(new SearchIntention());
         planFactory = new ScoutPlanFactory();
         desireFactory = new SimpleDesireFactory();
