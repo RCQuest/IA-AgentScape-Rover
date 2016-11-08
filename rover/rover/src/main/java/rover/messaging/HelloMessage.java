@@ -20,6 +20,7 @@ public class HelloMessage extends AMessage {
     @Override
     protected void extractMessageParameters(String[] originalMessageTokens) {
         id = Integer.parseInt(originalMessageTokens[1]);
+        System.out.println("Parsing id... "+id);
     }
 
     @Override
