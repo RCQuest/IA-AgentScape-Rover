@@ -3,6 +3,7 @@ package rover.messaging;
 import org.junit.Before;
 import org.junit.Test;
 import rover.Rover;
+import rover.shared.practical.Resource;
 import rover.shared.practical.RoverOffset;
 import rover.shared.practical.WorldPercept;
 
@@ -15,16 +16,16 @@ import static org.junit.Assert.*;
  */
 public class MessageParserTest {
 
-    private final ArrayList<RoverOffset> noArgs = new ArrayList<RoverOffset>();
-    private final ArrayList<RoverOffset> oneArg = new ArrayList<RoverOffset>(){{
-        add(new RoverOffset(0,0,0,0));
+    private final ArrayList<Resource> noArgs = new ArrayList<Resource>();
+    private final ArrayList<Resource> oneArg = new ArrayList<Resource>(){{
+        add(new Resource(new RoverOffset(0,0,0,0)));
     }};
-    private final ArrayList<RoverOffset> multiArg = new ArrayList<RoverOffset>(){{
-        add(new RoverOffset(0,0,0,0));
-        add(new RoverOffset(1,0,0,0));
-        add(new RoverOffset(0,1,0,0));
+    private final ArrayList<Resource> multiArg = new ArrayList<Resource>(){{
+        add(new Resource(new RoverOffset(0,0,0,0)));
+        add(new Resource(new RoverOffset(1,0,0,0)));
+        add(new Resource(new RoverOffset(0,1,0,0)));
     }};
-    private final ArrayList<ArrayList<RoverOffset>> argLists = new ArrayList<ArrayList<RoverOffset>>(){{
+    private final ArrayList<ArrayList<Resource>> argLists = new ArrayList<ArrayList<Resource>>(){{
         add(noArgs);
         add(oneArg);
         add(multiArg);
@@ -32,7 +33,7 @@ public class MessageParserTest {
 
     @Test
     public void found() throws Exception {
-        for (ArrayList<RoverOffset> argList : argLists) {
+        for (ArrayList<Resource> argList : argLists) {
             int size = argList.size();
             ArrayList<String> messages = new ArrayList<String>();
             messages.add(MessageParser.generateFoundMessage(argList));

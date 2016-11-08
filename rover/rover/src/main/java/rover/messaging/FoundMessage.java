@@ -1,5 +1,6 @@
 package rover.messaging;
 
+import rover.shared.practical.Resource;
 import rover.shared.practical.RoverOffset;
 import rover.shared.practical.WorldPercept;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  */
 public class FoundMessage extends AMessage {
 
-    private ArrayList<RoverOffset> resources;
+    private ArrayList<Resource> resources;
 
     public FoundMessage(){
         resources = new ArrayList<>();
@@ -21,7 +22,7 @@ public class FoundMessage extends AMessage {
         for (int i = 1; i < originalMessageTokens.length; i+=2) {
             double x = Double.parseDouble(originalMessageTokens[i]);
             double y = Double.parseDouble(originalMessageTokens[i+1]);
-            resources.add(new RoverOffset(x,y));
+            resources.add(new Resource(new RoverOffset(x,y)));
         }
     }
 

@@ -1,5 +1,6 @@
 package rover.messaging;
 
+import rover.shared.practical.Resource;
 import rover.shared.practical.RoverOffset;
 
 import java.util.ArrayList;
@@ -51,8 +52,12 @@ public class MessageParser {
         return message;
     }
 
-    public static String generateFoundMessage(ArrayList<RoverOffset> foundItems){
-        return generateMessage("found",foundItems);
+    public static String generateFoundMessage(ArrayList<Resource> foundItems){
+        String message = "found";
+        for (Resource item : foundItems) {
+            message+=DELIMITER+item.toMessageString(DELIMITER);
+        }
+        return message;
     }
 
     public static String generateCollectedMessage(RoverOffset myPosition) {

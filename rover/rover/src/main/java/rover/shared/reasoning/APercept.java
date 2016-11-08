@@ -1,6 +1,7 @@
 package rover.shared.reasoning;
 
 import rover.ScanItem;
+import rover.shared.practical.Resource;
 import rover.shared.practical.RoverOffset;
 
 import java.util.ArrayList;
@@ -20,11 +21,11 @@ public abstract class APercept {
 
     public abstract int getCurrentLoad();
 
-    public abstract ArrayList<RoverOffset> getItemsCollected();
+    public abstract ArrayList<Resource> getItemsCollected();
 
     public abstract ArrayList<ABelief> initialiseBeliefs();
 
-    public abstract ArrayList<RoverOffset> getResourcesJustFoundByOtherRovers();
+    public abstract ArrayList<Resource> getResourcesJustFoundByOtherRovers();
 
     public abstract ArrayList<RoverOffset> getNodesBeingSearchedByOtherRovers();
 }

@@ -27,8 +27,8 @@ public class WorldPercept extends APercept {
     private double worldHeight;
     private double worldWidth;
     private boolean previousActionWasSuccessful;
-    private ArrayList<RoverOffset> resourcesJustFoundByOtherRovers;
-    private ArrayList<RoverOffset> resourcesJustCollectedByOtherRovers;
+    private ArrayList<Resource> resourcesJustFoundByOtherRovers;
+    private ArrayList<Resource> resourcesJustCollectedByOtherRovers;
     private ArrayList<RoverOffset> nodesBeingSearchedByOtherRovers;
 
     @Override
@@ -57,10 +57,10 @@ public class WorldPercept extends APercept {
     }
 
     @Override
-    public ArrayList<RoverOffset> getItemsCollected() {
-        ArrayList<RoverOffset> items = new ArrayList<>();
+    public ArrayList<Resource> getItemsCollected() {
+        ArrayList<Resource> items = new ArrayList<>();
         if(!previousActionWasSuccessful&&roverCapacity>roverLoad&&previousAction==PollResult.COLLECT){
-            items.add(myPosition);
+            items.add(new Resource(myPosition));
             MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
         }
         if(resourcesJustCollectedByOtherRovers!=null){
@@ -114,7 +114,7 @@ public class WorldPercept extends APercept {
         this.previousActionWasSuccessful = previousActionWasSuccessful;
     }
 
-    public ArrayList<RoverOffset> getResourcesJustFoundByOtherRovers() {
+    public ArrayList<Resource> getResourcesJustFoundByOtherRovers() {
         return resourcesJustFoundByOtherRovers;
     }
 
@@ -123,13 +123,13 @@ public class WorldPercept extends APercept {
         return nodesBeingSearchedByOtherRovers;
     }
 
-    public void addResourcesJustFoundByOtherRovers(ArrayList<RoverOffset> resourcesJustFoundByOtherRovers) {
+    public void addResourcesJustFoundByOtherRovers(ArrayList<Resource> resourcesJustFoundByOtherRovers) {
         if(this.resourcesJustFoundByOtherRovers==null)
             this.resourcesJustFoundByOtherRovers = new ArrayList<>();
         this.resourcesJustFoundByOtherRovers.addAll(resourcesJustFoundByOtherRovers);
     }
 
-    public void addItemsCollected(RoverOffset collected) {
+    public void addItemsCollected(Resource collected) {
         if(this.resourcesJustCollectedByOtherRovers==null)
             this.resourcesJustCollectedByOtherRovers = new ArrayList<>();
         this.resourcesJustCollectedByOtherRovers.add(collected);

@@ -1,3 +1,4 @@
+import rover.PollResult;
 import rover.ScanItem;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.RoverOffset;
@@ -96,6 +97,7 @@ public class ResourceLocationsTest {
         p.setWorldWidth(TestWorld.width);
         p.setMyPosition(position);
         p.setPreviousActionWasSuccessful(previousActionSuccess);
+        p.setPreviousAction(PollResult.COLLECT);
         uut.coalesceWith(p);
     }
 

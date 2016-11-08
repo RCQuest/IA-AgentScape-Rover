@@ -1,5 +1,6 @@
 package rover.messaging;
 
+import rover.shared.practical.Resource;
 import rover.shared.practical.RoverOffset;
 import rover.shared.practical.WorldPercept;
 
@@ -10,6 +11,6 @@ public class CollectedMessage extends ASingleParameterMessage {
 
     @Override
     public void modifyPercept(WorldPercept percept) {
-        percept.addItemsCollected(item);
+        percept.addItemsCollected(new Resource(item));
     }
 }
