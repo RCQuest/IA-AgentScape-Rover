@@ -260,6 +260,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         ArrayList<AMessage> helloMessages = getNewMessages();
         totalNumberOfScanningAgents = helloMessages.size()+1;
 
+        System.out.println("There are this many other rovers: "+totalNumberOfScanningAgents);
+
         ScanMapFactory smf = new ScanMapFactory();
         scanMap = smf.create(getWorldWidth(),getWorldHeight(),SCAN_RADIUS,id, totalNumberOfScanningAgents,helloMessages);
 

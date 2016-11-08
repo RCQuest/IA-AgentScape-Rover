@@ -13,6 +13,9 @@ import java.util.Comparator;
 public class ScanMapFactory {
     public CoordinateMap create(int worldWidth, int worldHeight, int scanRadius, int roverId, int totalNumberOfScanningAgents, ArrayList<AMessage> helloMessages) {
         int scanId = getScanMapIndex(roverId,helloMessages);
+
+        System.out.println("My scan id is: "+scanId);
+
         return new CoordinateMap(worldWidth,worldHeight,scanRadius,scanId,totalNumberOfScanningAgents);
     }
 
