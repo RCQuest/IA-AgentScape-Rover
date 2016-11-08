@@ -1,6 +1,7 @@
 package rover.reasoning.plans;
 
 import rover.shared.actions.MoveBackToBaseAction;
+import rover.shared.actions.MoveNowhereAction;
 import rover.shared.actions.MoveTowardsAction;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.AIntention;
@@ -16,7 +17,7 @@ public class DoNothingPlan extends APlan {
     public DoNothingPlan(){
         super();
 
-        actions.add(new MoveBackToBaseAction());
+        actions.add(new MoveNowhereAction());
     }
 
     @Override

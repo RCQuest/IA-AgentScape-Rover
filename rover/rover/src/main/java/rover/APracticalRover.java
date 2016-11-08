@@ -282,4 +282,13 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     }
 
 
+    public boolean moveNowhere() {
+        try {
+            move(new RoverMovement(0,0,getSpeed()));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
