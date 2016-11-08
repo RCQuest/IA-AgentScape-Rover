@@ -4,7 +4,6 @@ import rover.PollResult;
 import rover.ScanItem;
 import rover.messaging.MessageParser;
 import rover.messaging.MessagingService;
-import rover.shared.actions.ScanAction;
 import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;
@@ -57,15 +56,32 @@ public class WorldPercept extends APercept {
     }
 
     @Override
-    public ArrayList<Resource> getItemsCollected() {
+    public ArrayList<Resource> getItemsWhollyCollected() {
         ArrayList<Resource> items = new ArrayList<>();
-        if(!previousActionWasSuccessful&&roverCapacity>roverLoad&&previousAction==PollResult.COLLECT){
-            items.add(new Resource(myPosition));
-            MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
+        if(PollResult.COLLECT==previousAction) {
+            if (!previousActionWasSuccessful && roverCapacity > roverLoad) {
+                items.add(new Resource(myPosition));
+                MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
+            }
         }
         if(resourcesJustCollectedByOtherRovers!=null){
             items.addAll(resourcesJustCollectedByOtherRovers);
         }
+        return items;
+    }
+
+    @Override
+    public ArrayList<RoverOffset> getItemsTouched(){
+        ArrayList<RoverOffset> items = new ArrayList<>();
+        if(PollResult.COLLECT==previousAction) {
+            if (previousActionWasSuccessful) {
+                items.add(myPosition);
+//                MessagingService.sendNewMessage(MessageParser.generateTouchedMessage(myPosition));
+            }
+        }
+//        if(resourcesJustTouchedByOtherRovers!=null){
+//            items.addAll(resourcesJustTouchedByOtherRovers);
+//        }
         return items;
     }
 

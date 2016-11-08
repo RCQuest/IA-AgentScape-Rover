@@ -21,11 +21,13 @@ public abstract class APercept {
 
     public abstract int getCurrentLoad();
 
-    public abstract ArrayList<Resource> getItemsCollected();
+    public abstract ArrayList<Resource> getItemsWhollyCollected();
 
     public abstract ArrayList<ABelief> initialiseBeliefs();
 
     public abstract ArrayList<Resource> getResourcesJustFoundByOtherRovers();
 
     public abstract ArrayList<RoverOffset> getNodesBeingSearchedByOtherRovers();
+
+    public abstract ArrayList<RoverOffset> getItemsTouched();
 }

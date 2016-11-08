@@ -23,4 +23,12 @@ public class Resource {
     public String toMessageString(String delimiter) {
         return offset.toMessageString(delimiter);
     }
+
+    public void decrementLeft() {
+        left--;
+    }
+
+    public boolean isDepleted(){
+        return left<1;
+    }
 }

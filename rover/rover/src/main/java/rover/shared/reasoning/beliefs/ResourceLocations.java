@@ -101,7 +101,22 @@ public class ResourceLocations extends ABelief {
             addSituatedItems(resourcesFoundByOtherRovers);
         }
 
-        removeFromLocations(p.getItemsCollected());
+        removeFromLocations(p.getItemsWhollyCollected());
+        decrementResourceLevels(p.getItemsTouched());
+    }
+
+    private void decrementResourceLevels(ArrayList<RoverOffset> itemsTouched) {
+        ArrayList<Resource> toRemove = new ArrayList<>();
+        for (RoverOffset roverOffset : itemsTouched) {
+            for (Resource resource : offsetsFromBase) {
+                if(roverOffset.isSameAs(resource.getOffset())){
+                    resource.decrementLeft();
+                    if(resource.isDepleted())
+                        toRemove.add(resource);
+                }
+            }
+        }
+        removeFromLocations(toRemove);
     }
 
     private void addSituatedItems(ArrayList<Resource> newResources) {
