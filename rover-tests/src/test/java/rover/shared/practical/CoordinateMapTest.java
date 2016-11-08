@@ -125,14 +125,16 @@ public class CoordinateMapTest {
 
     @Test
     public void segmentation_10() throws Exception{
+        uut = new CoordinateMap(200,200,5);
         int total = uut.getNonExcludedNodes().size();
-        assertTrue(total==9);
         int s = 0;
-        for (int i = 0; i < total; i++) {
-            uut = new CoordinateMap(worldWidth,worldHeight,4,i,total);
+        int agents = 8;
+        for (int i = 0; i < agents; i++) {
+            uut = new CoordinateMap(200,200,5,i,agents);
+            System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
             s += uut.getNonExcludedNodes().size();
         }
-        assertTrue(total==s);
+        assertEquals(total,s);
     }
 
     @Test

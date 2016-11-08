@@ -13,6 +13,12 @@ public class CoordinateMap {
     private ArrayList<RoverOffset> nodesToExclude;
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius){
+        generateCompleteSet(mapWidth, mapHeight, mapScanRadius);
+        nodesToExclude = new ArrayList<>();
+        sortNodes();
+    }
+
+    private void generateCompleteSet(double mapWidth, double mapHeight, double mapScanRadius) {
         coordinates = new ArrayList<>();
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
         int xSections = (int)Math.ceil(mapWidth/mapScanRadius);
@@ -27,36 +33,28 @@ public class CoordinateMap {
                 coordinates.add(newOffset);
             }
         }
-        nodesToExclude = new ArrayList<>();
-        sortNodes();
     }
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius, int id, int numberOfOtherAgents) {
-        coordinates = new ArrayList<>();
-        double segmentMinAngle=2*Math.PI*((float)id/numberOfOtherAgents);
-        double segmentMaxAngle=2*Math.PI*((float)(id+1)/numberOfOtherAgents);
-        mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
-        int xSections = (int)Math.ceil(mapWidth/mapScanRadius);
-        int ySections = (int)Math.ceil(mapHeight/mapScanRadius);
-        for(int y = 0; y < ySections; y++){
-            for(int x = 0; x < xSections; x++) {
-                RoverOffset newOffset = new RoverOffset(
-                        x*mapScanRadius+((y%2)*mapScanRadius/2),
-                        y*mapScanRadius,
-                        mapWidth,
-                        mapHeight);
-                double polarAngle = newOffset.getPolarAngle();
-                if(newOffset.isZero()
-                        &&id==0)
-                    coordinates.add(newOffset);
-                else if(polarAngle>=segmentMinAngle
-                        &&polarAngle<segmentMaxAngle)
-                    coordinates.add(newOffset);
-            }
-        }
+        generateCompleteSet(mapWidth,mapHeight,mapScanRadius);
         nodesToExclude = new ArrayList<>();
         sortNodes();
+        takeSlice(id,numberOfOtherAgents);
+    }
 
+    private void takeSlice(int id, int numberOfOtherAgents) {
+        int remainder = coordinates.size()%numberOfOtherAgents;
+        int perRover;
+        if(id==numberOfOtherAgents-1&&remainder!=0){
+            perRover = remainder;
+        } else {
+            perRover = (coordinates.size()-remainder)/numberOfOtherAgents;
+        }
+        ArrayList<RoverOffset> newCoords = new ArrayList<>();
+        for(int i=id*perRover;i<((id+1)*perRover);i++){
+            newCoords.add(coordinates.get(0));
+        }
+        coordinates = newCoords;
     }
 
     void sortNodes() {
