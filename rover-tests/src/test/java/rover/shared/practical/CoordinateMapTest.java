@@ -38,7 +38,7 @@ public class CoordinateMapTest {
 
         assertTrue(offset.isSameAs(realNode));
     }
-    
+
     @Test
     public void getNonExcludedNodes() throws Exception{
         exclusion = new ArrayList<RoverOffset>(){{
@@ -120,7 +120,7 @@ public class CoordinateMapTest {
     }
 
     @Test
-    public void segmentation_5_500() throws Exception{
+    public void segmentation_3_500() throws Exception{
         uut = new CoordinateMap(500,500,5);
         int total = uut.getNonExcludedNodes().size();
         int s = 0;

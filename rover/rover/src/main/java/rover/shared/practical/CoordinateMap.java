@@ -44,14 +44,16 @@ public class CoordinateMap {
 
     private void takeSlice(int id, int numberOfOtherAgents) {
         int remainder = coordinates.size()%numberOfOtherAgents;
-        int perRover;
-        perRover = ((coordinates.size()-remainder)/numberOfOtherAgents);
+        int myLimit;
+        int perRover = ((coordinates.size()-remainder)/numberOfOtherAgents);
         if(id==numberOfOtherAgents-1){
-            perRover += remainder;
+            myLimit = ((id+1)*perRover) + remainder;
+        } else {
+            myLimit = ((id+1)*perRover);
         }
         ArrayList<RoverOffset> newCoords = new ArrayList<>();
-        for(int i=id*perRover;i<((id+1)*perRover);i++){
-            newCoords.add(coordinates.get(0));
+        for(int i=id*perRover;i<myLimit;i++){
+            newCoords.add(coordinates.get(i));
         }
         coordinates = newCoords;
     }
