@@ -17,11 +17,12 @@ public class RoverEnergy extends ABelief {
     private double energyPerDeposit;
     private double energyPotentialOverhead;
 
-    public RoverEnergy(double energyRemaining, int movementSpeed) {
+    public RoverEnergy(double energyRemaining, int movementSpeed, RoverOffset roverPosition) {
         this.energyRemaining = energyRemaining;
         this.energyPerMovementUnit = ScenarioOptimisations.getEnergyPerMovementUnit(movementSpeed);
         this.energyPerDeposit = ScenarioOptimisations.getEnergyPerDeposit();
         this.energyPotentialOverhead = ScenarioOptimisations.getEnergyPotentialOverhead();
+        this.roverPosition = roverPosition;
     }
 
     @Override

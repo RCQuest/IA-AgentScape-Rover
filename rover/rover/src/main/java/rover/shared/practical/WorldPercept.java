@@ -103,7 +103,7 @@ public class WorldPercept extends APercept {
 
         derivedBeliefs.add(new SearchNodes(searchNodesRemaining));
 
-        derivedBeliefs.add(new RoverEnergy(energyRemaining,movementSpeed));
+        derivedBeliefs.add(new RoverEnergy(energyRemaining,movementSpeed,myPosition));
 
         return derivedBeliefs;
     }
