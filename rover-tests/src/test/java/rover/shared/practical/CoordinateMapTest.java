@@ -29,16 +29,6 @@ public class CoordinateMapTest {
     }
 
     @Test
-    public void addNodesToExclude_realNode() throws Exception {
-        exclusion = new ArrayList<RoverOffset>(){{
-            add(realNode);
-        }};
-        uut.addNodesToExclude(exclusion);
-        RoverOffset offset = uut.popOffsetToNextClosestNode(realNode);
-        assertTrue(offset.isSameAs(anotherRealNode));
-    }
-
-    @Test
     public void addNodesToExclude_dummyNode() throws Exception {
         exclusion = new ArrayList<RoverOffset>(){{
             add(dummyNode);
@@ -48,30 +38,7 @@ public class CoordinateMapTest {
 
         assertTrue(offset.isSameAs(realNode));
     }
-
-    @Test
-    public void addNodesToExclude_manyNode() throws Exception {
-        exclusion = new ArrayList<RoverOffset>(){{
-            add(dummyNode);
-            add(realNode);
-        }};
-        uut.addNodesToExclude(exclusion);
-        RoverOffset offset = uut.popOffsetToNextClosestNode(realNode);
-
-
-        assertTrue(offset.isSameAs(anotherRealNode));
-    }
-
-    @Test
-    public void addNodesToExclude_noNodes() throws Exception {
-        exclusion = new ArrayList<RoverOffset>();
-        uut.addNodesToExclude(exclusion);
-        RoverOffset offset = uut.popOffsetToNextClosestNode(realNode);
-
-
-        assertTrue(offset.isSameAs(realNode));
-    }
-
+    
     @Test
     public void getNonExcludedNodes() throws Exception{
         exclusion = new ArrayList<RoverOffset>(){{
@@ -102,19 +69,6 @@ public class CoordinateMapTest {
     }
 
     @Test
-    public void segmentation_2() throws Exception{
-        int total = uut.getNonExcludedNodes().size();
-        assertTrue(total==9);
-        uut = new CoordinateMap(worldWidth,worldHeight,4,0,2);
-        int s1 = uut.getNonExcludedNodes().size();
-        assertEquals(5,s1);
-        uut = new CoordinateMap(worldWidth,worldHeight,4,1,2);
-        int s2 = uut.getNonExcludedNodes().size();
-        assertEquals(4,s2);
-        assertTrue(total==s2+s1);
-    }
-
-    @Test
     public void segmentation_1() throws Exception{
         int total = uut.getNonExcludedNodes().size();
         assertTrue(total==9);
@@ -124,13 +78,55 @@ public class CoordinateMapTest {
     }
 
     @Test
-    public void segmentation_10() throws Exception{
+    public void segmentation_8() throws Exception{
         uut = new CoordinateMap(200,200,5);
         int total = uut.getNonExcludedNodes().size();
         int s = 0;
         int agents = 8;
         for (int i = 0; i < agents; i++) {
             uut = new CoordinateMap(200,200,5,i,agents);
+            System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
+            s += uut.getNonExcludedNodes().size();
+        }
+        assertEquals(total,s);
+    }
+
+    @Test
+    public void segmentation_2_100() throws Exception{
+        uut = new CoordinateMap(100,100,5);
+        int total = uut.getNonExcludedNodes().size();
+        int s = 0;
+        int agents = 2;
+        for (int i = 0; i < agents; i++) {
+            uut = new CoordinateMap(100,100,5,i,agents);
+            System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
+            s += uut.getNonExcludedNodes().size();
+        }
+        assertEquals(total,s);
+    }
+
+    @Test
+    public void segmentation_2_80() throws Exception{
+        uut = new CoordinateMap(80,80,5);
+        int total = uut.getNonExcludedNodes().size();
+        int s = 0;
+        int agents = 2;
+        for (int i = 0; i < agents; i++) {
+            uut = new CoordinateMap(80,80,5,i,agents);
+            System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
+            s += uut.getNonExcludedNodes().size();
+        }
+        assertEquals(total,s);
+    }
+
+    @Test
+    public void segmentation_5_500() throws Exception{
+        uut = new CoordinateMap(500,500,5);
+        int total = uut.getNonExcludedNodes().size();
+        int s = 0;
+        int agents = 3;
+        for (int i = 0; i < agents; i++) {
+            uut = new CoordinateMap(500,500,5,i,agents);
             System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
             s += uut.getNonExcludedNodes().size();
         }
