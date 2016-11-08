@@ -30,4 +30,6 @@ public abstract class APercept {
     public abstract ArrayList<RoverOffset> getNodesBeingSearchedByOtherRovers();
 
     public abstract ArrayList<RoverOffset> getItemsTouched();
+
+    public abstract double getEnergyRemaining();
 }

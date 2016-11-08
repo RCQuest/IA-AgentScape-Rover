@@ -25,4 +25,8 @@ public interface IPerceiver {
     boolean previousActionWasSuccessful();
 
     ArrayList<AMessage> getNewMessages();
+
+    int getMovementSpeed();
+
+    double getEnergyRemaining();
 }

@@ -27,6 +27,10 @@ public class CarrrierPlanFactory extends APlanFactory {
             return new DespositAtBasePlan(
                     (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.at_capacity));
 
+        if(OntologyUtils.c(b, OntologyConcept.i_have_just_enough_energy_left_to_deposit))
+            return new DespositAtBasePlan(
+                    (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.at_capacity));
+
         if(OntologyUtils.c(b, OntologyConcept.there_are_found_unobtained_resources))
             return new RetrieveResourcePlan(
                     (ResourceLocations)OntologyUtils.getBelief(b,OntologyConcept.there_are_found_unobtained_resources));
@@ -35,9 +39,6 @@ public class CarrrierPlanFactory extends APlanFactory {
             return new DespositAtBasePlan(
                     (RoverCapacity)OntologyUtils.getBelief(b,OntologyConcept.at_capacity));
 
-
-        OntologyUtils.logAll(b);
-        OntologyUtils.logAll(i);
         return new DoNothingPlan();
 
     }

@@ -8,6 +8,7 @@ import rover.shared.reasoning.ABelief;
 import rover.shared.reasoning.APercept;
 import rover.shared.reasoning.beliefs.ResourceLocations;
 import rover.shared.reasoning.beliefs.RoverCapacity;
+import rover.shared.reasoning.beliefs.RoverEnergy;
 import rover.shared.reasoning.beliefs.SearchNodes;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class WorldPercept extends APercept {
     private ArrayList<Resource> resourcesJustFoundByOtherRovers;
     private ArrayList<Resource> resourcesJustCollectedByOtherRovers;
     private ArrayList<RoverOffset> nodesBeingSearchedByOtherRovers;
+    private double energyRemaining;
+    private int movementSpeed;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -86,6 +89,11 @@ public class WorldPercept extends APercept {
     }
 
     @Override
+    public double getEnergyRemaining() {
+        return energyRemaining;
+    }
+
+    @Override
     public ArrayList<ABelief> initialiseBeliefs() {
         ArrayList<ABelief> derivedBeliefs = new ArrayList<>();
 
@@ -95,11 +103,21 @@ public class WorldPercept extends APercept {
 
         derivedBeliefs.add(new SearchNodes(searchNodesRemaining));
 
+        derivedBeliefs.add(new RoverEnergy(energyRemaining,movementSpeed));
+
         return derivedBeliefs;
     }
 
     public void setRoverCapacity(int roverCapacity) {
         this.roverCapacity = roverCapacity;
+    }
+
+    public void setEnergyRemaining(double energyRemaining){
+        this.energyRemaining = energyRemaining;
+    }
+
+    public void setMovementSpeed(int movementSpeed){
+        this.movementSpeed = movementSpeed;
     }
 
     public void setItemsICanSee(ScanItem[] itemsICanSee) {

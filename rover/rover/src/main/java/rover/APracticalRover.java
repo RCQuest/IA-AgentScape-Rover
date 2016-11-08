@@ -291,4 +291,14 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
             return false;
         }
     }
+
+    @Override
+    public int getMovementSpeed(){
+        return BASE_SPEED;
+    }
+
+    @Override
+    public double getEnergyRemaining(){
+        return getEnergy();
+    }
 }
