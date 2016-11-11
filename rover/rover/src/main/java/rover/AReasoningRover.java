@@ -62,7 +62,6 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void poll(PollResult pr){
-        System.out.println(scenarioHasFinished);
         if(scenarioHasFinished())
             return;
         do {
@@ -85,10 +84,11 @@ public abstract class AReasoningRover extends APracticalRover {
             }
 
             execute(pl.popStep());
-//            if(!lastActionWasSuccessful){
-//                pr.setResultType(PollResult.FAILED);
-//                pr.setResultStatus(PollResult.FAILED);
-//            }
+            if(!lastActionWasSuccessful){
+                pr.setResultType(PollResult.FAILED);
+                pr.setResultStatus(PollResult.FAILED);
+            }
+            System.out.println("still in the loop!"+new Random().nextDouble());
         } while(!lastActionWasSuccessful&&!scenarioHasFinished());
     }
 
