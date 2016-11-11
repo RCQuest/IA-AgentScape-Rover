@@ -75,7 +75,7 @@ public abstract class AReasoningRover extends APracticalRover {
                 pr.setResultType(PollResult.FAILED);
                 pr.setResultStatus(PollResult.FAILED);
             }
-        } while(!lastActionWasSuccessful);
+        } while(!lastActionWasSuccessful&&!agentRunning());
     }
 
     boolean sound(APlan pl, ArrayList<AIntention> i, ArrayList<ABelief> b) {
