@@ -22,6 +22,7 @@ public abstract class AReasoningRover extends APracticalRover {
     private ArrayList<Desire> d;
     protected ArrayList<AIntention> i;
     private APlan pl;
+    private boolean scenarioHasFinished;
 
 
     public AReasoningRover(int s, int r, int c){
@@ -45,13 +46,23 @@ public abstract class AReasoningRover extends APracticalRover {
         d = options(b,i);
         i = filter(b,d,i);
         pl = plan(b,i);
+        scenarioHasFinished=false;
 
         execute(pl.popStep());
     }
 
+    private boolean scenarioHasFinished(){
+        return scenarioHasFinished;
+    }
+
+    @Override
+    void end(){
+        scenarioHasFinished=true;
+    }
+
     @Override
     void poll(PollResult pr){
-        if(!agentRunning())
+        if(scenarioHasFinished())
             return;
         do {
             if (!(empty(pl) || succeeded(i, b) || impossible(i, b))) {
@@ -77,8 +88,7 @@ public abstract class AReasoningRover extends APracticalRover {
                 pr.setResultType(PollResult.FAILED);
                 pr.setResultStatus(PollResult.FAILED);
             }
-        } while(!lastActionWasSuccessful);
-        System.out.println("last action was successful?"+lastActionWasSuccessful);
+        } while(!lastActionWasSuccessful&&!scenarioHasFinished());
     }
 
     boolean sound(APlan pl, ArrayList<AIntention> i, ArrayList<ABelief> b) {
