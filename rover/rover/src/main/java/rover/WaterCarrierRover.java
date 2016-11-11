@@ -8,11 +8,11 @@ import rover.shared.reasoning.intention.ObtainIntention;
 import rover.shared.reasoning.intention.RetrieveIntention;
 
 /**
- * Created by rachelcabot on 04/11/2016.
+ * Created by rachelcabot on 11/11/2016.
  */
-public class CourierRover extends AReasoningRover {
-    public CourierRover() {
-        super(8, 0, 1, 1);
+public class WaterCarrierRover extends AReasoningRover {
+    public WaterCarrierRover() {
+        super(4, 0, 5, 2);
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());
         planFactory = new CollectorPlanFactory();

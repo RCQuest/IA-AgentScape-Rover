@@ -19,7 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by rachelcabot on 05/11/2016.
  */
-public class CarrrierPlanFactory extends APlanFactory {
+public class CollectorPlanFactory extends APlanFactory {
     @Override
     public APlan createPlan(ArrayList<ABelief> b, ArrayList<AIntention> i) {
 

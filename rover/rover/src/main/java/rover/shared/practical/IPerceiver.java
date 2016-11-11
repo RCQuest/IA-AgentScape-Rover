@@ -29,4 +29,6 @@ public interface IPerceiver {
     int getMovementSpeed();
 
     double getEnergyRemaining();
+
+    int getTypeOfResourceCarrier();
 }

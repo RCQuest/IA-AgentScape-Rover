@@ -1,6 +1,5 @@
 package rover;
 
-import org.iids.aos.exception.AgentScapeException;
 import rover.messaging.MessagingService;
 import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
@@ -25,8 +24,8 @@ public abstract class AReasoningRover extends APracticalRover {
     private boolean scenarioHasFinished;
 
 
-    public AReasoningRover(int s, int r, int c){
-        super(s,r,c);
+    public AReasoningRover(int s, int r, int c, int ct){
+        super(s,r,c,ct);
         b = new ArrayList<>();
         d = new ArrayList<>();
         i = new ArrayList<>();
@@ -88,6 +87,7 @@ public abstract class AReasoningRover extends APracticalRover {
                 pr.setResultType(PollResult.FAILED);
                 pr.setResultStatus(PollResult.FAILED);
             }
+            System.out.println("still in the loop!"+new Random().nextDouble());
         } while(!lastActionWasSuccessful&&!scenarioHasFinished());
     }
 

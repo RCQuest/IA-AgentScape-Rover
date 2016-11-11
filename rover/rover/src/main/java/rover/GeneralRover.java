@@ -8,14 +8,12 @@ import rover.shared.reasoning.intention.ObtainIntention;
 import rover.shared.reasoning.intention.RetrieveIntention;
 import rover.shared.reasoning.intention.SearchIntention;
 
-import java.util.ArrayList;
-
 /**
  * Created by rachelcabot on 18/10/2016.
  */
 public class GeneralRover extends AReasoningRover {
     public GeneralRover(){
-        super(3,3,3);
+        super(3,3,3,1);
         this.i.add(new SearchIntention());
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());

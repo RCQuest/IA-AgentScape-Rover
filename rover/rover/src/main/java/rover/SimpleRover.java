@@ -5,6 +5,6 @@ package rover;
  */
 public class SimpleRover extends APracticalRover {
     public SimpleRover(){
-        super(3,3,3);
+        super(3,3,3,1);
     }
 }

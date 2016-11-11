@@ -21,8 +21,8 @@ public class ResourceLocationsTest {
                 new ScanItem[]{},
                 new RoverOffset(0,0, TestWorld.width,TestWorld.height),
                 TestWorld.height,
-                TestWorld.width
-        );
+                TestWorld.width,
+                typeOfResourceConcerned);
     }
 
     @org.junit.Test

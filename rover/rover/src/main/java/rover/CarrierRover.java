@@ -1,10 +1,9 @@
 package rover;
 
-import rover.reasoning.carrier.CarrrierPlanFactory;
+import rover.reasoning.carrier.CollectorPlanFactory;
 import rover.reasoning.simple.SimpleDesireFactory;
 import rover.reasoning.simple.SimpleIntentionFilter;
 import rover.reasoning.simple.SimplePerceptFactory;
-import rover.reasoning.simple.SimplePlanFactory;
 import rover.shared.reasoning.intention.ObtainIntention;
 import rover.shared.reasoning.intention.RetrieveIntention;
 
@@ -13,10 +12,10 @@ import rover.shared.reasoning.intention.RetrieveIntention;
  */
 public class CarrierRover extends AReasoningRover {
     public CarrierRover() {
-        super(4, 0, 5);
+        super(4, 0, 5, 1);
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());
-        planFactory = new CarrrierPlanFactory();
+        planFactory = new CollectorPlanFactory();
         desireFactory = new SimpleDesireFactory();
         intentionFilter = new SimpleIntentionFilter();
         perceptFactory = new SimplePerceptFactory();

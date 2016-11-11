@@ -16,11 +16,13 @@ import java.util.Collections;
  * Created by rachelcabot on 18/10/2016.
  */
 public class ResourceLocations extends ABelief {
+    private final int typeOfResourceConcerned;
     private final RoverOffset myPosition;
     private ArrayList<Resource> offsetsFromBase;
     private ArrayList<ScanItem> itemsIHaveJustSeenFromMyPosition;
 
-    public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth) {
+    public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth, int typeOfResourceConcerned) {
+        this.typeOfResourceConcerned = typeOfResourceConcerned;
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
         itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public abstract class APracticalRover extends Rover implements IPerceiver {
 
+    private final int CARRY_TYPE;
     private final int BASE_SPEED;
     private final int SCAN_RADIUS;
     private final int CARRY_SIZE;
@@ -24,19 +25,20 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private int totalNumberOfScanningAgents;
     private int id;
 
-    public APracticalRover(int speed, int radius, int capacity) {
+    public APracticalRover(int speed, int radius, int capacity, int carryType) {
         super();
         //use your username for team name
         setTeam("rc566");
         BASE_SPEED=speed;
         SCAN_RADIUS=radius;
         CARRY_SIZE=capacity;
+        CARRY_TYPE=carryType;
 
         try {
             //set attributes for this rover
             //speed, scan range, max load
             //has to add up to <= 9
-            setAttributes(BASE_SPEED, SCAN_RADIUS, CARRY_SIZE);
+            setAttributes(BASE_SPEED, SCAN_RADIUS, CARRY_SIZE,CARRY_TYPE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -300,5 +302,10 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     @Override
     public double getEnergyRemaining(){
         return getEnergy();
+    }
+
+    @Override
+    public int getTypeOfResourceCarrier(){
+        return CARRY_TYPE;
     }
 }

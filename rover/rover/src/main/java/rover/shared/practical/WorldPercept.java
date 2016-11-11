@@ -32,6 +32,7 @@ public class WorldPercept extends APercept {
     private ArrayList<RoverOffset> nodesBeingSearchedByOtherRovers;
     private double energyRemaining;
     private int movementSpeed;
+    private int typeOfResourceConcerned;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -97,7 +98,7 @@ public class WorldPercept extends APercept {
     public ArrayList<ABelief> initialiseBeliefs() {
         ArrayList<ABelief> derivedBeliefs = new ArrayList<>();
 
-        derivedBeliefs.add(new ResourceLocations(itemsICanSee,myPosition, worldHeight, worldWidth));
+        derivedBeliefs.add(new ResourceLocations(itemsICanSee,myPosition, worldHeight, worldWidth, typeOfResourceConcerned));
 
         derivedBeliefs.add(new RoverCapacity(roverCapacity,roverLoad));
 
@@ -177,5 +178,9 @@ public class WorldPercept extends APercept {
 
     public void setPreviousAction(int previousAction) {
         this.previousAction = previousAction;
+    }
+
+    public void setTypeOfResourceConcerned(int typeOfResourceConcerned) {
+        this.typeOfResourceConcerned = typeOfResourceConcerned;
     }
 }
