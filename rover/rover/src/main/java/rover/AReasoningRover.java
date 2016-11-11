@@ -62,6 +62,7 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void poll(PollResult pr){
+        System.out.println(scenarioHasFinished);
         if(scenarioHasFinished())
             return;
         do {
