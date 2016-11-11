@@ -85,10 +85,10 @@ public abstract class AReasoningRover extends APracticalRover {
             }
 
             execute(pl.popStep());
-            if(!lastActionWasSuccessful){
-                pr.setResultType(PollResult.FAILED);
-                pr.setResultStatus(PollResult.FAILED);
-            }
+//            if(!lastActionWasSuccessful){
+//                pr.setResultType(PollResult.FAILED);
+//                pr.setResultStatus(PollResult.FAILED);
+//            }
         } while(!lastActionWasSuccessful&&!scenarioHasFinished());
     }
 
