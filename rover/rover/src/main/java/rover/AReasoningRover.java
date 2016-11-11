@@ -51,6 +51,8 @@ public abstract class AReasoningRover extends APracticalRover {
 
     @Override
     void poll(PollResult pr){
+        if(!agentRunning())
+            return;
         do {
             if (!(empty(pl) || succeeded(i, b) || impossible(i, b))) {
                 APercept p = perceptFactory.create(pr, this);
@@ -75,7 +77,8 @@ public abstract class AReasoningRover extends APracticalRover {
                 pr.setResultType(PollResult.FAILED);
                 pr.setResultStatus(PollResult.FAILED);
             }
-        } while(!lastActionWasSuccessful&&!agentRunning());
+        } while(!lastActionWasSuccessful);
+        System.out.println("last action was successful?"+lastActionWasSuccessful);
     }
 
     boolean sound(APlan pl, ArrayList<AIntention> i, ArrayList<ABelief> b) {
