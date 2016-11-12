@@ -28,6 +28,8 @@ public class ResourceLocations extends ABelief {
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
 
+        offsetsFromBase=new ArrayList<>();
+
         itemsIHaveJustSeenFromMyPosition= filterScanItems(itemsIHaveJustSeenFromMyPosition);
         ArrayList<Resource> situatedItems = situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,myPosition,worldWidth,worldHeight);
         if(offsetsFromBase.size()>0) MessagingService.sendNewMessage(MessageParser.generateFoundMessage(offsetsFromBase));
