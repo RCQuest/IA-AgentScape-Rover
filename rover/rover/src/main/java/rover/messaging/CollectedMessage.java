@@ -11,6 +11,6 @@ public class CollectedMessage extends ASingleParameterMessage {
 
     @Override
     public void modifyPercept(WorldPercept percept) {
-        percept.addItemsCollected(new Resource(item));
+        percept.addItemsCollected(new Resource(item,resourceType));
     }
 }

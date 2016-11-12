@@ -18,12 +18,12 @@ public class MessageParserTest {
 
     private final ArrayList<Resource> noArgs = new ArrayList<Resource>();
     private final ArrayList<Resource> oneArg = new ArrayList<Resource>(){{
-        add(new Resource(new RoverOffset(0,0,0,0)));
+        add(new Resource(new RoverOffset(0,0,0,0),1));
     }};
     private final ArrayList<Resource> multiArg = new ArrayList<Resource>(){{
-        add(new Resource(new RoverOffset(0,0,0,0)));
-        add(new Resource(new RoverOffset(1,0,0,0)));
-        add(new Resource(new RoverOffset(0,1,0,0)));
+        add(new Resource(new RoverOffset(0,0,0,0),1));
+        add(new Resource(new RoverOffset(1,0,0,0),1));
+        add(new Resource(new RoverOffset(0,1,0,0),1));
     }};
     private final ArrayList<ArrayList<Resource>> argLists = new ArrayList<ArrayList<Resource>>(){{
         add(noArgs);

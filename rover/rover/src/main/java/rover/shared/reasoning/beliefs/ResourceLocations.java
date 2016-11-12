@@ -25,16 +25,16 @@ public class ResourceLocations extends ABelief {
         this.typeOfResourceConcerned = typeOfResourceConcerned;
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
-        itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
+        itemsIHaveJustSeenFromMyPosition= filterScanItems(itemsIHaveJustSeenFromMyPosition);
         offsetsFromBase = new ArrayList<>();
         situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,myPosition,worldWidth,worldHeight);
         this.myPosition = myPosition;
     }
 
-    public ArrayList<ScanItem> filterResources(ArrayList<ScanItem> items){
+    public ArrayList<ScanItem> filterScanItems(ArrayList<ScanItem> items){
         ArrayList<ScanItem> filteredItems = new ArrayList<>();
         for (ScanItem item:items) {
-            if(item.getItemType()==ScanItem.RESOURCE)
+            if(item.getItemType()==ScanItem.RESOURCE&&item.getResourceType()==typeOfResourceConcerned)
                 filteredItems.add(item);
         }
         return filteredItems;
@@ -84,14 +84,14 @@ public class ResourceLocations extends ABelief {
                 worldWidth,
                 worldHeight);
         offset.addOffset(offsetFromBase);
-        return new Resource(offset);
+        return new Resource(offset,typeOfResourceConcerned);
     }
 
     @Override
     public void coalesceWith(APercept p) {
         if(p.getScanItems().length>0){
             Collections.addAll(itemsIHaveJustSeenFromMyPosition,p.getScanItems());
-            itemsIHaveJustSeenFromMyPosition=filterResources(itemsIHaveJustSeenFromMyPosition);
+            itemsIHaveJustSeenFromMyPosition= filterScanItems(itemsIHaveJustSeenFromMyPosition);
             ArrayList<Resource> situatedItems = situateItems(itemsIHaveJustSeenFromMyPosition,offsetsFromBase,p.getMyPosition(),p.getWorldWidth(),p.getWorldHeight());
             if(situatedItems.size()>0) MessagingService.sendNewMessage(MessageParser.generateFoundMessage(situatedItems));
         }
@@ -99,12 +99,21 @@ public class ResourceLocations extends ABelief {
         ArrayList<Resource> resourcesFoundByOtherRovers = p.getResourcesJustFoundByOtherRovers();
 
         if(resourcesFoundByOtherRovers!=null){
-
+            resourcesFoundByOtherRovers=filterResourcesFoundByOtherRovers(resourcesFoundByOtherRovers);
             addSituatedItems(resourcesFoundByOtherRovers);
         }
 
         removeFromLocations(p.getItemsWhollyCollected());
         decrementResourceLevels(p.getItemsTouched());
+    }
+
+    private ArrayList<Resource> filterResourcesFoundByOtherRovers(ArrayList<Resource> resourcesFoundByOtherRovers) {
+        ArrayList<Resource> filteredItems = new ArrayList<>();
+        for (Resource item:resourcesFoundByOtherRovers) {
+            if(item.getResourceType()==typeOfResourceConcerned)
+                filteredItems.add(item);
+        }
+        return filteredItems;
     }
 
     private void decrementResourceLevels(ArrayList<RoverOffset> itemsTouched) {

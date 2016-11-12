@@ -6,10 +6,12 @@ package rover.shared.practical;
 public class Resource {
     private RoverOffset offset;
     private int left;
+    private int resourceType;
 
-    public Resource(RoverOffset offset) {
+    public Resource(RoverOffset offset,int resourceType) {
         this.offset = offset;
         this.left = ScenarioOptimisations.getResourceVolume();
+        this.resourceType= resourceType;
     }
 
     public RoverOffset getOffset() {
@@ -21,7 +23,7 @@ public class Resource {
     }
 
     public String toMessageString(String delimiter) {
-        return offset.toMessageString(delimiter);
+        return offset.toMessageString(delimiter)+delimiter+resourceType;
     }
 
     public void decrementLeft() {
@@ -30,5 +32,9 @@ public class Resource {
 
     public boolean isDepleted(){
         return left<1;
+    }
+
+    public int getResourceType() {
+        return resourceType;
     }
 }

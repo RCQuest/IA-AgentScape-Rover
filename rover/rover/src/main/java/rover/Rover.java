@@ -93,7 +93,7 @@ public abstract class Rover extends Agent {
         } catch (CommunicationException ce) {
             getLog().debug("too many requests from: "+clientKey);
         } catch (Exception e1) {
-
+            System.out.println("stuck in connection a new rover");
             e1.printStackTrace();
         }
         if (pr != null) {
@@ -182,11 +182,11 @@ public abstract class Rover extends Agent {
 
         BindService();
 
-            //now register with the service
-            //clientKey = service.registerClient(team);
+        //now register with the service
+        //clientKey = service.registerClient(team);
 
-            //set our attributes with the service
-            //service.setAttributes(clientKey, speed, scanRange, maxLoad);
+        //set our attributes with the service
+        //service.setAttributes(clientKey, speed, scanRange, maxLoad);
 
         while (connected){
             BindService();

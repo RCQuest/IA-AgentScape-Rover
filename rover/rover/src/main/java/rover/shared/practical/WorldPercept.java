@@ -64,8 +64,9 @@ public class WorldPercept extends APercept {
         ArrayList<Resource> items = new ArrayList<>();
         if(PollResult.COLLECT==previousAction) {
             if (!previousActionWasSuccessful && roverCapacity > roverLoad) {
-                items.add(new Resource(myPosition));
-                MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(myPosition));
+                Resource positionResource = new Resource(myPosition,typeOfResourceConcerned);
+                items.add(positionResource);
+                MessagingService.sendNewMessage(MessageParser.generateCollectedMessage(positionResource));
             }
         }
         if(resourcesJustCollectedByOtherRovers!=null){

@@ -19,10 +19,11 @@ public class FoundMessage extends AMessage {
 
     @Override
     protected void extractMessageParameters(String[] originalMessageTokens) {
-        for (int i = 1; i < originalMessageTokens.length; i+=2) {
+        for (int i = 1; i < originalMessageTokens.length; i+=MessageParser.numberOfResourceFields) {
             double x = Double.parseDouble(originalMessageTokens[i]);
             double y = Double.parseDouble(originalMessageTokens[i+1]);
-            resources.add(new Resource(new RoverOffset(x,y)));
+            int r = Integer.parseInt(originalMessageTokens[i+2]);
+            resources.add(new Resource(new RoverOffset(x,y), r));
         }
     }
 

@@ -22,6 +22,8 @@ public class MessageParser {
         put("found",FoundMessage.class);
     }};
 
+    public static final int numberOfResourceFields = 3;
+
     public static ArrayList<AMessage> parse(ArrayList<String> newMessages) {
 
         ArrayList<AMessage> messageObjects = new ArrayList<>();
@@ -38,15 +40,15 @@ public class MessageParser {
         return messageObjects;
     }
 
-    private static String generateMessage(String command, ArrayList<RoverOffset> items){
+    private static String generateMessage(String command, ArrayList<Resource> items){
         String message = command;
-        for (RoverOffset item : items) {
+        for (Resource item : items) {
             message+=DELIMITER+item.toMessageString(DELIMITER);
         }
         return message;
     }
 
-    private static String generateMessage(String command, RoverOffset item){
+    private static String generateMessage(String command, Resource item){
         String message = command;
         message+=DELIMITER+item.toMessageString(DELIMITER);
         return message;
@@ -60,11 +62,11 @@ public class MessageParser {
         return message;
     }
 
-    public static String generateCollectedMessage(RoverOffset myPosition) {
+    public static String generateCollectedMessage(Resource myPosition) {
         return generateMessage("collected",myPosition);
     }
 
-    public static String generateSearchingMessage(RoverOffset toRemove) {
+    public static String generateSearchingMessage(Resource toRemove) {
         return generateMessage("searching",toRemove);
     }
 }

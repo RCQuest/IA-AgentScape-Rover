@@ -22,7 +22,7 @@ public class ResourceLocationsTest {
                 new RoverOffset(0,0, TestWorld.width,TestWorld.height),
                 TestWorld.height,
                 TestWorld.width,
-                typeOfResourceConcerned);
+                1);
     }
 
     @org.junit.Test
