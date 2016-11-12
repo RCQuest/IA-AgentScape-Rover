@@ -98,7 +98,7 @@ public class ResourceLocations extends ABelief {
                 worldWidth,
                 worldHeight);
         offset.addOffset(offsetFromBase);
-        return new Resource(offset,typeOfResourceConcerned);
+        return new Resource(offset,item.getResourceType());
     }
 
     @Override
@@ -120,6 +120,7 @@ public class ResourceLocations extends ABelief {
 
         removeFromLocations(p.getItemsWhollyCollected());
         decrementResourceLevels(p.getItemsTouched());
+        System.out.println("My resources: "+offsetsFromBase);
     }
 
     private void decrementResourceLevels(ArrayList<RoverOffset> itemsTouched) {
