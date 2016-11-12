@@ -93,4 +93,10 @@ public class RoverOffset {
     public boolean isZero(){
         return isSameAs(new RoverOffset(0,0,1,1));
     }
+
+    public int comparePolarAngle(RoverOffset o2) {
+        double a = getPolarAngle();
+        double b = o2.getPolarAngle();
+        return (int)(Math.round(a*1000) - Math.round(b*1000));
+    }
 }

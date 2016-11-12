@@ -62,7 +62,7 @@ public class CoordinateMap {
         Collections.sort(coordinates, new Comparator<RoverOffset>() {
             @Override
             public int compare(RoverOffset o1, RoverOffset o2) {
-                return (int) (o1.magnitude()-o2.magnitude());
+                return (o1.comparePolarAngle(o2));
             }
         });
     }
