@@ -23,6 +23,7 @@ public class ResourceLocations extends ABelief {
 
     public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth, int typeOfResourceConcerned) {
         this.typeOfResourceConcerned = typeOfResourceConcerned;
+        System.out.println("My resource type is:"+typeOfResourceConcerned);
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
         itemsIHaveJustSeenFromMyPosition= filterScanItems(itemsIHaveJustSeenFromMyPosition);
