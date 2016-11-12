@@ -87,7 +87,6 @@ public abstract class AReasoningRover extends APracticalRover {
                 pr.setResultType(PollResult.FAILED);
                 pr.setResultStatus(PollResult.FAILED);
             }
-            System.out.println("still in the loop!"+new Random().nextDouble());
         } while(!lastActionWasSuccessful&&!scenarioHasFinished());
     }
 

@@ -218,6 +218,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
         ArrayList<String> newMessages = new ArrayList<>(this.messages);
         this.messages.clear();
+        System.out.println(newMessages);
         return MessageParser.parse(newMessages);
     }
 
