@@ -11,7 +11,7 @@ import rover.shared.reasoning.intention.SearchIntention;
  */
 public class ScoutRover extends AReasoningRover {
     public ScoutRover() {
-        super(4, 5, 0, 1);
+        super(4, 5, 0, 1, true);
         this.i.add(new SearchIntention());
         planFactory = new ScoutPlanFactory();
         desireFactory = new SimpleDesireFactory();

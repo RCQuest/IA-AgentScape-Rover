@@ -11,10 +11,10 @@ import java.util.Comparator;
  * Created by rachelcabot on 04/11/2016.
  */
 public class ScanMapFactory {
-    public CoordinateMap create(int worldWidth, int worldHeight, int scanRadius, int roverId, int totalNumberOfScanningAgents, ArrayList<AMessage> helloMessages) {
+    public CoordinateMap create(int worldWidth, int worldHeight, int scanRadius, int roverId, int totalNumberOfScanningAgents, ArrayList<AMessage> helloMessages, boolean isSparse) {
         int scanId = getScanMapIndex(roverId,helloMessages);
 
-        return new CoordinateMap(worldWidth,worldHeight,scanRadius,scanId,totalNumberOfScanningAgents);
+        return new CoordinateMap(worldWidth,worldHeight,scanRadius,scanId,totalNumberOfScanningAgents,isSparse);
     }
 
     public int getScanMapIndex(int id, ArrayList<AMessage> helloMessages) {

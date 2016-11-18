@@ -12,7 +12,7 @@ import rover.shared.reasoning.intention.RetrieveIntention;
  */
 public class WaterCourierRover extends AReasoningRover {
     public WaterCourierRover() {
-        super(8, 0, 1, 2);
+        super(8, 0, 1, 2, false);
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());
         planFactory = new CollectorPlanFactory();

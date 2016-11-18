@@ -5,7 +5,6 @@ import rover.shared.practical.ARoverAction;
 import rover.shared.reasoning.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by rachelcabot on 17/10/2016.
@@ -24,8 +23,8 @@ public abstract class AReasoningRover extends APracticalRover {
     private boolean scenarioHasFinished;
 
 
-    public AReasoningRover(int s, int r, int c, int ct){
-        super(s,r,c,ct);
+    public AReasoningRover(int s, int r, int c, int ct, boolean sp){
+        super(s,r,c,ct,sp);
         b = new ArrayList<>();
         d = new ArrayList<>();
         i = new ArrayList<>();

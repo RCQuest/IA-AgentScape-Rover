@@ -36,8 +36,31 @@ public class CoordinateMap {
         }
     }
 
-    public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius, int id, int numberOfOtherAgents) {
-        generateCompleteSet(mapWidth,mapHeight,mapScanRadius);
+    private void generateSparseSet(double mapWidth, double mapHeight, double mapScanRadius){
+        coordinates = new ArrayList<>();
+        mapScanRadius = mapScanRadius*4;
+        double mapScanDiameter = (mapScanRadius*2);
+        int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
+        int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
+        RoverOffset offset = new RoverOffset(mapWidth/2,mapHeight/2);
+        for(int y = 0; y < ySections; y++){
+            for(int x = 0; x < xSections; x++) {
+                RoverOffset newOffset = new RoverOffset(
+                        x*mapScanDiameter,
+                        y*mapScanDiameter,
+                        mapWidth,
+                        mapHeight);
+                newOffset.addOffset(offset);
+                coordinates.add(newOffset);
+            }
+        }
+    }
+
+    public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius, int id, int numberOfOtherAgents,boolean sparse) {
+        if(!sparse)
+            generateCompleteSet(mapWidth,mapHeight,mapScanRadius);
+        else
+            generateSparseSet(mapWidth,mapHeight,mapScanRadius);
         nodesToExclude = new ArrayList<>();
         sortNodes();
         takeSlice(id,numberOfOtherAgents);

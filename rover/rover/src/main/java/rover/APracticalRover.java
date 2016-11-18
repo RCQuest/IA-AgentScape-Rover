@@ -16,6 +16,8 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private final int BASE_SPEED;
     private final int SCAN_RADIUS;
     private final int CARRY_SIZE;
+    private final boolean IS_SPARSE_SCANNER;
+
 
     private ARoverState state;
     private RoverOffset offsetFromBase;
@@ -25,7 +27,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private int totalNumberOfScanningAgents;
     private int id;
 
-    public APracticalRover(int speed, int radius, int capacity, int carryType) {
+    public APracticalRover(int speed, int radius, int capacity, int carryType,boolean isSparse) {
         super();
         //use your username for team name
         setTeam("rc566");
@@ -33,6 +35,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         SCAN_RADIUS=radius;
         CARRY_SIZE=capacity;
         CARRY_TYPE=carryType;
+        IS_SPARSE_SCANNER=isSparse;
 
         try {
             //set attributes for this rover
@@ -270,7 +273,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
         if(isScanner) {
             ScanMapFactory smf = new ScanMapFactory();
-            scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages);
+            scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages, IS_SPARSE_SCANNER);
         }
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);

@@ -13,7 +13,7 @@ import rover.shared.reasoning.intention.SearchIntention;
  */
 public class GeneralRover extends AReasoningRover {
     public GeneralRover(){
-        super(3,3,3,1);
+        super(3,3,3,1, false);
         this.i.add(new SearchIntention());
         this.i.add(new ObtainIntention());
         this.i.add(new RetrieveIntention());
