@@ -22,7 +22,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     private CoordinateMap scanMap;
     private ArrayList<RoverOffset> resourceMap;
     private RoverOffset resourceLocationFocus;
-    private int totalNumberOfScanningAgentsActive;
+    private int totalNumberOfScanningAgents;
     private int id;
 
     public APracticalRover(int speed, int radius, int capacity, int carryType) {
@@ -265,12 +265,12 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
         HelloMessage ownHello = new HelloMessage();
         ownHello.setId(id);
         helloMessages.add(ownHello);
-        totalNumberOfScanningAgentsActive = helloMessages.size();
+        totalNumberOfScanningAgents = helloMessages.size();
 
 
         if(isScanner) {
             ScanMapFactory smf = new ScanMapFactory();
-            scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgentsActive, helloMessages);
+            scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages);
         }
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
@@ -309,6 +309,11 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
     @Override
     public int getTypeOfResourceCarrier(){
         return CARRY_TYPE;
+    }
+
+    @Override
+    public int getNumberOfScanningRovers() {
+        return totalNumberOfScanningAgents;
     }
 
 

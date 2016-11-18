@@ -42,6 +42,7 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setMovementSpeed(rover.getMovementSpeed());
         percept.setEnergyRemaining(rover.getEnergyRemaining());
         percept.setTypeOfResourceConcerned(rover.getTypeOfResourceCarrier());
+        percept.setNumberOfScanningRovers(rover.getNumberOfScanningRovers());
 
         ArrayList<AMessage> newMessages = rover.getNewMessages();
         for (AMessage message:newMessages) {

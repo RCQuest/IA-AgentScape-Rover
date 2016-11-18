@@ -31,4 +31,6 @@ public interface IPerceiver {
     double getEnergyRemaining();
 
     int getTypeOfResourceCarrier();
+
+    int getNumberOfScanningRovers();
 }

@@ -33,6 +33,7 @@ public class WorldPercept extends APercept {
     private double energyRemaining;
     private int movementSpeed;
     private int typeOfResourceConcerned;
+    private int numberOfScanningRovers;
 
     @Override
     public ScanItem[] getScanItems() {
@@ -93,6 +94,11 @@ public class WorldPercept extends APercept {
     @Override
     public double getEnergyRemaining() {
         return energyRemaining;
+    }
+
+    @Override
+    public int getNumberOfScanningRovers() {
+        return numberOfScanningRovers;
     }
 
     @Override
@@ -183,5 +189,9 @@ public class WorldPercept extends APercept {
 
     public void setTypeOfResourceConcerned(int typeOfResourceConcerned) {
         this.typeOfResourceConcerned = typeOfResourceConcerned;
+    }
+
+    public void setNumberOfScanningRovers(int numberOfScanningRovers) {
+        this.numberOfScanningRovers = numberOfScanningRovers;
     }
 }
