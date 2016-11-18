@@ -20,8 +20,8 @@ public class CoordinateMap {
         mapScanRadius = mapScanRadius*2;
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
         double mapScanDiameter = mapScanRadius*2;
-        int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
-        int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
+        int xSections = (int)Math.floor(mapWidth/mapScanDiameter);
+        int ySections = (int)Math.floor(mapHeight/mapScanDiameter);
         for(int y = 0; y < ySections; y++){
             for(int x = 0; x < xSections; x++) {
                 RoverOffset newOffset = new RoverOffset(
