@@ -1,15 +1,12 @@
 package rover.shared.practical;
 
-import rover.messaging.MessageParser;
-import rover.messaging.MessagingService;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class CoordinateMap {
     public ArrayList<RoverOffset> coordinates;
-    private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3);
+    private static final double RADIUS_SPACING_FACTOR = Math.sqrt(3)/2;
     private ArrayList<RoverOffset> nodesToExclude;
 
     public CoordinateMap(double mapWidth, double mapHeight, double mapScanRadius){
@@ -20,14 +17,16 @@ public class CoordinateMap {
 
     private void generateCompleteSet(double mapWidth, double mapHeight, double mapScanRadius) {
         coordinates = new ArrayList<>();
+        mapScanRadius = mapScanRadius*2;
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
-        int xSections = (int)Math.ceil(mapWidth/mapScanRadius);
-        int ySections = (int)Math.ceil(mapHeight/mapScanRadius);
+        double mapScanDiameter = mapScanRadius*2;
+        int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
+        int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
         for(int y = 0; y < ySections; y++){
             for(int x = 0; x < xSections; x++) {
                 RoverOffset newOffset = new RoverOffset(
-                        x*mapScanRadius+((y%2)*mapScanRadius/2),
-                        y*mapScanRadius,
+                        x*mapScanDiameter+((y%2)*mapScanDiameter/2),
+                        y*mapScanDiameter,
                         mapWidth,
                         mapHeight);
                 coordinates.add(newOffset);
