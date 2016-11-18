@@ -40,6 +40,7 @@ public abstract class AReasoningRover extends APracticalRover {
     @Override
     void begin() {
         this.setUpPracticalAttributes();
+
         APercept p = perceptFactory.create(null,this);
         b = setUpBeliefBase(p);
         d = options(b,i);
