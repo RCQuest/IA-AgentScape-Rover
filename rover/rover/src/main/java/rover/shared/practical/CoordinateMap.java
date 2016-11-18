@@ -19,7 +19,7 @@ public class CoordinateMap {
         coordinates = new ArrayList<>();
         mapScanRadius = mapScanRadius*2;
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
-        double mapScanDiameter = (mapScanRadius*2);
+        double mapScanDiameter = (mapScanRadius*2)-4;
         int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
         int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
         RoverOffset offset = new RoverOffset(mapWidth/2,mapHeight/2);
