@@ -19,9 +19,9 @@ public class CoordinateMap {
         coordinates = new ArrayList<>();
         mapScanRadius = mapScanRadius*2;
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
-        double mapScanDiameter = mapScanRadius*2;
-        int xSections = (int)Math.ceil(mapWidth/mapScanDiameter)+1;
-        int ySections = (int)Math.ceil(mapHeight/mapScanDiameter)+1;
+        double mapScanDiameter = (mapScanRadius*2)-1;
+        int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
+        int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
         for(int y = 0; y < ySections; y++){
             for(int x = 0; x < xSections; x++) {
                 RoverOffset newOffset = new RoverOffset(
