@@ -18,6 +18,6 @@ public class CarrierRover extends AReasoningRover {
         planFactory = new CollectorPlanFactory();
         desireFactory = new SimpleDesireFactory();
         intentionFilter = new SimpleIntentionFilter();
-        perceptFactory = new SimplePerceptFactory();
+        perceptFactory = new SimplePerceptFactory(Math.round(Math.random()*3000));
     }
 }
