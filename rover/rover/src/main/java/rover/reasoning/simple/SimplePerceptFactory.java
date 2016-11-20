@@ -23,6 +23,11 @@ public class SimplePerceptFactory extends APerceptFactory {
 
     public SimplePerceptFactory(long messagePerceptDelay){
         this.messagePerceptDelay = messagePerceptDelay;
+        try {
+            Thread.sleep(messagePerceptDelay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -53,12 +58,6 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setEnergyRemaining(rover.getEnergyRemaining());
         percept.setTypeOfResourceConcerned(rover.getTypeOfResourceCarrier());
         percept.setNumberOfScanningRovers(rover.getNumberOfScanningRovers());
-
-        try {
-            Thread.sleep(messagePerceptDelay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ArrayList<AMessage> newMessages = rover.getNewMessages();
         for (AMessage message:newMessages) {
