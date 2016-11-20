@@ -69,4 +69,8 @@ public class MessageParser {
     public static String generateSearchingMessage(Resource toRemove) {
         return generateMessage("searching",toRemove);
     }
+
+    public static String generateCollectingMessage(Resource toAvoid) {
+        return generateMessage("collecting",toAvoid);
+    }
 }

@@ -24,7 +24,7 @@ public class ResourceLocations extends ABelief {
     public ResourceLocations(ScanItem[] itemsICanSee, RoverOffset myPosition, double worldHeight, double worldWidth, int typeOfResourceConcerned) {
         this.myPosition = myPosition;
         this.typeOfResourceConcerned = typeOfResourceConcerned;
-        System.out.println("My resource type is:"+typeOfResourceConcerned);
+
         itemsIHaveJustSeenFromMyPosition = new ArrayList<>();
         Collections.addAll(itemsIHaveJustSeenFromMyPosition, itemsICanSee);
 
@@ -120,7 +120,6 @@ public class ResourceLocations extends ABelief {
 
         removeFromLocations(p.getItemsWhollyCollected());
         decrementResourceLevels(p.getItemsTouched());
-        System.out.println("My resources: "+offsetsFromBase);
     }
 
     private void decrementResourceLevels(ArrayList<RoverOffset> itemsTouched) {

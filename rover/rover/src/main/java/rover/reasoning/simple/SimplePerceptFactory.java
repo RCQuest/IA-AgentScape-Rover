@@ -15,6 +15,16 @@ import java.util.ArrayList;
  * Created by rachelcabot on 18/10/2016.
  */
 public class SimplePerceptFactory extends APerceptFactory {
+    private final long messagePerceptDelay;
+
+    public SimplePerceptFactory(){
+        this.messagePerceptDelay = 0;
+    }
+
+    public SimplePerceptFactory(long messagePerceptDelay){
+        this.messagePerceptDelay = messagePerceptDelay;
+    }
+
     @Override
     public APercept create(PollResult pr, IPerceiver rover) {
         if(pr==null){
@@ -43,6 +53,12 @@ public class SimplePerceptFactory extends APerceptFactory {
         percept.setEnergyRemaining(rover.getEnergyRemaining());
         percept.setTypeOfResourceConcerned(rover.getTypeOfResourceCarrier());
         percept.setNumberOfScanningRovers(rover.getNumberOfScanningRovers());
+
+        try {
+            Thread.sleep(messagePerceptDelay);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ArrayList<AMessage> newMessages = rover.getNewMessages();
         for (AMessage message:newMessages) {

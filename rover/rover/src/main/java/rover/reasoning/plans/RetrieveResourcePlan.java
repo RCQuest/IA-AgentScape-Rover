@@ -1,5 +1,7 @@
 package rover.reasoning.plans;
 
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingService;
 import rover.shared.actions.MoveTowardsAction;
 import rover.shared.actions.PickupAction;
 import rover.shared.reasoning.ABelief;
@@ -16,6 +18,7 @@ public class RetrieveResourcePlan extends APlan {
 
     public RetrieveResourcePlan(ResourceLocations resourceLocationBelief) {
         super();
+
 
         if(!resourceLocationBelief.onTopOfResourceLocation())
             actions.add(new MoveTowardsAction(resourceLocationBelief));

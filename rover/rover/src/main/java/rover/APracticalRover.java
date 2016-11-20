@@ -197,6 +197,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
 
     public boolean moveToClosestResource(ArrayList<RoverOffset> resourceLocations) {
         RoverOffset r = resourceLocations.get(0);
+        MessagingService.sendNewMessage(MessageParser.generateCollectingMessage(new Resource(r,0)));
         return moveTo(r);
     }
 
@@ -275,6 +276,7 @@ public abstract class APracticalRover extends Rover implements IPerceiver {
             ScanMapFactory smf = new ScanMapFactory();
             scanMap = smf.create(getWorldWidth(), getWorldHeight(), SCAN_RADIUS, id, totalNumberOfScanningAgents, helloMessages, IS_SPARSE_SCANNER);
         }
+
         offsetFromBase = new RoverOffset(0,0,getWorldWidth(),getWorldHeight());
         state = new SearchingState(this);
         resourceMap = new ArrayList<>();

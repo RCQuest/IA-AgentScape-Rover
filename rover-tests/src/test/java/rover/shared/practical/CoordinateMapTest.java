@@ -85,7 +85,7 @@ public class CoordinateMapTest {
         int agents = 8;
         for (int i = 0; i < agents; i++) {
             uut = new CoordinateMap(200,200,5,i,agents);
-            System.out.println("Number of nodes: "+uut.getNonExcludedNodes().size());
+
             s += uut.getNonExcludedNodes().size();
         }
         assertEquals(total,s);
@@ -143,7 +143,7 @@ public class CoordinateMapTest {
     @Test
     public void sortNodes() throws Exception{
         uut.sortNodes();
-        System.out.println(uut.getNonExcludedNodes());
+
     }
 
 }

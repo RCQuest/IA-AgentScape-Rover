@@ -1,6 +1,8 @@
 package rover.shared.actions;
 
 import rover.APracticalRover;
+import rover.messaging.MessageParser;
+import rover.messaging.MessagingService;
 import rover.shared.practical.ARoverAction;
 import rover.shared.practical.CoordinateMap;
 import rover.shared.practical.RoverOffset;
@@ -35,8 +37,9 @@ public class MoveTowardsAction extends ARoverAction {
         if(node!=null)
             return rover.moveTo(node);
 
-        if(resourceLocationBelief!=null)
+        if(resourceLocationBelief!=null) {
             return rover.moveToClosestResource(resourceLocationBelief.getLocations());
+        }
         return false;
     }
 }
