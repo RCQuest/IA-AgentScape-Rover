@@ -1,6 +1,6 @@
 <agentscape xmlns="http://www.agentscape.org/config">
   <application>
-    <agent name="Monitor" clones="1" jar="rover-monitor-debug-0.0.1.jar" class="rover.MonitorAgent"/>
+    <agent name="Monitor" clones="1" jar="rover-monitor-0.0.1.jar" class="rover.MonitorAgent"/>
     <agent name="Agent_1" clones="8" class="rover.CartogRover" jar="rover-agent-0.0.1.jar"/>
     <agent name="Agent_2" clones="2" class="rover.CourierRover" jar="rover-agent-0.0.1.jar"/>
   </application>
