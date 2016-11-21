@@ -38,7 +38,7 @@ public class CoordinateMap {
 
     private void generateSparseSet(double mapWidth, double mapHeight, double mapScanRadius){
         coordinates = new ArrayList<>();
-        mapScanRadius = mapScanRadius*4;
+        mapScanRadius = mapScanRadius*2;
         double mapScanDiameter = (mapScanRadius*2);
         int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
         int ySections = (int)Math.ceil(mapHeight/mapScanDiameter);
