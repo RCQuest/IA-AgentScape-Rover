@@ -17,7 +17,7 @@ public class CoordinateMap {
 
     private void generateCompleteSet(double mapWidth, double mapHeight, double mapScanRadius) {
         coordinates = new ArrayList<>();
-        mapScanRadius = mapScanRadius*4;
+        mapScanRadius = mapScanRadius*2;
         mapScanRadius = mapScanRadius*RADIUS_SPACING_FACTOR;
         double mapScanDiameter = (mapScanRadius*2)-4;
         int xSections = (int)Math.ceil(mapWidth/mapScanDiameter);
